@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1071588685661",
+    "project_id": "threedays-c4e8e",
+    "storage_bucket": "threedays-c4e8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071588685661:android:c19ebd5e9589e5b1135ab4",
+        "android_client_info": {
+          "package_name": "com.now.three_days"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071588685661-envgbrb7fadu9tt6sv139s3p1rqjfgbg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf01fqKeodoh2QVJX8v9wUDpUzJ5dxqG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071588685661-envgbrb7fadu9tt6sv139s3p1rqjfgbg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
