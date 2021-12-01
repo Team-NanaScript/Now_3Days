@@ -10,24 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Three_days">
 
-        <meta-data android:name="com.google.firebase.ml.vision.DEPENDENCIES" android:value="face" />
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face" />
 
-        <activity
-            android:name=".MypageActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ListActivity"
-            android:exported="true" />
-        <activity
-            android:name=".InsertActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CalenderActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
