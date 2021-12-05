@@ -4,46 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.main.MainFragment">
 
     <LinearLayout
+        android:id="@+id/calender_box"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_box">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:padding="5dp"
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:background="@drawable/bg_custom_box"
-            android:gravity="start|center"
-            android:layout_margin="5dp"
-            android:text="1L 마시기" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:gravity="start|center"
-            android:background="@drawable/bg_custom_box"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="1KM 달리기" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|center"
-            android:padding="30dp"
-            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/calender"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img"
+            android:scaleType="fitXY"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recycler_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/calender_box">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_recycler_box"
+            android:layout_margin="10dp">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
