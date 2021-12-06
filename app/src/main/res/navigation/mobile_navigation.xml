@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.now.three_days.ui.main.MainFragment"
+        android:label="home"
+        tools:layout="@layout/main_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_insert"
+        android:name="com.now.three_days.ui.main.MainFragment"
+        android:label="home"
+        tools:layout="@layout/main_fragment"/>
+
+    <fragment
+        android:id="@+id/navigation_list"
+        android:name="com.now.three_days.MainListFragment"
+        android:label="list"
+        tools:layout="@layout/main_list_fragment" />
+</navigation>
