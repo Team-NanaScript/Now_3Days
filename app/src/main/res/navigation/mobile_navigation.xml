@@ -22,4 +22,10 @@
         android:name="com.now.three_days.MainListFragment"
         android:label="list"
         tools:layout="@layout/main_list_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.now.three_days.MainListFragment"
+        android:label="mypage"
+        tools:layout="@layout/main_list_fragment" />
 </navigation>

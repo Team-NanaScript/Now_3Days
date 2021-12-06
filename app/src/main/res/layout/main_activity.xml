@@ -8,6 +8,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:logo="@drawable/main_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/Theme.Three_days.PopupOverlay"
+            app:menu="@menu/top_nav_menu"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
