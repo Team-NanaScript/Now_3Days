@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 30
+//    compileSdk 31
 
     defaultConfig {
         applicationId "com.now.three_days"
-        minSdk 25
-        targetSdk 30
+//        minSdk 25
+//        targetSdk 30
         versionCode 1
         versionName "1.0"
 
