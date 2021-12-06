@@ -3,13 +3,15 @@ package com.now.three_days
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.now.three_days.databinding.MainActivityBinding
+import com.now.three_days.ui.login.LoginFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
     private lateinit var binding: MainActivityBinding
 
@@ -51,5 +53,9 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    override fun setBottomNav(status: Boolean) {
+//        binding.navView.visibility = if(status) View.VISIBLE else View.GONE
     }
 }
