@@ -1,13 +1,13 @@
 package com.now.three_days
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.now.three_days.databinding.MainActivityBinding
-import com.now.three_days.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setSupportActionBar(binding.toolbar)
+
         /*
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -36,6 +36,12 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_nav_menu, menu)
+
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
