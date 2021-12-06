@@ -12,15 +12,16 @@
         android:id="@+id/recycler_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <include layout="@layout/week_calendar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="550dp"
             android:layout_margin="10dp"
             android:background="@drawable/bg_recycler_box"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

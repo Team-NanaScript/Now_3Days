@@ -41,6 +41,8 @@ class MainFragment : Fragment() {
             add(list_data("","1L 마시기", "1L 마시기"))
             add(list_data("","1km 달리기", "1km 달리기"))
             add(list_data("","1시간 취미생활 즐기기", "1시간 취미생활 즐기기"))
+            add(list_data("","은결이 칭찬하기", "은결이 칭찬하기"))
+            add(list_data("","영진이 괴롭히기", "영진이 괴롭히기"))
 
             // 만들어둔 Adapter에 data 연결하기
             ListAdapter.data = data
