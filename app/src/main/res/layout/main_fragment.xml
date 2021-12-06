@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,36 +9,21 @@
     tools:context=".ui.main.MainFragment">
 
     <LinearLayout
-        android:id="@+id/calender_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_box">
-
-        <ImageView
-            android:id="@+id/calender"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/img"
-            android:scaleType="fitXY"/>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/recycler_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/calender_box">
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/week_calendar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_list"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@drawable/bg_recycler_box"
-            android:layout_margin="10dp">
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
