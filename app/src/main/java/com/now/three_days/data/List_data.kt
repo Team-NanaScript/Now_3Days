@@ -1,4 +1,4 @@
-package com.now.three_days.ui.main
+package com.now.three_days.data
 
 data class list_data(
 
