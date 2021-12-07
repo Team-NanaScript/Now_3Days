@@ -1,12 +1,20 @@
 package com.now.three_days.service
 
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-class FireService {
 
-    val firebase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    val dbRef: DatabaseReference = firebase.reference
+abstract class FireService<VO, PK> {
+
+    private val db = Firebase.firestore
+
+    fun insert(vo:VO, category:String){
+
+        db.collection(category).add(vo!!)
+
+    }
+
+
 
 
 }

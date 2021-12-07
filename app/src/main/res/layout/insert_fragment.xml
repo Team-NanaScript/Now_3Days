@@ -13,14 +13,14 @@
         android:layout_marginTop="100dp"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="작성자"
-            android:maxLength="10"
-            android:scrollHorizontally="true"
-            android:singleLine="true" />
+<!--        <EditText-->
+<!--            android:id="@+id/author"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="작성자"-->
+<!--            android:maxLength="10"-->
+<!--            android:scrollHorizontally="true"-->
+<!--            android:singleLine="true" />-->
 
         <EditText
             android:id="@+id/title"
