@@ -140,6 +140,8 @@ class LoginFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(true)
         super.onDestroyView()
         _binding = null
     }

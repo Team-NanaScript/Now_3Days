@@ -75,5 +75,8 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
         return userFile.userLog()
     }
 
-
+    override fun onDestroy() {
+        userFile.remove("memo/test")
+        super.onDestroy()
+    }
 }
