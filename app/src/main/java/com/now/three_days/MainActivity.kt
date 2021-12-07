@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
         navView.setupWithNavController(navController)
 
+
         if (initUser())
             navController.navigate(R.id.navigation_home)
         else
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
     override fun setBottomNav(status: Boolean) {
         binding.navView.visibility = if(status) View.VISIBLE else View.GONE
+        binding.toolbar.visibility = if(status) View.VISIBLE else View.GONE
     }
 
     fun getFile():UserFile {
@@ -76,7 +79,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
     }
 
     override fun onDestroy() {
-        userFile.remove("memo/test")
         super.onDestroy()
+        userFile.remove("memo/test")
     }
 }
