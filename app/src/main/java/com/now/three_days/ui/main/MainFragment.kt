@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.now.three_days.adapter.ListAdapter
 import com.now.three_days.data.list_data
 import com.now.three_days.databinding.MainFragmentBinding
 

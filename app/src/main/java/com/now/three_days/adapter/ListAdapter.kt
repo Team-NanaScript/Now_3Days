@@ -1,10 +1,11 @@
-package com.now.three_days.ui.main
+package com.now.three_days.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.list_data
 import com.now.three_days.databinding.ItemMainListBinding
+import com.now.three_days.ui.main.MainFragment
 
 
 class ListAdapter(mainFragment: MainFragment) : RecyclerView.Adapter<ListAdapter.ListViewHolder>(){

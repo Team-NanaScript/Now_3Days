@@ -1,4 +1,4 @@
-package com.now.three_days
+package com.now.three_days.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.now.three_days.data.AllListAdapter
+import com.now.three_days.R
+import com.now.three_days.adapter.AllListAdapter
 import com.now.three_days.data.SectionModel
 import com.now.three_days.data.model.Challenge
 import com.now.three_days.data.model.Relay
@@ -73,4 +74,5 @@ class MainListFragment : Fragment() {
             adapter = AllListAdapter(modelList)
         }
     }
+
 }

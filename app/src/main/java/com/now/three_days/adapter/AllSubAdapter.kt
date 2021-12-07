@@ -1,17 +1,16 @@
-package com.now.three_days.ui.main
+package com.now.three_days.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.now.three_days.MainListFragment
 import com.now.three_days.data.model.Challenge
 import com.now.three_days.data.model.Relay
 import com.now.three_days.databinding.ItemListBinding
 
-class AllSubAdapter(mainListFragment : MainListFragment ) :RecyclerView.Adapter<AllSubAdapter.SubViewHolder>() {
-    class SubViewHolder(binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+class AllSubAdapter(private val cList: List<Relay>, private val rList: List<Challenge>) :RecyclerView.Adapter<AllSubAdapter.SubViewHolder>() {
+    class SubViewHolder(private val binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(challenge: Challenge , relay: Relay) {
-
-            challenge.title
+            binding.allCTitle.text = challenge.title
+            binding.allRTitle.text = relay.title
         }
     }
 
