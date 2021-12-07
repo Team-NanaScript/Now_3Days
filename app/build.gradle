@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
+    implementation 'androidx.preference:preference:1.1.1'
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor('org.projectlombok:lombok:1.18.22')

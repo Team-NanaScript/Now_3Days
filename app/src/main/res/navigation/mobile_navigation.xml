@@ -11,7 +11,6 @@
         android:label="home"
         tools:layout="@layout/main_fragment" />
 
-
     <fragment
         android:id="@+id/navigation_list"
         android:name="com.now.three_days.MainListFragment"
@@ -29,6 +28,7 @@
         android:name="com.now.three_days.ui.insert.InsertFragment"
         android:label="insert_fragment"
         tools:layout="@layout/insert_fragment" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.now.three_days.ui.login.LoginFragment"
@@ -37,4 +37,11 @@
     <action
         android:id="@+id/action_global_navigation_login"
         app:destination="@id/loginFragment" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.now.three_days.SettingsFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/settings_activity"/>
+
 </navigation>
