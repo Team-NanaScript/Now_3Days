@@ -6,8 +6,8 @@
         android:title="설정" />
 
     <item
-        android:id="@+id/login"
-        android:title="로그인" />
+        android:id="@+id/logout"
+        android:title="로그아웃" />
 
 
 </menu>
