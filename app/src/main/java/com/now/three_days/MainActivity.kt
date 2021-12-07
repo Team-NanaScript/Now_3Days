@@ -9,11 +9,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.now.three_days.databinding.MainActivityBinding
+import com.now.three_days.service.UserFile
 import com.now.three_days.ui.login.LoginFragment
 
 class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
     private lateinit var binding: MainActivityBinding
+
+    private lateinit var userFile: UserFile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,10 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
         navView.setupWithNavController(navController)
 
+        if (initUser())
+            navController.navigate(R.id.navigation_home)
+        else
+            navController.navigate(R.id.action_global_navigation_login)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -48,7 +55,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val setting_item:Int = item.itemId
-        if(setting_item == R.id.home) {
+        if(setting_item == R.id.logout) {
             onBackPressed()
             return true
         }
@@ -56,6 +63,17 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
     }
 
     override fun setBottomNav(status: Boolean) {
-//        binding.navView.visibility = if(status) View.VISIBLE else View.GONE
+        binding.navView.visibility = if(status) View.VISIBLE else View.GONE
     }
+
+    fun getFile():UserFile {
+        return userFile
+    }
+
+    private fun initUser():Boolean {
+        userFile = UserFile(filesDir.path)
+        return userFile.userLog()
+    }
+
+
 }

@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.now.three_days.MainActivity
 import com.now.three_days.databinding.FragmentLoginBinding
 
 import com.now.three_days.R
@@ -49,6 +50,11 @@ class LoginFragment : Fragment() {
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
 
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(false)
+
+        val userFile = mainAct.getFile()
+
         val usernameEditText = binding.username
         val passwordEditText = binding.password
         val loginButton = binding.btnLogin
@@ -76,7 +82,7 @@ class LoginFragment : Fragment() {
                     showLoginFailed(it)
                 }
                 loginResult.success?.let {
-                    updateUiWithUser(it)
+//                    updateUiWithUser(it)
                 }
             })
 
@@ -115,8 +121,8 @@ class LoginFragment : Fragment() {
                 passwordEditText.text.toString()
             )
             if (result){
-//                userFile.writeFile("memo","test",usernameEditText.text.toString())
-//                findNavController().navigate(R.id.action_loginFragment_to_navigation_home)
+                userFile.writeFile("memo","test",usernameEditText.text.toString())
+                findNavController().navigate(R.id.navigation_home)
             }
         }
     }
