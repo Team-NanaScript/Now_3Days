@@ -7,7 +7,7 @@
         android:title="홈" />
 
     <item
-        android:id="@+id/navigation_insert"
+        android:id="@+id/insertFragment"
         android:icon="@drawable/nav_insert"
         android:title="추가" />
 
