@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.now.three_days.R
+import com.now.three_days.databinding.InsertFragmentBinding
 
 class InsertFragment : Fragment() {
 
@@ -15,12 +17,23 @@ class InsertFragment : Fragment() {
     }
 
     private lateinit var viewModel: InsertViewModel
+    private var _binding:InsertFragmentBinding ? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.insert_fragment, container, false)
+        _binding = InsertFragmentBinding.inflate(inflater, container, false)
+
+        var button: Button =  binding.btnSend
+        button.setOnClickListener(View.OnClickListener {
+
+
+
+        })
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
