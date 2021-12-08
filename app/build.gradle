@@ -52,7 +52,7 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-
+    implementation "androidx.recyclerview:recyclerview:1.2.0-rc01"
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database'
