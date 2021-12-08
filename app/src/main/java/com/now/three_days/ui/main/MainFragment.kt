@@ -12,7 +12,7 @@ import com.now.three_days.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
-    lateinit var ListAdapter : ListAdapter
+    lateinit var listAdapter : ListAdapter
     val data = mutableListOf<list_data>()
 
     companion object {
@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ListAdapter = ListAdapter(this)
+        listAdapter = ListAdapter(this)
 
         data.apply {
             add(list_data("","1L 마시기", "1L 마시기"))
@@ -47,11 +47,11 @@ class MainFragment : Fragment() {
             add(list_data("","영진이 괴롭히기", "영진이 괴롭히기"))
 
             // 만들어둔 Adapter에 data 연결하기
-            ListAdapter.data = data
+            listAdapter.data = data
         }
 
         // 리사이클러뷰 adapter를 만들어놓은 ListAdapter로 사용하겠다
-        binding.rcList.adapter = ListAdapter
+        binding.rcList.adapter = listAdapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

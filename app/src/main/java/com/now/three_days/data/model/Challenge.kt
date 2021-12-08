@@ -4,3 +4,4 @@ data class Challenge(
     val title:String,
     val date:String,
 )
+
