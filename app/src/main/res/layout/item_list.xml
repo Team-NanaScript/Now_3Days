@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,47 +10,29 @@
     android:layout_marginBottom="16dp">
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:background="@drawable/img"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
+        <ImageView
+            android:id="@+id/bg_r_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_launcher" />
 
-        <LinearLayout
-            android:id="@+id/border"
+        <TextView
+            android:id="@+id/all_r_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="3dp">
-
-            <TextView
-                android:id="@+id/all_r_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:includeFontPadding="false"
-                android:paddingStart="10dp"
-                android:text="1L 마시기"
-                android:textAlignment="textStart"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:includeFontPadding="false"
-                android:paddingStart="5dp"
-                android:text="그럼요 당연하죠 네네치킨"
-                android:textAlignment="textStart"
-                android:textColor="@color/white" />
-        </LinearLayout>
+            android:text="@string/app_name"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
+
 
 
 </androidx.cardview.widget.CardView>
