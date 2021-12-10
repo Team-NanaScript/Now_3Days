@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
         navView.setupWithNavController(navController)
 
 
-        this.hideSystemUI()
+        // this.hideSystemUI()
 
 
         if (initUser())
