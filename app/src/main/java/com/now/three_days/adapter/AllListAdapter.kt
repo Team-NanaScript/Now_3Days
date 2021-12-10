@@ -21,11 +21,11 @@ class AllListAdapter(private val modelList : ArrayList<SectionModel>)
             binding.category.text = sectionModel.category
             binding.allList.apply {
                 setHasFixedSize(true)
-                layoutManager = GridLayoutManager(binding.root.context, 2)
+                layoutManager = GridLayoutManager(binding.root.context, 2, RecyclerView.VERTICAL, true)
                 val AllCSubAdapter = AllCSubAdapter(sectionModel.cList)
                 val AllRSubAdapter = AllRSubAdapter(sectionModel.rList)
-//                var concatAdapter = ConcatAdapter(AllCSubAdapter, AllRSubAdapter)
-//                adapter = ConcatAdapter(AllCSubAdapter,AllRSubAdapter)
+                var concatAdapter = ConcatAdapter(AllCSubAdapter, AllRSubAdapter)
+                adapter = ConcatAdapter(AllCSubAdapter,AllRSubAdapter)
 
             }
 

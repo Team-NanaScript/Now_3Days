@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.now.three_days.adapter.ListAdapter
-import com.now.three_days.data.list_data
+import com.now.three_days.data.model.List_Data
 import com.now.three_days.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
     lateinit var listAdapter : ListAdapter
-    val data = mutableListOf<list_data>()
+    val data = mutableListOf<List_Data>()
 
     companion object {
         fun newInstance() = MainFragment()
@@ -40,11 +40,11 @@ class MainFragment : Fragment() {
         listAdapter = ListAdapter(this)
 
         data.apply {
-            add(list_data("","1L 마시기", "1L 마시기"))
-            add(list_data("","1km 달리기", "1km 달리기"))
-            add(list_data("","1시간 취미생활 즐기기", "1시간 취미생활 즐기기"))
-            add(list_data("","은결이 칭찬하기", "은결이 칭찬하기"))
-            add(list_data("","영진이 괴롭히기", "영진이 괴롭히기"))
+            add(List_Data("","1L 마시기", "1L 마시기"))
+            add(List_Data("","1km 달리기", "1km 달리기"))
+            add(List_Data("","1시간 취미생활 즐기기", "1시간 취미생활 즐기기"))
+            add(List_Data("","은결이 칭찬하기", "은결이 칭찬하기"))
+            add(List_Data("","영진이 괴롭히기", "영진이 괴롭히기"))
 
             // 만들어둔 Adapter에 data 연결하기
             listAdapter.data = data

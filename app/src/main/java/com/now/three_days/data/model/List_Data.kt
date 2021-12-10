@@ -1,6 +1,6 @@
-package com.now.three_days.data
+package com.now.three_days.data.model
 
-data class list_data(
+data class List_Data(
 
     val _img : String,
     val tv_title : String,
