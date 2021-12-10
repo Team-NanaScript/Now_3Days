@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".ui.main.MainListFragment">
-
     <TextView
         android:id="@+id/category"
         android:layout_width="match_parent"
@@ -14,18 +13,19 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:background="@android:color/darker_gray"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:includeFontPadding="false"
         tools:text="☆ 인기"/>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:clipToPadding="false"
+        android:background="@color/main"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
 
     </androidx.recyclerview.widget.RecyclerView>

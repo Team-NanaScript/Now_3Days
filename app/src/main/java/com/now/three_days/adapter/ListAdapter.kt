@@ -3,7 +3,7 @@ package com.now.three_days.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.now.three_days.data.list_data
+import com.now.three_days.data.model.List_Data
 import com.now.three_days.databinding.ItemMainListBinding
 import com.now.three_days.ui.main.MainFragment
 
@@ -12,9 +12,9 @@ class ListAdapter(mainFragment: MainFragment) : RecyclerView.Adapter<ListAdapter
     // private val 를 사용해야 가져와서 사용할 수 있음
     // item과 ViewHolder를 연결, list_data를 연동
 
-    var data = mutableListOf<list_data>()
+    var data = mutableListOf<List_Data>()
     class ListViewHolder(private val binding: ItemMainListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item : list_data) {
+        fun bind(item : List_Data) {
             binding.tvTitle.text = item.tv_title
             binding.tvContent.text = item.tv_content
         }

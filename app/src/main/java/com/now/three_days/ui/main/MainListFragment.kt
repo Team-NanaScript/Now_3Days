@@ -53,7 +53,7 @@ class MainListFragment : Fragment() {
         allListAdapter = AllListAdapter(modelList)
 
         // 가상데이터 만들어주기
-        val bestCategory = "☆ 인기"
+        val bestCategory = "★ 인기"
         val cbList = ArrayList<Challenge>()
         val rbList = ArrayList<Relay>()
         cbList.add(Challenge("1L 마시기", "2021-11-06~2021-11-09"))
