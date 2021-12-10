@@ -17,6 +17,14 @@
         <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/fragment_login.xml" value="0.1889564336372847" />
         <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/insert_fragment.xml" value="0.303125" />
         <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/item_best_list.xml" value="0.1" />
+<<<<<<< HEAD
+        <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/item_list.xml" value="0.1" />
+        <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/item_main_list.xml" value="0.33" />
+        <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/main_activity.xml" value="0.1" />
+        <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/main_fragment.xml" value="0.25" />
+        <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/main_list_fragment.xml" value="0.67" />
+=======
+>>>>>>> 48ffbdce4b23263b5a75566f8a4b53f03e9437c3
         <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/settings.xml" value="0.1" />
         <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/settings_activity.xml" value="0.14716312056737588" />
         <entry key="..\:/bizworks/Now_3Days/app/src/main/res/layout/week_calendar.xml" value="0.1" />
