@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import com.now.three_days.adapter.ListAdapter
 import com.now.three_days.data.list_data
 import com.now.three_days.databinding.MainFragmentBinding
+import com.now.three_days.ui.AuthFragmentParent
 
-class MainFragment : Fragment() {
+class MainFragment : AuthFragmentParent() {
 
     lateinit var listAdapter : ListAdapter
     val data = mutableListOf<list_data>()

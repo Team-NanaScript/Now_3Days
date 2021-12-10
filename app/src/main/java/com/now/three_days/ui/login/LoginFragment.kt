@@ -10,31 +10,40 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.now.three_days.MainActivity
 import com.now.three_days.R
+import com.now.three_days.data.LoginDataSource
+import com.now.three_days.data.LoginRepository
 import com.now.three_days.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    private lateinit var loginViewModel:LoginViewModel
+    private val loginViewModel: LoginViewModel by activityViewModels {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = LoginViewModel(
+                LoginRepository(dataSource = LoginDataSource())
+            ) as T
+        }
+    }
     private var _binding: FragmentLoginBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-    public interface BottomNav {
-        fun setBottomNav(status: Boolean)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(false)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -43,11 +52,8 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
 
         val mainAct = activity as MainActivity
-        mainAct.setBottomNav(false)
 
         val userFile = mainAct.getFile()
 
@@ -127,7 +133,8 @@ class LoginFragment : Fragment() {
         val welcome = getString(R.string.welcome) + model.displayName
         // TODO : initiate successful logged in experience
         val appContext = context?.applicationContext ?: return
-        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
+//        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
+        findNavController().popBackStack()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
@@ -136,9 +143,11 @@ class LoginFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        val mainAct = activity as MainActivity
-        mainAct.setBottomNav(true)
         super.onDestroyView()
         _binding = null
+
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(true)
     }
+
 }

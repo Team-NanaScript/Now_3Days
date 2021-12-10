@@ -21,4 +21,10 @@
         android:icon="@drawable/nav_mypage"
         android:title="마이페이지" />
 
+    <item
+        android:id="@+id/navigation_intro"
+        android:icon="@drawable/nav_mypage"
+        android:visible="false"
+        android:title="Intro" />
+
 </menu>

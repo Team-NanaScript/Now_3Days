@@ -11,9 +11,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
+import com.now.three_days.ui.AuthFragmentParent
+import com.now.three_days.ui.IntroFragment
 import com.now.three_days.ui.login.LoginFragment
 
-class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
+class MainActivity : AppCompatActivity(), AuthFragmentParent.BottomNav {
 
     private lateinit var binding: MainActivityBinding
 
@@ -42,14 +44,9 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
         navView.setupWithNavController(navController)
 
+        userFile = UserFile(filesDir.path)
 
         // this.hideSystemUI()
-
-
-        if (initUser())
-            navController.navigate(R.id.navigation_home)
-        else
-            navController.navigate(R.id.action_global_navigation_login)
     }
 
     private fun hideSystemUI() {
@@ -101,7 +98,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val setting_item:Int = item.itemId
         if(setting_item == R.id.logout) {
-            onBackPressed()
+//            onBackPressed()
             return true
         }
         return super.onOptionsItemSelected(item);
@@ -114,11 +111,6 @@ class MainActivity : AppCompatActivity(), LoginFragment.BottomNav {
 
     fun getFile():UserFile {
         return userFile
-    }
-
-    private fun initUser():Boolean {
-        userFile = UserFile(filesDir.path)
-        return userFile.userLog()
     }
 
     override fun onDestroy() {
