@@ -42,8 +42,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val mainAct = activity as MainActivity
-        mainAct.setBottomNav(false)
+//        val mainAct = activity as MainActivity
+//        mainAct.setBottomNav(false)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -146,8 +146,8 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
 
-        val mainAct = activity as MainActivity
-        mainAct.setBottomNav(true)
+//        val mainAct = activity as MainActivity
+//        mainAct.setBottomNav(true)
     }
 
 }
