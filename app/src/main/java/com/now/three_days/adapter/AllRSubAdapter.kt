@@ -21,8 +21,8 @@ class AllRSubAdapter(private val rList: List<Relay>) :RecyclerView.Adapter<AllRS
     class RSubViewHolder(private val binding : ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(relay: Relay) {
             binding.allRTitle.text = relay.title
-            binding.date.text = relay.date
-            binding.border.setBackgroundResource(com.now.three_days.R.drawable.bg_custom_text_box_d)
+//            binding.date.text = relay.date
+//            binding.border.setBackgroundResource(com.now.three_days.R.drawable.bg_custom_text_box_d)
 
         }
     }
