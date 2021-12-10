@@ -25,7 +25,7 @@ class AllListAdapter(private val modelList : ArrayList<SectionModel>)
                 val AllCSubAdapter = AllCSubAdapter(sectionModel.cList)
                 val AllRSubAdapter = AllRSubAdapter(sectionModel.rList)
 //                var concatAdapter = ConcatAdapter(AllCSubAdapter, AllRSubAdapter)
-                adapter = ConcatAdapter(AllCSubAdapter,AllRSubAdapter)
+//                adapter = ConcatAdapter(AllCSubAdapter,AllRSubAdapter)
 
             }
 
