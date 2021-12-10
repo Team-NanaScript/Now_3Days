@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_intro">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -34,14 +34,17 @@
         android:name="com.now.three_days.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
-    <action
-        android:id="@+id/action_global_navigation_login"
-        app:destination="@id/loginFragment" />
 
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.now.three_days.SettingsFragment"
         android:label="fragment_setting"
         tools:layout="@layout/settings_activity"/>
+
+    <fragment
+        android:id="@+id/navigation_intro"
+        android:name="com.now.three_days.ui.IntroFragment"
+        android:label="IntroFragment" >
+    </fragment>
 
 </navigation>
