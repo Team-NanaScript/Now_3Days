@@ -3,7 +3,6 @@ package com.now.three_days
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -11,11 +10,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
-import com.now.three_days.ui.AuthFragmentParent
-import com.now.three_days.ui.IntroFragment
-import com.now.three_days.ui.login.LoginFragment
 
-class MainActivity : AppCompatActivity(), AuthFragmentParent.BottomNav {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: MainActivityBinding
 
@@ -38,9 +34,9 @@ class MainActivity : AppCompatActivity(), AuthFragmentParent.BottomNav {
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-        if(actionBar != null) {
-            actionBar?.setDisplayShowHomeEnabled(true)
-        }
+//        if(actionBar != null) {
+//            actionBar?.setDisplayShowHomeEnabled(true)
+//        }
 
         navView.setupWithNavController(navController)
 
@@ -104,7 +100,7 @@ class MainActivity : AppCompatActivity(), AuthFragmentParent.BottomNav {
         return super.onOptionsItemSelected(item);
     }
 
-    override fun setBottomNav(status: Boolean) {
+    fun setBottomNav(status: Boolean) {
         binding.navView.visibility = if(status) View.VISIBLE else View.GONE
         binding.toolbar.visibility = if(status) View.VISIBLE else View.GONE
     }
