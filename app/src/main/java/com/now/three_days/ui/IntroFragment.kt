@@ -1,32 +1,25 @@
 package com.now.three_days.ui
 
+import android.animation.ObjectAnimator
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.now.three_days.MainActivity
 import com.now.three_days.R
+import com.now.three_days.databinding.FragmentIntroBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [IntroFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class IntroFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentIntroBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,44 +34,46 @@ class IntroFragment : Fragment() {
 //        val mainAct = activity as MainActivity
 //        mainAct.setBottomNav(false)
 
-
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
-        return inflater.inflate(R.layout.fragment_intro, container, false)
+        _binding = FragmentIntroBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment IntroFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            IntroFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        /*
+        ObjectAnimator.ofFloat(this.binding.introText, View.ALPHA,  0f,1f).apply {
+            Log.d("ANIM",this.toString())
+            duration = 3000
+            start()
+        }
+
+        ObjectAnimator.ofFloat(this.binding.introText, View.ROTATION,  -180f,0f).apply {
+            Log.d("ANIM",this.toString())
+            duration = 3000
+            start()
+        }
+        */
+
+        ObjectAnimator.ofFloat(this.binding.introText, View.TRANSLATION_Y,  0f,-100f, 0f).apply {
+            Log.d("ANIM",this.toString())
+            duration = 3000
+            floatArrayOf()
+            start()
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
         Log.d("RESUME", "RESUME")
 
+
         Handler(Looper.getMainLooper()).removeCallbacks(hideSystemUI)
         Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.navigation_home)
-        }, 1500)
+        }, 3500)
 
     }
 
@@ -141,7 +136,7 @@ class IntroFragment : Fragment() {
 
         }
 
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+//        (activity as? AppCompatActivity)?.supportActionBar?.hide()
     }
 
 }

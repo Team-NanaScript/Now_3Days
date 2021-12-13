@@ -1,5 +1,6 @@
 package com.now.three_days.ui.main
 
+import android.animation.ObjectAnimator
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -56,6 +57,7 @@ class MainListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+<<<<<<< HEAD
 
         bestListAdapter = CListAdapter(cList)
         allListAdapter = RListAdapter(rList)
@@ -84,6 +86,39 @@ class MainListFragment : Fragment() {
             add(RListData("영진이 놀리기","2021-11-06~2021-11-30"))
         }
 
+=======
+        allListAdapter = AllListAdapter(modelList)
+
+            ObjectAnimator.ofFloat(this.binding.allList, View.ROTATION,  -180f,0f).apply {
+                Log.d("ANIM",this.toString())
+                duration = 3000
+                start()
+
+            }
+
+
+
+        // 가상데이터 만들어주기
+        val bestCategory = "★ 인기"
+        val cbList = ArrayList<Challenge>()
+        val rbList = ArrayList<Relay>()
+        cbList.add(Challenge("1L 마시기", "2021-11-06~2021-11-09"))
+        rbList.add(Relay("1KM 달리기", "2021-11-06~2021-11-30"))
+
+        val listCategory = "도전! 작심삼일"
+        val clList = ArrayList<Challenge>()
+        val rlList = ArrayList<Relay>()
+        clList.add(Challenge("은결이한테 질척거리기", "2021-11-06~2021-11-09"))
+        clList.add(Challenge("은빈언니한테 물어보기", "2021-11-06~2021-11-09"))
+        clList.add(Challenge("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
+        rlList.add(Relay("영진이 놀리기", "2021-11-06~2021-11-30"))
+        rlList.add(Relay("영진이 놀리기", "2021-11-06~2021-11-30"))
+        rlList.add(Relay("영진이 놀리기", "2021-11-06~2021-11-30"))
+
+        // 가상데이터 만들어준 것들 SectionModel에 넣어주기
+        modelList.add(SectionModel(bestCategory, cbList, rbList))
+        modelList.add(SectionModel(listCategory, clList, rlList))
+>>>>>>> inizz
 
         binding.allList.adapter = allListAdapter
         binding.allList.layoutManager = GridLayoutManager(context,2)

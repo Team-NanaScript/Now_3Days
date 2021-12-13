@@ -1,5 +1,6 @@
 package com.now.three_days.ui.login
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -61,6 +62,13 @@ class LoginFragment : Fragment() {
         val passwordEditText = binding.password
         val loginButton = binding.btnLogin
         val loadingProgressBar = binding.loading
+
+
+        ObjectAnimator.ofFloat(this.binding.username, View.ROTATION,  -180f,0f).apply {
+            duration = 1000
+            start()
+        }
+
 
         loginViewModel.loginFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
