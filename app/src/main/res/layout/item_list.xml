@@ -43,14 +43,13 @@
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:layout_gravity="bottom"
                 android:includeFontPadding="false"
                 android:paddingStart="5dp"
                 android:text="그럼요 당연하죠 네네치킨"
-                android:textAlignment="textStart"
                 android:textColor="@color/white" />
         </LinearLayout>
 

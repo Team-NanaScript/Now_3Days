@@ -1,7 +1,9 @@
 package com.now.three_days.ui.main
 
+import android.animation.ObjectAnimator
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +53,15 @@ class MainListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         allListAdapter = AllListAdapter(modelList)
+
+            ObjectAnimator.ofFloat(this.binding.allList, View.ROTATION,  -180f,0f).apply {
+                Log.d("ANIM",this.toString())
+                duration = 3000
+                start()
+
+            }
+
+
 
         // 가상데이터 만들어주기
         val bestCategory = "★ 인기"

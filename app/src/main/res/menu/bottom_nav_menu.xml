@@ -23,8 +23,8 @@
 
     <item
         android:id="@+id/navigation_intro"
-        android:icon="@drawable/nav_mypage"
         android:visible="false"
+        android:icon="@drawable/nav_mypage"
         android:title="Intro" />
 
 </menu>
