@@ -8,12 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.navigation.fragment.R
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.now.three_days.MainActivity
 import com.now.three_days.data.model.ChallengeVO
 import com.now.three_days.databinding.InsertFragmentBinding
+import com.now.three_days.databinding.MainActivityBinding
+import com.now.three_days.databinding.MainFragmentBinding
 import com.now.three_days.service.FireService
 import com.now.three_days.service.impl.ChallengeServiceImplV1
+import com.now.three_days.ui.main.MainFragment
 
 class InsertFragment() : Fragment() {
 
@@ -35,6 +41,11 @@ class InsertFragment() : Fragment() {
         var button: Button =  binding.btnSend
         button.setOnClickListener(View.OnClickListener {
             onClick(binding)
+
+//            val mainFragment = MainFragment.newInstance()
+//            .beginTransaction().replace(R.id.nav_host_fragment_container , mainFragment).commit()
+
+            var chList:ArrayList<ChallengeVO> = cs.select()
         })
 
         return binding.root
