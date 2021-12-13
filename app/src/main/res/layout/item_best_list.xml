@@ -19,7 +19,7 @@
 
 
         <LinearLayout
-            android:id="@+id/border"
+            android:id="@+id/border_best"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -28,7 +28,7 @@
 
 
             <TextView
-                android:id="@+id/all_r_title"
+                android:id="@+id/best_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -41,7 +41,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/best_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
