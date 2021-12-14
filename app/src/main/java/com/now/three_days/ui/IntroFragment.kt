@@ -42,13 +42,13 @@ class IntroFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         /*
-        ObjectAnimator.ofFloat(this.binding.introText, View.ALPHA,  0f,1f).apply {
+        ObjectAnimator.ofFloat(this.binding.introImage, View.ALPHA,  0f,1f).apply {
             Log.d("ANIM",this.toString())
             duration = 3000
             start()
         }
 
-        ObjectAnimator.ofFloat(this.binding.introText, View.ROTATION,  -180f,0f).apply {
+        ObjectAnimator.ofFloat(this.binding.introImage, View.ROTATION,  -180f,0f).apply {
             Log.d("ANIM",this.toString())
             duration = 3000
             start()
@@ -56,13 +56,13 @@ class IntroFragment : Fragment() {
         */
 //        View.SCALE_X, 0.5f,5f,1f
 
-        ObjectAnimator.ofFloat(this.binding.introText, View.ALPHA,  0f,1f).apply {
+        ObjectAnimator.ofFloat(this.binding.introImage, View.ALPHA,  0f,1f).apply {
             Log.d("ANIM",this.toString())
             duration = 3000
             start()
         }
 
-        ObjectAnimator.ofFloat(this.binding.introText, View.TRANSLATION_Y,  0f,-100f, 0f).apply {
+        ObjectAnimator.ofFloat(this.binding.introImage, View.TRANSLATION_Y,  0f,-100f, 0f).apply {
             Log.d("ANIM",this.toString())
             duration = 3000
             floatArrayOf()
