@@ -78,7 +78,16 @@ class IntroFragment : Fragment() {
         Handler(Looper.getMainLooper()).removeCallbacks(hideSystemUI)
         Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.navigation_home)
+            findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val controller = requireActivity().window.insetsController
+                controller?.show(WindowInsets.Type.navigationBars())
+                controller?.show(WindowInsets.Type.captionBar())
+                controller?.show(WindowInsets.Type.statusBars())
+                controller?.show(WindowInsets.Type.systemBars())
+            }
+
         }, 3500)
 
     }
