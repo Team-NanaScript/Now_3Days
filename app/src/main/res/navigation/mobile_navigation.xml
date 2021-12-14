@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/navigation_intro"
         android:name="com.now.three_days.ui.IntroFragment"
-        android:label="IntroFragment"/>
+        android:label="IntroFragment" />
 
 
 </navigation>
