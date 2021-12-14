@@ -36,15 +36,15 @@
         tools:layout="@layout/fragment_login" />
 
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.now.three_days.SettingsFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/settings_activity"/>
-
-    <fragment
         android:id="@+id/navigation_intro"
         android:name="com.now.three_days.ui.IntroFragment"
-        android:label="IntroFragment" />
-
+        android:label="IntroFragment"
+        tools:layout="@layout/fragment_intro">
+        <action
+            android:id="@+id/action_navigation_intro_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_intro"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
