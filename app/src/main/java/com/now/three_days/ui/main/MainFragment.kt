@@ -1,12 +1,10 @@
 package com.now.three_days.ui.main
 
-import android.animation.ObjectAnimator
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.adapter.ListAdapter
 import com.now.three_days.data.model.List_Data
 import com.now.three_days.databinding.MainFragmentBinding
