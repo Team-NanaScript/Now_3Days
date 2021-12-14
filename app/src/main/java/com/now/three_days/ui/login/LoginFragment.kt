@@ -63,13 +63,6 @@ class LoginFragment : Fragment() {
         val loginButton = binding.btnLogin
         val loadingProgressBar = binding.loading
 
-
-        ObjectAnimator.ofFloat(this.binding.username, View.ROTATION,  -180f,0f).apply {
-            duration = 1000
-            start()
-        }
-
-
         loginViewModel.loginFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
                 if (loginFormState == null) {

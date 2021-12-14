@@ -54,6 +54,13 @@ class IntroFragment : Fragment() {
             start()
         }
         */
+//        View.SCALE_X, 0.5f,5f,1f
+
+        ObjectAnimator.ofFloat(this.binding.introText, View.ALPHA,  0f,1f).apply {
+            Log.d("ANIM",this.toString())
+            duration = 3000
+            start()
+        }
 
         ObjectAnimator.ofFloat(this.binding.introText, View.TRANSLATION_Y,  0f,-100f, 0f).apply {
             Log.d("ANIM",this.toString())
@@ -67,7 +74,6 @@ class IntroFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         Log.d("RESUME", "RESUME")
-
 
         Handler(Looper.getMainLooper()).removeCallbacks(hideSystemUI)
         Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
@@ -135,7 +141,6 @@ class IntroFragment : Fragment() {
             activity?.window?.decorView?.systemUiVisibility = flags
 
         }
-
 //        (activity as? AppCompatActivity)?.supportActionBar?.hide()
     }
 
