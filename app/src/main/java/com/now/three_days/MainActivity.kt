@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
     fun setBottomNav(status: Boolean) {
         binding.navView.visibility = if(status) View.VISIBLE else View.GONE
         binding.toolbar.visibility = if(status) View.VISIBLE else View.GONE
+
     }
 
     fun getFile():UserFile {

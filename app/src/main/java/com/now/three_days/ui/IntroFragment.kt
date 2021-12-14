@@ -78,15 +78,26 @@ class IntroFragment : Fragment() {
         Handler(Looper.getMainLooper()).removeCallbacks(hideSystemUI)
         Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
 
+//            val mainAct = activity as MainActivity
+//            mainAct.setBottomNav(true)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                requireActivity().window.setDecorFitsSystemWindows(false)
+
                 val controller = requireActivity().window.insetsController
+
+                controller?.systemBarsBehavior =
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
+
                 controller?.show(WindowInsets.Type.navigationBars())
                 controller?.show(WindowInsets.Type.captionBar())
                 controller?.show(WindowInsets.Type.statusBars())
                 controller?.show(WindowInsets.Type.systemBars())
             }
+
+            findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
+
 
         }, 3500)
 
@@ -94,8 +105,7 @@ class IntroFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        val mainAct = activity as MainActivity
-        mainAct.setBottomNav(true)
+
     }
 
 
