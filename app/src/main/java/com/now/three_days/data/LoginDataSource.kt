@@ -8,7 +8,9 @@ import java.io.IOException
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-class LoginDataSource(val userService:UserServiceImplV1) {
+class LoginDataSource() {
+
+//    private val userService:UserServiceImplV1
 
 //    Sample Data
     val userList = arrayListOf<User>(
@@ -16,7 +18,13 @@ class LoginDataSource(val userService:UserServiceImplV1) {
             "0", "sksksk"),
     )
 
+//    init {
+//        userService = UserServiceImplV1()
+//    }
+
     fun login(username: String, password: String): Result<LoggedInUser> {
+//        val userList = userService.select()
+
         val findUser = userList.filter { it.userId == username && it.password == password }
         try {
             // TODO: handle loggedInUser authentication
@@ -30,8 +38,9 @@ class LoginDataSource(val userService:UserServiceImplV1) {
     }
 
     fun join(username: String, password: String) {
-//        val user:User =
-//        userService.insert()
+        val email = String.format("%s@naver.com", username)
+        val user =  User(username, username, password, "0", email )
+//        userService.insert(user,"user")
     }
 
     fun logout() {

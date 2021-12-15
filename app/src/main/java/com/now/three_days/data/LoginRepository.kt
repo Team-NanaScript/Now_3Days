@@ -33,6 +33,8 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
         if (result is Result.Success) {
             setLoggedInUser(result.data)
+        } else {
+            dataSource.join(username, password)
         }
 
         return result
