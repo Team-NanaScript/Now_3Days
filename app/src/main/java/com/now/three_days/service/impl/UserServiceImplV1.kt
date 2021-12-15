@@ -1,8 +1,5 @@
 package com.now.three_days.service.impl
 
-import android.util.Log
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.now.three_days.data.model.ChallengeVO
 import com.now.three_days.data.model.User
 import com.now.three_days.service.FireService
 
