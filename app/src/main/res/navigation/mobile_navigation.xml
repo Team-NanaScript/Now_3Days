@@ -40,11 +40,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/SettingsFragment"
+        android:id="@+id/settingsFragment"
         android:name="com.now.three_days.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/support_simple_spinner_dropdown_item" />
-
+        android:label="SettingsFragment" />
+<!--    app/src/main/res/xml/root_preferences.xml-->
     <fragment
         android:id="@+id/navigation_intro"
         android:name="com.now.three_days.ui.IntroFragment"
@@ -56,5 +55,6 @@
             app:popUpTo="@id/navigation_intro"
             app:popUpToInclusive="true" />
     </fragment>
+
 
 </navigation>

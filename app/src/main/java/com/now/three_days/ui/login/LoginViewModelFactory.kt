@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.data.LoginDataSource
 import com.now.three_days.data.LoginRepository
+import com.now.three_days.service.impl.UserServiceImplV1
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
@@ -16,7 +17,7 @@ class LoginViewModelFactory : ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(
                 loginRepository = LoginRepository(
-                    dataSource = LoginDataSource()
+                    dataSource = LoginDataSource(UserServiceImplV1())
                 )
             ) as T
         }

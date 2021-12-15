@@ -2,12 +2,13 @@ package com.now.three_days.data
 
 import com.now.three_days.data.model.LoggedInUser
 import com.now.three_days.data.model.User
+import com.now.three_days.service.impl.UserServiceImplV1
 import java.io.IOException
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-class LoginDataSource {
+class LoginDataSource(val userService:UserServiceImplV1) {
 
 //    Sample Data
     val userList = arrayListOf<User>(
@@ -28,7 +29,13 @@ class LoginDataSource {
         }
     }
 
+    fun join(username: String, password: String) {
+//        val user:User =
+//        userService.insert()
+    }
+
     fun logout() {
         // TODO: revoke authentication
+
     }
 }
