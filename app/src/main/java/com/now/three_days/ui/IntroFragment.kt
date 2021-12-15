@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -56,14 +57,14 @@ class IntroFragment : Fragment() {
         */
 //        View.SCALE_X, 0.5f,5f,1f
 
-        ObjectAnimator.ofFloat(this.binding.introImage, View.ALPHA,  0f,1f).apply {
-            Log.d("ANIM",this.toString())
+        ObjectAnimator.ofFloat(this.binding.introImage, View.ALPHA, 0f, 1f).apply {
+            Log.d("ANIM", this.toString())
             duration = 3000
             start()
         }
 
-        ObjectAnimator.ofFloat(this.binding.introImage, View.TRANSLATION_Y,  0f,-100f, 0f).apply {
-            Log.d("ANIM",this.toString())
+        ObjectAnimator.ofFloat(this.binding.introImage, View.TRANSLATION_Y, 0f, -100f, 0f).apply {
+            Log.d("ANIM", this.toString())
             duration = 3000
             floatArrayOf()
             start()
@@ -75,12 +76,16 @@ class IntroFragment : Fragment() {
         super.onResume()
         Log.d("RESUME", "RESUME")
 
-        Handler(Looper.getMainLooper()).removeCallbacks(hideSystemUI)
-        Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
+//        Handler(Looper.getMainLooper()).removeCallbacks(hideSystemUI)
+//        Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(false)
         Handler(Looper.getMainLooper()).postDelayed({
 
 //            val mainAct = activity as MainActivity
 //            mainAct.setBottomNav(true)
+
+            /*
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 requireActivity().window.setDecorFitsSystemWindows(false)
 
@@ -95,16 +100,36 @@ class IntroFragment : Fragment() {
                 controller?.show(WindowInsets.Type.statusBars())
                 controller?.show(WindowInsets.Type.systemBars())
             }
+            */
 
             findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
-
-
+//
         }, 3500)
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            requireActivity().window.setDecorFitsSystemWindows(false)
+//
+//            val controller = requireActivity().window.insetsController
+//
+//            controller?.systemBarsBehavior =
+//                WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+//
+//
+//            controller?.show(WindowInsets.Type.navigationBars())
+//            controller?.show(WindowInsets.Type.captionBar())
+//            controller?.show(WindowInsets.Type.statusBars())
+//            controller?.show(WindowInsets.Type.systemBars())
+//
+//
+//        }
+//
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(true)
 
     }
 
@@ -160,7 +185,8 @@ class IntroFragment : Fragment() {
             activity?.window?.decorView?.systemUiVisibility = flags
 
         }
-//        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
     }
 
 }

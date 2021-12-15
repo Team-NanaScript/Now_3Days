@@ -43,8 +43,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        val mainAct = activity as MainActivity
-//        mainAct.setBottomNav(false)
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(false)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -125,7 +125,7 @@ class LoginFragment : Fragment() {
             )
             if (result){
                 userFile.writeFile("memo","test",usernameEditText.text.toString())
-                findNavController().navigate(R.id.navigation_home)
+                findNavController().navigate(R.id.action_loginFragment_to_navigation_home)
             }
         }
     }
@@ -147,8 +147,8 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
 
-//        val mainAct = activity as MainActivity
-//        mainAct.setBottomNav(true)
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(true)
     }
 
 }
