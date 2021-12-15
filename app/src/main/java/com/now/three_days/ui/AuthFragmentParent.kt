@@ -11,6 +11,7 @@ import com.now.three_days.MainActivity
 import com.now.three_days.R
 import com.now.three_days.data.LoginDataSource
 import com.now.three_days.data.LoginRepository
+import com.now.three_days.service.impl.UserServiceImplV1
 import com.now.three_days.ui.login.LoginViewModel
 import com.now.three_days.ui.login.LoginViewModelFactory
 
@@ -19,7 +20,7 @@ open class AuthFragmentParent : Fragment() {
     private val loginViewModel: LoginViewModel by activityViewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T = LoginViewModel(
-                LoginRepository(dataSource = LoginDataSource())
+                LoginRepository(dataSource = LoginDataSource(UserServiceImplV1()))
             ) as T
         }
     }

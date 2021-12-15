@@ -3,11 +3,13 @@ package com.now.three_days
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
 
@@ -94,7 +96,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val setting_item:Int = item.itemId
         if(setting_item == R.id.logout) {
-//            onBackPressed()
             return true
         }
         return super.onOptionsItemSelected(item);
