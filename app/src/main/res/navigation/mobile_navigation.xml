@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_mypage"
-        android:name="com.now.three_days.ui.main.MainListFragment"
+        android:name="com.now.three_days.ui.main.RListFragment"
         android:label="mypage"
-        tools:layout="@layout/main_list_fragment" />
+        tools:layout="@layout/fragment_r_list" />
 
     <fragment
         android:id="@+id/insertFragment"

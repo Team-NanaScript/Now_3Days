@@ -55,7 +55,6 @@ class MainListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         bestListAdapter = CListAdapter(cList)
-        allListAdapter = RListAdapter(rList)
 
 //        cList.add(CListData("1L 마시기","2021-11-06~2021-11-09"))
 //        rList.add(RListData("1KM 달리기","2021-11-06~2021-11-30"))
@@ -66,22 +65,21 @@ class MainListFragment : Fragment() {
             add(CListData("1L 마시기", "2021-11-06~2021-11-09"))
             add(CListData("1KM 달리기", "2021-11-06~2021-11-30"))
         }
-        rList.apply {
-            add(RListData("은결이한테 질척거리기", "2021-11-06~2021-11-09"))
-            add(RListData("영진이 놀리기", "2021-11-06~2021-11-30"))
-            add(RListData("은빈언니한테 물어보기", "2021-11-06~2021-11-09"))
-            add(RListData("영진이 놀리기", "2021-11-06~2021-11-30"))
-            add(RListData("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
-            add(RListData("영진이 놀리기", "2021-11-06~2021-11-30"))
+        cList.apply {
+            add(CListData("은결이한테 질척거리기", "2021-11-06~2021-11-09"))
+            add(CListData("영진이 놀리기", "2021-11-06~2021-11-30"))
+            add(CListData("은빈언니한테 물어보기", "2021-11-06~2021-11-09"))
+            add(CListData("영진이 놀리기", "2021-11-06~2021-11-30"))
+            add(CListData("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
+            add(CListData("영진이 놀리기", "2021-11-06~2021-11-30"))
         }
 
-        binding.allList.adapter = allListAdapter
-        binding.allList.layoutManager = GridLayoutManager(context, 2)
-        binding.bestList.adapter = bestListAdapter
-        binding.bestList.layoutManager = GridLayoutManager(context, 2)
 
-        Log.d("cList {}", cList.toString())
-        Log.d("rList {}", rList.toString())
+
+//        binding.allList.adapter = allListAdapter
+//        binding.allList.layoutManager = GridLayoutManager(context, 2)
+//        binding.bestList.adapter = allListAdapter
+//        binding.bestList.layoutManager = GridLayoutManager(context, 2)
 
     }
 

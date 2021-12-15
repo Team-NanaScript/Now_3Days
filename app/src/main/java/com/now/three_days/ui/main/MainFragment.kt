@@ -37,7 +37,7 @@ class MainFragment : AuthFragmentParent() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listAdapter = ListAdapter(this)
+        listAdapter = ListAdapter()
 
         data.apply {
             add(List_Data("","1L 마시기", "1L 마시기"))
@@ -47,8 +47,9 @@ class MainFragment : AuthFragmentParent() {
             add(List_Data("","영진이 괴롭히기", "영진이 괴롭히기"))
 
             // 만들어둔 Adapter에 data 연결하기
-            listAdapter.data = data
         }
+
+        listAdapter.data = data
 
         // 리사이클러뷰 adapter를 만들어놓은 ListAdapter로 사용하겠다
         binding.rcList.adapter = listAdapter
