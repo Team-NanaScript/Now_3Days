@@ -63,6 +63,11 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.1'
 
     implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
+    
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
+
+
 
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
