@@ -1,11 +1,10 @@
 package com.now.three_days.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.adapter.ListAdapter
 import com.now.three_days.data.model.List_Data
 import com.now.three_days.databinding.MainFragmentBinding
@@ -53,6 +52,7 @@ class MainFragment : AuthFragmentParent() {
 
         // 리사이클러뷰 adapter를 만들어놓은 ListAdapter로 사용하겠다
         binding.rcList.adapter = listAdapter
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

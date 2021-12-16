@@ -1,5 +1,6 @@
 package com.now.three_days.ui.login
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -42,8 +43,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        val mainAct = activity as MainActivity
-//        mainAct.setBottomNav(false)
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(false)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -84,7 +85,7 @@ class LoginFragment : Fragment() {
                     showLoginFailed(it)
                 }
                 loginResult.success?.let {
-//                    updateUiWithUser(it)
+                    findNavController().popBackStack()
                 }
             })
 
@@ -124,17 +125,8 @@ class LoginFragment : Fragment() {
             )
             if (result){
                 userFile.writeFile("memo","test",usernameEditText.text.toString())
-                findNavController().navigate(R.id.navigation_home)
             }
         }
-    }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome) + model.displayName
-        // TODO : initiate successful logged in experience
-        val appContext = context?.applicationContext ?: return
-//        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
-        findNavController().popBackStack()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
@@ -146,8 +138,8 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
 
-//        val mainAct = activity as MainActivity
-//        mainAct.setBottomNav(true)
+        val mainAct = activity as MainActivity
+        mainAct.setBottomNav(true)
     }
 
 }

@@ -21,10 +21,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_list"
             android:layout_width="match_parent"
-            android:layout_marginTop="0dp"
             android:layout_height="550dp"
+            android:layout_marginTop="0dp"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_recycler_box"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
