@@ -1,12 +1,14 @@
 package com.now.three_days.service.impl
 
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
 import com.now.three_days.data.model.User
 import com.now.three_days.service.FireService
 
 class UserServiceImplV1 : FireService<User, String>() {
 
     // 데이터 읽는 method
-    override fun select(): ArrayList<User> {
+    override fun select(){
         var list:ArrayList<User> = arrayListOf()
         db.collection("user").get().addOnSuccessListener { result->
             for(res in result){
@@ -15,7 +17,6 @@ class UserServiceImplV1 : FireService<User, String>() {
                 list.add(user)
             }
          }
-        return list
     }
 
 }
