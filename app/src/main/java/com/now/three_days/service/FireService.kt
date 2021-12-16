@@ -18,7 +18,7 @@ abstract class FireService<VO, PK> {
 
     }
 
-    abstract fun select(): ArrayList<VO>
+    abstract fun select()
 
 
 
