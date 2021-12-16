@@ -15,8 +15,10 @@ class ChallengeServiceImplV1 : FireService<ChallengeVO, String>() {
                 // 데이터 클래스에 빈 생성자 필요
                 var challenge = res.toObject(ChallengeVO::class.java)
                 list.add(challenge)
+                Log.d("리스트 :", list.toString())
             }
          }
+        Log.d("리스트 :", list.toString())
         return list
     }
 }
