@@ -8,6 +8,7 @@ import com.now.three_days.data.LoginRepository
 import com.now.three_days.data.Result
 
 import com.now.three_days.R
+import com.now.three_days.data.model.User
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -17,7 +18,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String):Boolean {
+    fun login(username: String, password: String): Boolean {
         // can be launched in a separate asynchronous job
         val result = loginRepository.login(username, password)
 

@@ -1,6 +1,5 @@
 package com.now.three_days.ui.login
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,7 +16,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.now.three_days.MainActivity
-import com.now.three_days.R
 import com.now.three_days.data.LoginDataSource
 import com.now.three_days.data.LoginRepository
 import com.now.three_days.databinding.FragmentLoginBinding
