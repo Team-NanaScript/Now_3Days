@@ -2,8 +2,8 @@ package com.now.three_days.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.now.three_days.ui.main.CListFragment
-import com.now.three_days.ui.main.RListFragment
+
+
 import java.lang.IndexOutOfBoundsException
 
 const val RLIST_INDEX = 0;
