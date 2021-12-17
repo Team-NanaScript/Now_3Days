@@ -4,21 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.RListData
-import com.now.three_days.databinding.ItemAllListBinding
+import com.now.three_days.databinding.ItemRListBinding
 
 class RListAdapter(private val aList : List<RListData>)
     : RecyclerView.Adapter<RListAdapter.ALViewHolder>() {
 
-    class ALViewHolder(private val binding:ItemAllListBinding)
+    class ALViewHolder(private val binding:ItemRListBinding)
         : RecyclerView.ViewHolder(binding.root) {
         fun bind(item : RListData) {
-            binding.allTitle.text = item.a_ctitle
-            binding.allDate.text = item.a_cdate
+            binding.rTitle.text = item.a_ctitle
+            binding.rDate.text = item.a_cdate
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ALViewHolder {
-        val binding = ItemAllListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemRListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ALViewHolder(binding)
     }
 
