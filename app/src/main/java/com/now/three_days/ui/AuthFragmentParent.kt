@@ -32,8 +32,4 @@ open class AuthFragmentParent : Fragment() {
             findNavController().navigate(R.id.loginFragment)
         }
     }
-
-    public interface BottomNav {
-        fun setBottomNav(status: Boolean)
-    }
 }
