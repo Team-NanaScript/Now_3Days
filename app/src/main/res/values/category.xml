@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="array_category">
-        <item></item>
+        <item>카테고리</item>
         <item>챌린지</item>
         <item>릴레이</item>
     </string-array>
