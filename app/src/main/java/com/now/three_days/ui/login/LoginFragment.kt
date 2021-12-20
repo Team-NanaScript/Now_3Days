@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
     ): View? {
 
         mainAct = activity as MainActivity
-        mainAct?.setBottomNav(false)
+//        mainAct?.setBottomNav(false)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -139,7 +139,7 @@ class LoginFragment : Fragment() {
         _binding = null
 
 //        val mainAct = activity as MainActivity
-        mainAct?.setBottomNav(true)
+//        mainAct?.setBottomNav(true)
     }
 
 }
