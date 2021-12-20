@@ -48,15 +48,12 @@ class IntroFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        mainActivity?.setBottomNav(false)
+//        mainActivity?.setBottomNav(false)
         Handler(Looper.getMainLooper()).postDelayed(hideSystemUI,100)
         Handler(Looper.getMainLooper()).postDelayed({
 
             findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
         },3500)
-
-    //
-
 
 //        mainActivity.setBottomNav(false)
 //        Handler(Looper.getMainLooper()).postDelayed({
@@ -78,8 +75,6 @@ class IntroFragment : Fragment() {
 //            findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
 ////
 //        }, 3500)
-
-
 
     }
 
