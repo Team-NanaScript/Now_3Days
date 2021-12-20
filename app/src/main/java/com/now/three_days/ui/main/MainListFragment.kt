@@ -2,18 +2,12 @@ package com.now.three_days.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
-import com.now.three_days.adapter.RListAdapter
-import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.adapter.ViewPagerAdapter
-import com.now.three_days.data.model.RListData
-import com.now.three_days.data.model.CListData
 import com.now.three_days.databinding.MainListFragmentBinding
 
 class MainListFragment : Fragment() {
@@ -56,7 +50,6 @@ class MainListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
 
     }
