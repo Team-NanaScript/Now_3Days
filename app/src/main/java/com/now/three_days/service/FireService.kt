@@ -20,9 +20,8 @@ abstract class FireService<VO, PK> {
 
     }
 
-    fun select(): Task<QuerySnapshot>{
-        return db.collection("challenge").get()
+    fun select(category: String): Task<QuerySnapshot>{
+        return db.collection(category).get()
     }
-
 
 }
