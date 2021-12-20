@@ -29,12 +29,15 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     fun login(username: String, password: String): Result<LoggedInUser> {
         // handle login
-        val result = dataSource.login(username, password)
+        var result = dataSource.login(username, password)
+
+//        val result = dataSource.loginTest(username, password)
+
 
         if (result is Result.Success) {
             setLoggedInUser(result.data)
         } else {
-            dataSource.join(username, password)
+            result = dataSource.join(username, password)
         }
 
         return result

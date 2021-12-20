@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/settings"
+        android:id="@+id/settingsFragment"
         android:title="설정" />
 
     <item
-        android:id="@+id/logout"
+        android:id="@+id/loginFragment"
         android:title="로그아웃" />
 
 

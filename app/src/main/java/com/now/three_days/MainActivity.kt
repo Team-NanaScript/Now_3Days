@@ -95,7 +95,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val setting_item:Int = item.itemId
-        if(setting_item == R.id.logout) {
+        if(setting_item == R.id.loginFragment) {
+//            userFile.remove("memo/test")
             return true
         }
         return super.onOptionsItemSelected(item);
