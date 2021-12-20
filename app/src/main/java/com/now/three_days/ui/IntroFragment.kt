@@ -202,7 +202,7 @@ class IntroFragment : Fragment() {
 
     private val showSystemUI = Runnable {
         // Bottom Nav 감추기
-        mainActivity?.setBottomNav(true)
+//        mainActivity?.setBottomNav(true)
 
         // 화면구현 default FLAG 를 무시하고 코드로 적용하기 위해 false
         WindowCompat.setDecorFitsSystemWindows(mainActivity?.window!!, true)

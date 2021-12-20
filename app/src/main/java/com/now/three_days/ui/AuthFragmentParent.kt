@@ -29,7 +29,10 @@ open class AuthFragmentParent : Fragment() {
         val userFile = mainAct.getFile()
 
         if (!userFile.userLog()) {
+            mainAct.setBottomNav(false)
             findNavController().navigate(R.id.loginFragment)
         }
+
+//        mainAct.setBottomNav(true)
     }
 }

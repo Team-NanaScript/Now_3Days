@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.now.three_days.MainActivity
 import com.now.three_days.adapter.ListAdapter
 import com.now.three_days.data.model.List_Data
 import com.now.three_days.databinding.MainFragmentBinding
@@ -30,6 +31,10 @@ class MainFragment : AuthFragmentParent() {
         savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
+
+        val mainAct = activity as MainActivity
+        mainAct?.setBottomNav(true)
+        
 //        return inflater.inflate(R.layout.main_fragment, container, false)
         return binding.root
     }

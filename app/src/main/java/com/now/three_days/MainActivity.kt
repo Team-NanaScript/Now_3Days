@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -36,11 +37,14 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
+//        val toolbar:Toolbar = binding.toolbar
+
 //        if(actionBar != null) {
 //            actionBar?.setDisplayShowHomeEnabled(true)
 //        }
 
         navView.setupWithNavController(navController)
+//        toolbar.setupWithNavController(navController)
 
         userFile = UserFile(filesDir.path)
 
