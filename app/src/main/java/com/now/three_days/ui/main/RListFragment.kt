@@ -2,13 +2,18 @@ package com.now.three_days.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.GridLayoutManager
+import com.now.three_days.R
 import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.data.model.RelayVO
+import com.now.three_days.databinding.ItemRListBinding
 import com.now.three_days.databinding.RListFragmentBinding
 
 class RListFragment : Fragment() {
@@ -19,8 +24,9 @@ class RListFragment : Fragment() {
     private val rList1 = ArrayList<RelayVO>()
     private val rList2 = ArrayList<RelayVO>()
 
-    private var _binding: RListFragmentBinding? = null
-    private val binding get() = _binding!!
+    private var _binding: RListFragmentBinding?  = null
+//    private var _binding1: ItemRListBinding? = null
+    val binding get() = _binding!!
 
     companion object {
         fun newInstance() = RListFragment()
@@ -34,6 +40,7 @@ class RListFragment : Fragment() {
     ): View? {
 
         _binding = RListFragmentBinding.inflate(inflater,container,false)
+//        _binding = ItemRListBinding.inflate(inflater,container,false)
 
         return binding.root
     }
@@ -41,8 +48,16 @@ class RListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(RListViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
+        viewModel.list()
+        viewModel.data.observe(viewLifecycleOwner,Observer {
+            Log.d("ViewModel {}", "$it")
+
+         })
+
+        }
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

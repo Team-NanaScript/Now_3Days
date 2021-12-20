@@ -2,10 +2,13 @@ package com.now.three_days.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.data.model.ChallengeVO
@@ -41,7 +44,18 @@ class CListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CListViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel.list()
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            Log.d("ViewModel {}", "$it")
+
+            cList1.apply {
+                // it이 전체리스트를 돌기 때문에 , it을 cList1에 담고 싶음
+            }
+
+        })
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,9 +64,17 @@ class CListFragment : Fragment() {
         cListAdapter1 = CListAdapter(cList1)
         cListAdapter2 = CListAdapter(cList2)
 
+//        val dataObserver: Observer<ArrayList<ChallengeVO>> = Observer {
+//
+//        }
+
+//        cList1.apply {
+//        }
+
         cList1.apply {
             add(ChallengeVO("1L 마시기", "2021-11-06~2021-11-09"))
             add(ChallengeVO("1L 마시기", "2021-11-06~2021-11-09"))
+
         }
 
         cList2.apply {
