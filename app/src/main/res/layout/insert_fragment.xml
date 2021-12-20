@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".ui.insert.InsertFragment">
+    tools:context=".ui.insert.InsertFragment"
+    >
 
 <!--        <EditText-->
 <!--            android:id="@+id/author"-->
@@ -17,36 +18,48 @@
 <!--            android:scrollHorizontally="true"-->
 <!--            android:singleLine="true" />-->
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/insert_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/insert_spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:spinnerMode="dialog"
 
-            />
+        />
 
         <EditText
             android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="제목"
             android:maxLength="20"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            />
 
         <EditText
             android:id="@+id/sDate"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="시작일"
             android:inputType="date"
             android:maxLength="13"
             android:singleLine="true"
             android:focusable="false"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
             />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        >
 
         <EditText
             android:id="@+id/eDate"
@@ -56,12 +69,13 @@
             android:inputType="date"
             android:maxLength="13"
             android:singleLine="true"
+            android:padding="10dp"
             android:focusable="false"
             />
 
         <Button
             android:id="@+id/btn_eDate"
-            android:layout_width="match_parent"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:text="선택"
             />
@@ -70,18 +84,24 @@
 
         <EditText
             android:id="@+id/content"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="252dp"
             android:gravity="top|left"
-            android:hint="내용을 입력"
+            android:hint="내용을 입력하세요"
             android:inputType="textMultiLine"
-            android:maxLines="20" />
+            android:maxLines="20"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            />
 
         <Button
             android:id="@+id/btn_send"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="전송" />
+            android:text="전송"
+            android:layout_gravity="center"
+            />
 
 
 

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatSpinner
+import com.now.three_days.MainActivity
 import com.now.three_days.data.model.ChallengeVO
 import com.now.three_days.data.model.RelayVO
 import com.now.three_days.databinding.InsertFragmentBinding
@@ -85,7 +86,12 @@ class InsertFragment() : Fragment() {
     }
 
     // VO에 데이터 넣고 db에 추가하는 method
-    fun onClick(binding: InsertFragmentBinding){
+    private fun onClick(binding: InsertFragmentBinding){
+
+        val mainActivity = activity as MainActivity
+        // 작성자 아이디
+        val userId = mainActivity.getFile().userId.toString()
+
         val title:String = binding.title.text.toString()
         val sDate:String = binding.sDate.text.toString()
         val eDate:String = binding.eDate.text.toString()
@@ -95,7 +101,7 @@ class InsertFragment() : Fragment() {
         val spinner:Spinner = binding.insertSpinner
         val select_text = spinner.selectedItem.toString()
 
-        if(select_text == "" || select_text == null){
+        if(select_text == "카테고리" || select_text == null){
             Toast.makeText(requireContext(), "카테고리를 선택하세요 !", Toast.LENGTH_SHORT ).show()
             return
         }
@@ -108,13 +114,20 @@ class InsertFragment() : Fragment() {
             return
         }
 
+        category(select_text, title, content, sDate, eDate, userId)
 
+        binding.title.setText("")
+        binding.eDate.setText("")
+        binding.content.setText("")
+    }
+
+    private fun category(select_text:String, title:String, content:String, sDate:String, eDate:String, userId:String){
         if(select_text == "챌린지"){
             var challenge:ChallengeVO = ChallengeVO(
                 c_title = title,
                 c_content = content,
                 c_sDate = sDate,
-                c_userId = "영진",
+                c_userId = userId,
                 c_eDate = eDate,
                 c_progress = false,
                 c_image = "",
@@ -127,17 +140,13 @@ class InsertFragment() : Fragment() {
                 r_title = title,
                 r_content = content,
                 r_sDate = sDate,
-                r_userId = "영진",
+                r_userId = userId,
                 r_eDate = eDate,
                 r_image = "",
             )
             rs = RelayServiceImplV1()
             rs.insert(relay , select_text)
         }
-
-        binding.title.setText("")
-        binding.eDate.setText("")
-        binding.content.setText("")
     }
 
 }
