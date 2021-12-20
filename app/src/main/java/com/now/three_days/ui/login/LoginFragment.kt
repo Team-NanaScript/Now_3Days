@@ -31,6 +31,8 @@ class LoginFragment : Fragment() {
     }
     private var _binding: FragmentLoginBinding? = null
 
+    private var mainAct : MainActivity? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -41,8 +43,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val mainAct = activity as MainActivity
-        mainAct.setBottomNav(false)
+        mainAct = activity as MainActivity
+        mainAct?.setBottomNav(false)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -52,9 +54,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainAct = activity as MainActivity
+//        val mainAct = activity as MainActivity
 
-        val userFile = mainAct.getFile()
+        val userFile = mainAct?.getFile()
 
         val usernameEditText = binding.username
         val passwordEditText = binding.password
@@ -122,7 +124,7 @@ class LoginFragment : Fragment() {
                 passwordEditText.text.toString()
             )
             if (result){
-                userFile.writeFile("memo","test",usernameEditText.text.toString())
+                userFile?.writeFile("memo","test",usernameEditText.text.toString())
             }
         }
     }
@@ -136,8 +138,8 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
 
-        val mainAct = activity as MainActivity
-        mainAct.setBottomNav(true)
+//        val mainAct = activity as MainActivity
+        mainAct?.setBottomNav(true)
     }
 
 }

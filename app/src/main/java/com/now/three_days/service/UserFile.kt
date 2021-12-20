@@ -8,16 +8,19 @@ class UserFile(path:String) {
 
     private var dirPath:String = ""
 
+    var userId:String? = null
+
     init {
         dirPath= path
+        userId = ""
     }
 
     fun userLog():Boolean {
         var checkUser = true
 
-        val fileLog = readFile("memo/test")
+        userId = readFile("memo/test")
 
-        if(fileLog == null || fileLog == "") {
+        if(userId == null || userId == "") {
             checkUser = false
             Log.d("user file log", "No log")
         }
@@ -66,5 +69,6 @@ class UserFile(path:String) {
         Log.d("file path",file.path)
         file.delete()
     }
+
 
 }
