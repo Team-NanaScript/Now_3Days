@@ -52,7 +52,7 @@ class RListFragment : Fragment() {
         rListAdapter2 = RListAdapter(rList2)
 
         rList1.apply {
-            add(RelayVO("1","나나","1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기",true))
+            add(RelayVO("1","나나","1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기",""))
             add(RelayVO("1L 마시기", "2021-11-06~2021-11-09"))
         }
 

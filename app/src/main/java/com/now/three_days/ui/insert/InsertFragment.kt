@@ -1,31 +1,22 @@
 package com.now.three_days.ui.insert
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.icu.util.GregorianCalendar
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.get
-import androidx.navigation.fragment.R
-import androidx.navigation.fragment.findNavController
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.now.three_days.MainActivity
+import androidx.appcompat.widget.AppCompatSpinner
 import com.now.three_days.data.model.ChallengeVO
+import com.now.three_days.data.model.RelayVO
 import com.now.three_days.databinding.InsertFragmentBinding
-import com.now.three_days.databinding.MainActivityBinding
-import com.now.three_days.databinding.MainFragmentBinding
 import com.now.three_days.service.FireService
 import com.now.three_days.service.impl.ChallengeServiceImplV1
+import com.now.three_days.service.impl.RelayServiceImplV1
 import com.now.three_days.ui.main.MainFragment
 
 class InsertFragment() : Fragment() {
@@ -34,7 +25,9 @@ class InsertFragment() : Fragment() {
         fun newInstance() = InsertFragment()
     }
 
-    private lateinit var cs:ChallengeServiceImplV1
+    private lateinit var cs: ChallengeServiceImplV1
+    private lateinit var rs: RelayServiceImplV1
+
     private lateinit var viewModel: InsertViewModel
     private var _binding:InsertFragmentBinding ? = null
     private val binding get() = _binding!!
@@ -87,9 +80,7 @@ class InsertFragment() : Fragment() {
 
         // 저장 버튼 클릭
         button.setOnClickListener(View.OnClickListener {
-            cs = ChallengeServiceImplV1()
             onClick(binding)
-            cs.select()
         })
     }
 
@@ -117,16 +108,32 @@ class InsertFragment() : Fragment() {
             return
         }
 
-        var challenge:ChallengeVO = ChallengeVO(
-            c_title = title,
-            c_content = content,
-            c_sDate = sDate,
-            c_userId = "영진",
-            c_eDate = eDate,
-            c_progress = false,
-            c_image = "",
-        )
-        cs.insert(challenge, select_text)
+
+        if(select_text == "챌린지"){
+            var challenge:ChallengeVO = ChallengeVO(
+                c_title = title,
+                c_content = content,
+                c_sDate = sDate,
+                c_userId = "영진",
+                c_eDate = eDate,
+                c_progress = false,
+                c_image = "",
+            )
+            cs = ChallengeServiceImplV1()
+            cs.insert(challenge, select_text)
+        }
+        else if(select_text == "릴레이"){
+            var relay:RelayVO = RelayVO(
+                r_title = title,
+                r_content = content,
+                r_sDate = sDate,
+                r_userId = "영진",
+                r_eDate = eDate,
+                r_image = "",
+            )
+            rs = RelayServiceImplV1()
+            rs.insert(relay , select_text)
+        }
 
         binding.title.setText("")
         binding.eDate.setText("")
