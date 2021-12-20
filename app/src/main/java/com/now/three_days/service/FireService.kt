@@ -1,6 +1,8 @@
 package com.now.three_days.service
 
 import android.util.Log
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -18,8 +20,9 @@ abstract class FireService<VO, PK> {
 
     }
 
-    abstract fun select()
-
+    fun select(): Task<QuerySnapshot>{
+        return db.collection("challenge").get()
+    }
 
 
 }

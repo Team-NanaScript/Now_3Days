@@ -1,6 +1,6 @@
 package com.now.three_days.data.model
 
-data class ChallengeVO(
+data class AllVO(
 
     var key:String = "",
     var c_userId:String = "",

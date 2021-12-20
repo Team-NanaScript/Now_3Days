@@ -8,11 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.insert.InsertFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
 <!--        <EditText-->
 <!--            android:id="@+id/author"-->
 <!--            android:layout_width="match_parent"-->
@@ -38,13 +33,40 @@
             android:singleLine="true" />
 
         <EditText
-            android:id="@+id/date"
+            android:id="@+id/sDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="날짜"
+            android:hint="시작일"
             android:inputType="date"
-            android:maxLength="10"
-            android:singleLine="true" />
+            android:maxLength="13"
+            android:singleLine="true"
+            android:focusable="false"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/eDate"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="종료일"
+            android:inputType="date"
+            android:maxLength="13"
+            android:singleLine="true"
+            android:focusable="false"
+            />
+
+        <Button
+            android:id="@+id/btn_eDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="선택"
+            />
+
+    </LinearLayout>
 
         <EditText
             android:id="@+id/content"
@@ -62,5 +84,5 @@
             android:text="전송" />
 
 
-    </LinearLayout>
+
 </LinearLayout>
