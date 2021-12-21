@@ -47,13 +47,7 @@ class RListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RListViewModel::class.java)
 
-        viewModel.list()
-        viewModel.data.observe(viewLifecycleOwner,Observer {
-            Log.d("ViewModel {}", "$it")
-
-         })
 
         }
 
@@ -63,14 +57,29 @@ class RListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rListAdapter1 = RListAdapter(rList1)
+        viewModel = ViewModelProvider(this).get(RListViewModel::class.java)
+
+        viewModel.list()
+        viewModel.data.observe(viewLifecycleOwner,Observer {
+            Log.d("ViewModel {}", "$it")
+            binding.allList.adapter = RListAdapter(it)
+
+//            if(it.get(0) ) {
+                binding.bestList.adapter = RListAdapter(it)
+//            }
+
+            // bestList에 조건을 담아서 item 개수 조정하기
+
+
+        })
         rListAdapter2 = RListAdapter(rList2)
+        rListAdapter1 = RListAdapter(rList1)
 
         rList1.apply {
             add(RelayVO("1","나나","1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기",""))
             add(RelayVO("1L 마시기", "2021-11-06~2021-11-09"))
         }
-
+//
         rList2.apply {
             add(RelayVO("은결이한테 질척거리기", "2021-11-06~2021-11-09"))
             add(RelayVO("영진이 놀리기", "2021-11-06~2021-11-30"))
@@ -83,7 +92,7 @@ class RListFragment : Fragment() {
         }
 
         binding.allList.adapter = rListAdapter2
-        binding.bestList.adapter = rListAdapter1
+
         binding.allList.layoutManager = GridLayoutManager(context, 2)
         binding.bestList.layoutManager = GridLayoutManager(context, 2)
 
