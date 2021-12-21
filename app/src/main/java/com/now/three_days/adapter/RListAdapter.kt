@@ -11,6 +11,7 @@ import com.now.three_days.databinding.ItemRListBinding
 class RListAdapter(private val aList : List<RelayVO>)
     : RecyclerView.Adapter<RListAdapter.ALViewHolder>()  {
 
+
     class ALViewHolder(private val binding:ItemRListBinding)
         : RecyclerView.ViewHolder(binding.root) {
         fun bind(item : RelayVO) {
