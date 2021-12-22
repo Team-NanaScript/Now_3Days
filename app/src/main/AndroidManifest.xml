@@ -22,12 +22,13 @@
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="face" />
 
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
+<!--            <meta-data android:name="com.now.three_days."-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
