@@ -24,8 +24,9 @@ class RListFragment : Fragment() {
     private val rList1 = ArrayList<RelayVO>()
     private val rList2 = ArrayList<RelayVO>()
 
-    private var _binding: RListFragmentBinding?  = null
-//    private var _binding1: ItemRListBinding? = null
+    private var _binding: RListFragmentBinding? = null
+
+    //    private var _binding1: ItemRListBinding? = null
     val binding get() = _binding!!
 
     companion object {
@@ -39,7 +40,7 @@ class RListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = RListFragmentBinding.inflate(inflater,container,false)
+        _binding = RListFragmentBinding.inflate(inflater, container, false)
 //        _binding = ItemRListBinding.inflate(inflater,container,false)
 
         return binding.root
@@ -49,9 +50,7 @@ class RListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-        }
-
-
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,7 +60,7 @@ class RListFragment : Fragment() {
 
 //        viewModel.list()
 //        viewModel.list().observe(viewLifecycleOwner, Observer {
-        viewModel.list().observe(viewLifecycleOwner,Observer {
+        viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 //            고쳐주세요
 //            binding.allList.adapter = RListAdapter(it)
@@ -78,7 +77,7 @@ class RListFragment : Fragment() {
         rListAdapter1 = RListAdapter(rList1)
 
         rList1.apply {
-            add(RelayVO("1","나나","1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
+            add(RelayVO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
             add(RelayVO("1L 마시기", "2021-11-06~2021-11-09"))
         }
 //
@@ -99,6 +98,5 @@ class RListFragment : Fragment() {
         binding.bestList.layoutManager = GridLayoutManager(context, 2)
 
     }
-
 
 }
