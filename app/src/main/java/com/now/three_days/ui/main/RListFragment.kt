@@ -60,12 +60,14 @@ class RListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(RListViewModel::class.java)
 
 //        viewModel.list()
-        viewModel.data.observe(viewLifecycleOwner,Observer {
+//        viewModel.list().observe(viewLifecycleOwner, Observer {
+        viewModel.list().observe(viewLifecycleOwner,Observer {
             Log.d("ViewModel {}", "$it")
-            binding.allList.adapter = RListAdapter(it)
+//            고쳐주세요
+//            binding.allList.adapter = RListAdapter(it)
 
 //            if(it.get(0) ) {
-                binding.bestList.adapter = RListAdapter(it)
+//                binding.bestList.adapter = RListAdapter(it)
 //            }
 
             // bestList에 조건을 담아서 item 개수 조정하기
