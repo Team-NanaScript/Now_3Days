@@ -59,7 +59,7 @@ class RListFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(RListViewModel::class.java)
 
-        viewModel.list()
+//        viewModel.list()
         viewModel.data.observe(viewLifecycleOwner,Observer {
             Log.d("ViewModel {}", "$it")
             binding.allList.adapter = RListAdapter(it)
@@ -76,7 +76,7 @@ class RListFragment : Fragment() {
         rListAdapter1 = RListAdapter(rList1)
 
         rList1.apply {
-            add(RelayVO("1","나나","1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기",""))
+            add(RelayVO("1","나나","1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
             add(RelayVO("1L 마시기", "2021-11-06~2021-11-09"))
         }
 //

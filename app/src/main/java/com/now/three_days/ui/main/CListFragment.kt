@@ -46,7 +46,7 @@ class CListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(CListViewModel::class.java)
 
         viewModel.list()
-        viewModel.data.observe(viewLifecycleOwner, Observer {
+        viewModel.cList.observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
             cList1.apply {

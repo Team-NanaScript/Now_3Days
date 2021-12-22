@@ -2,6 +2,7 @@ package com.now.three_days.service
 
 import android.util.Log
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -20,8 +21,8 @@ abstract class FireService<VO, PK> {
 
     }
 
-    fun select(category: String): Task<QuerySnapshot>{
-        return db.collection(category).get()
+    fun select(category: String): CollectionReference {
+        return db.collection(category)
     }
 
 }

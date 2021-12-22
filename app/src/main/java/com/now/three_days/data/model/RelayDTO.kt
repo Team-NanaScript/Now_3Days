@@ -1,7 +1,8 @@
 package com.now.three_days.data.model
 
-data class RelayVO(
-
+data class RelayDTO(
+    
+    var r_seq:String = "",
     var r_userId:String = "",
     var r_title:String = "",
     var r_sDate:String = "",

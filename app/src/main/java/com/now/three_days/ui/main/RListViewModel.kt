@@ -18,12 +18,12 @@ class RListViewModel : ViewModel() {
         _data.value = listOf()
     }
 
-    fun list(){
-        rs = RelayServiceImplV1()
-        rs.select("릴레이").addOnSuccessListener { result->
-            val list = result.toObjects(RelayVO::class.java)
-            _data.value = _data.value?.plus(list)
-        }
-    }
+//    fun list(){
+//        rs = RelayServiceImplV1()
+//        rs.select("릴레이").addOnSuccessListener { result->
+//            val list = result.toObjects(RelayVO::class.java)
+//            _data.value = _data.value?.plus(list)
+//        }
+//    }
 
 }
