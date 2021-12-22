@@ -25,7 +25,7 @@ class RListViewModel : ViewModel() {
 //        _data.value = listOf()
 //    }
 
-    fun list(){
+    fun list(): MutableLiveData<List<RelayDTO>> {
         rs = RelayServiceImplV1()
         rs.select("릴레이").addSnapshotListener(EventListener<QuerySnapshot>{ snapshot, exception ->
             val data:MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
@@ -38,6 +38,8 @@ class RListViewModel : ViewModel() {
             rList.value = snapshot?.toObjects(RelayDTO::class.java)
             Log.d("리스트는 ?? ", rList.toString())
         })
+
+        return rList
     }
 
 }
