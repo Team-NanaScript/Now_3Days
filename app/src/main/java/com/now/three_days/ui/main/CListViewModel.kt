@@ -23,7 +23,7 @@ class CListViewModel : ViewModel() {
 //        _data.value = listOf()
 //    }
 
-    fun list(){
+    fun list(): MutableLiveData<List<ChallengeDTO>> {
 
         cs = ChallengeServiceImplV1()
         cs.select("챌린지").addSnapshotListener(EventListener<QuerySnapshot>{ snapshot, exception ->
@@ -36,9 +36,9 @@ class CListViewModel : ViewModel() {
             }
             cList.value = snapshot?.toObjects(ChallengeDTO::class.java)
             Log.d("리스트는 ?? ", cList.toString())
-
         })
 
+        return cList
     }
 
 }
