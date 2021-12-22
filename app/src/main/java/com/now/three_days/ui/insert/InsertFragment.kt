@@ -22,7 +22,9 @@ import com.now.three_days.data.model.ChallengeVO
 import com.now.three_days.data.model.RelayVO
 import com.now.three_days.databinding.InsertFragmentBinding
 import com.now.three_days.service.FireService
+import com.now.three_days.service.InsertService
 import com.now.three_days.service.impl.ChallengeServiceImplV1
+import com.now.three_days.service.impl.InsertServiceImpl
 import com.now.three_days.service.impl.RelayServiceImplV1
 import com.now.three_days.ui.main.MainFragment
 import java.time.LocalDate
@@ -35,8 +37,7 @@ class InsertFragment() : Fragment() {
         fun newInstance() = InsertFragment()
     }
 
-    private lateinit var cs: ChallengeServiceImplV1
-    private lateinit var rs: RelayServiceImplV1
+    private lateinit var insertService: InsertService
 
     private lateinit var viewModel: InsertViewModel
     private var _binding:InsertFragmentBinding ? = null
@@ -97,73 +98,12 @@ class InsertFragment() : Fragment() {
 
         // 저장 버튼 클릭
         button.setOnClickListener(View.OnClickListener {
-            onClick(binding)
-
+            val mainActivity = activity as MainActivity
+            insertService = InsertServiceImpl()
+            insertService.onClick(binding, mainActivity, requireContext())
         })
     }
 
-    // VO에 데이터 넣고 db에 추가하는 method
-    private fun onClick(binding: InsertFragmentBinding){
 
-        val mainActivity = activity as MainActivity
-        // 작성자 아이디
-        val userId = mainActivity.getFile().userId.toString()
-
-        val title:String = binding.title.text.toString()
-        val sDate:String = binding.sDate.text.toString()
-        val eDate:String = binding.eDate.text.toString()
-        val content:String = binding.content.text.toString()
-
-        // select box
-        val spinner:Spinner = binding.insertSpinner
-        val select_text = spinner.selectedItem.toString()
-
-        if(select_text == "카테고리" || select_text == null){
-            Toast.makeText(requireContext(), "카테고리를 선택하세요 !", Toast.LENGTH_SHORT ).show()
-            return
-        }
-        if(title == "" || title == null){
-            Toast.makeText(requireContext(), "제목을 입력하세요 !", Toast.LENGTH_SHORT ).show()
-            return
-        }
-        if(eDate == "" || eDate == null){
-            Toast.makeText(requireContext(), "날짜를 선택하세요 !", Toast.LENGTH_SHORT ).show()
-            return
-        }
-
-        category(select_text, title, content, sDate, eDate, userId)
-
-        binding.title.setText("")
-        binding.eDate.setText("")
-        binding.content.setText("")
-    }
-
-    private fun category(select_text:String, title:String, content:String, sDate:String, eDate:String, userId:String){
-        if(select_text == "챌린지"){
-            var challenge:ChallengeVO = ChallengeVO(
-                c_title = title,
-                c_content = content,
-                c_sDate = sDate,
-                c_userId = userId,
-                c_eDate = eDate,
-                c_progress = false,
-                c_image = "",
-            )
-            cs = ChallengeServiceImplV1()
-            cs.insert(challenge, select_text)
-        }
-        else if(select_text == "릴레이"){
-            var relay:RelayVO = RelayVO(
-                r_title = title,
-                r_content = content,
-                r_sDate = sDate,
-                r_userId = userId,
-                r_eDate = eDate,
-                r_image = "",
-            )
-            rs = RelayServiceImplV1()
-            rs.insert(relay , select_text)
-        }
-    }
 
 }
