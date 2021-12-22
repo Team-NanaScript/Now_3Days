@@ -27,15 +27,22 @@ class CListViewModel : ViewModel() {
 
         cs = ChallengeServiceImplV1()
         cs.select("챌린지").addSnapshotListener(EventListener<QuerySnapshot>{ snapshot, exception ->
-            val data:MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
+            var data:MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
+            var list:MutableList<ChallengeDTO> = mutableListOf()
             if(exception != null){
                 // w 로 해야지 exception 받아짐
                 Log.w("파이어 베이스 ㅋ", exception)
                 data.value = null
                 return@EventListener
             }
-            cList.value = snapshot?.toObjects(ChallengeDTO::class.java)
-            Log.d("리스트는 ?? ", cList.toString())
+            for(doc in snapshot!!){
+                var seq = doc.id
+                var obj = doc.toObject(ChallengeDTO::class.java)
+                obj.c_seq = seq
+                list.add(obj)
+            }
+            cList.value = list
+
         })
 
         return cList
