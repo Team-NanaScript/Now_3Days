@@ -1,7 +1,8 @@
 package com.now.three_days.data.model
 
-data class ChallengeVO(
+data class ChallengeDTO(
 
+    var c_seq:String = "",
     var c_userId:String = "",
     var c_title:String = "",
     var c_sDate:String = "",
