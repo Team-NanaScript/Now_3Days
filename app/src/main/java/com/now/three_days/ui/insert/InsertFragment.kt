@@ -14,6 +14,7 @@ import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.MainActivity
+import com.now.three_days.R
 import com.now.three_days.databinding.InsertFragmentBinding
 import com.now.three_days.service.InsertService
 import com.now.three_days.service.impl.InsertServiceImpl
@@ -63,12 +64,12 @@ class InsertFragment() : Fragment() {
 
             // 종료일 날짜를 선택하기 위한 코드
             val calendar =
-                DatePickerDialog(requireContext(), object : DatePickerDialog.OnDateSetListener {
+                DatePickerDialog(requireContext() ,object : DatePickerDialog.OnDateSetListener {
                     override fun onDateSet(
                         view: DatePicker?,
                         year: Int,
                         month: Int,
-                        dayofMonth: Int
+                        dayofMonth: Int,
                     ) {
                         var selectDay = LocalDate.of(year, month + 1, dayofMonth)
                         binding.eDate.setText(selectDay.toString())

@@ -43,5 +43,4 @@ class RListAdapter(private val aList: List<RelayDTO>) :
         return aList.size
     }
 
-
 }
