@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import androidx.appcompat.view.menu.MenuView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.RelayDTO
@@ -19,8 +21,16 @@ class RListAdapter(private val aList: List<RelayDTO>) :
         fun bind(item: RelayDTO) {
             binding.rTitle.text = item.r_title
             binding.rDate.text = item.r_sDate
+
+//            itemView.setOnClickListener {
+//                val intent = Intent(itemView.context, DetailFragment::class.java)
+//                    intent.putExtra("data",binding.rTitle.text.toString())
+//                ContextCompat.startActivity()
+//            }
         }
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ALViewHolder {
         val binding = ItemRListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,12 +41,14 @@ class RListAdapter(private val aList: List<RelayDTO>) :
     override fun onBindViewHolder(holder: ALViewHolder, position: Int) {
         holder.bind(aList[position])
 
-        holder.itemView.setOnClickListener(View.OnClickListener {
-            val intent = Intent(holder.itemView?.context, DetailFragment::class.java)
-            ContextCompat.startActivity(holder.itemView.context, intent, null)
-            // 어떤 item을 클릭했는지 로그 찍어보기기
-            Log.d("Relay 클릭? {}", position.toString())
-        })
+//        holder.itemView.setOnClickListener(View.OnClickListener {
+////            val intent = Intent(holder.itemView?.context, DetailFragment::class.java)
+////            ContextCompat.startActivity(holder.itemView.context, intent, null)
+////            val result = "title"
+////            // 어떤 item을 클릭했는지 로그 찍어보기기
+//            Log.d("Relay 클릭? {}", position.toString())
+////            Log.d("Intent 어디로?", intent.toString())
+//        })
     }
 
     override fun getItemCount(): Int {

@@ -1,5 +1,6 @@
 package com.now.three_days.ui.main
 
+import android.content.ClipData
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,6 +33,7 @@ class RListFragment : Fragment() {
 
     private lateinit var viewModel: RListViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +48,12 @@ class RListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(RListViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
+
+        fun onItemClick(item : ClipData.Item) {
+            Log.d("item", "$item")
+        }
+
 
 //        viewModel.list()
 //        viewModel.list().observe(viewLifecycleOwner, Observer {
