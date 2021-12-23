@@ -10,10 +10,10 @@ import com.now.three_days.data.model.User
 
 class UserViewModel : ViewModel() {
 
-//    private val users: MutableLiveData<List<User>> = MutableLiveData()
+    //    private val users: MutableLiveData<List<User>> = MutableLiveData()
     private val _users = MutableLiveData<List<User>>()
 
-    val users:LiveData<List<User>>
+    val users: LiveData<List<User>>
         get() = _users
 
     protected val db = Firebase.firestore
@@ -24,25 +24,26 @@ class UserViewModel : ViewModel() {
         _users.value = listOf()
         getUsersFirebase()
     }
-/*
-    fun getUsersView(): LiveData<List<User>> {
-//        if (users.value == null){
-        var list: ArrayList<User> = arrayListOf()
-        db.collection("user").get().addOnSuccessListener { result ->
-            for (res in result) {
-                // 데이터 클래스에 빈 생성자 필요
-                var user = res.toObject(User::class.java)
-                list.add(user)
-                Log.d("user list", list.toString())
-            }
-//            fireServiceStore.setList(list)
-//            users.postValue(list)
-        }
-//        }
 
-        return userList
-    }
-*/
+    /*
+        fun getUsersView(): LiveData<List<User>> {
+    //        if (users.value == null){
+            var list: ArrayList<User> = arrayListOf()
+            db.collection("user").get().addOnSuccessListener { result ->
+                for (res in result) {
+                    // 데이터 클래스에 빈 생성자 필요
+                    var user = res.toObject(User::class.java)
+                    list.add(user)
+                    Log.d("user list", list.toString())
+                }
+    //            fireServiceStore.setList(list)
+    //            users.postValue(list)
+            }
+    //        }
+
+            return userList
+        }
+    */
     fun getUsersFirebase() {
         db.collection("user").get().addOnSuccessListener { result ->
             for (res in result) {
@@ -61,7 +62,7 @@ class UserViewModel : ViewModel() {
         return users
     }
 
-    fun insert(user:User,category: String) {
+    fun insert(user: User, category: String) {
         db.collection(category).add(user!!)
     }
 }

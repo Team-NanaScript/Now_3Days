@@ -23,7 +23,7 @@ class IntroFragment : Fragment() {
     private var _binding: FragmentIntroBinding? = null
     private val binding get() = _binding!!
 
-    private var mainActivity : MainActivity? = null
+    private var mainActivity: MainActivity? = null
     private val TAG = "intro"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +49,11 @@ class IntroFragment : Fragment() {
         super.onAttach(context)
 
 //        mainActivity?.setBottomNav(false)
-        Handler(Looper.getMainLooper()).postDelayed(hideSystemUI,100)
+        Handler(Looper.getMainLooper()).postDelayed(hideSystemUI, 100)
         Handler(Looper.getMainLooper()).postDelayed({
 
             findNavController().navigate(R.id.action_navigation_intro_to_navigation_home)
-        },3500)
+        }, 3500)
 
 //        mainActivity.setBottomNav(false)
 //        Handler(Looper.getMainLooper()).postDelayed({
@@ -141,7 +141,7 @@ class IntroFragment : Fragment() {
 //        }
 //
 
-        Handler(Looper.getMainLooper()).postDelayed(showSystemUI,10)
+        Handler(Looper.getMainLooper()).postDelayed(showSystemUI, 10)
 
     }
 
@@ -245,8 +245,6 @@ class IntroFragment : Fragment() {
         }
         (mainActivity as? AppCompatActivity)?.supportActionBar?.show()
     }
-
-
 
 
 }

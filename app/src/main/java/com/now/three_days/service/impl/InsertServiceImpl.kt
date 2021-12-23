@@ -9,35 +9,39 @@ import com.now.three_days.data.model.RelayVO
 import com.now.three_days.databinding.InsertFragmentBinding
 import com.now.three_days.service.InsertService
 
-class InsertServiceImpl : InsertService{
+class InsertServiceImpl : InsertService {
 
     private lateinit var cs: ChallengeServiceImplV1
     private lateinit var rs: RelayServiceImplV1
 
-    override fun onClick(binding: InsertFragmentBinding, mainActivity: MainActivity, context:Context) {
+    override fun onClick(
+        binding: InsertFragmentBinding,
+        mainActivity: MainActivity,
+        context: Context
+    ) {
 
         // 작성자 아이디
         val userId = mainActivity.getFile().userId.toString()
 
-        val title:String = binding.title.text.toString()
-        val sDate:String = binding.sDate.text.toString()
-        val eDate:String = binding.eDate.text.toString()
-        val content:String = binding.content.text.toString()
+        val title: String = binding.title.text.toString()
+        val sDate: String = binding.sDate.text.toString()
+        val eDate: String = binding.eDate.text.toString()
+        val content: String = binding.content.text.toString()
 
         // select box
         val spinner: Spinner = binding.insertSpinner
         val select_text = spinner.selectedItem.toString()
 
-        if(select_text == "카테고리" || select_text == null){
-            Toast.makeText(context, "카테고리를 선택하세요 !", Toast.LENGTH_SHORT ).show()
+        if (select_text == "카테고리" || select_text == null) {
+            Toast.makeText(context, "카테고리를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
-        if(title == "" || title == null){
-            Toast.makeText(context, "제목을 입력하세요 !", Toast.LENGTH_SHORT ).show()
+        if (title == "" || title == null) {
+            Toast.makeText(context, "제목을 입력하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
-        if(eDate == "" || eDate == null){
-            Toast.makeText(context, "날짜를 선택하세요 !", Toast.LENGTH_SHORT ).show()
+        if (eDate == "" || eDate == null) {
+            Toast.makeText(context, "날짜를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -60,7 +64,7 @@ class InsertServiceImpl : InsertService{
         cs = ChallengeServiceImplV1()
         rs = RelayServiceImplV1()
 
-        if(select_text == "챌린지"){
+        if (select_text == "챌린지") {
             var challenge: ChallengeVO = ChallengeVO(
                 c_title = title,
                 c_content = content,
@@ -72,8 +76,7 @@ class InsertServiceImpl : InsertService{
             )
             cs = ChallengeServiceImplV1()
             cs.insert(challenge, select_text)
-        }
-        else if(select_text == "릴레이"){
+        } else if (select_text == "릴레이") {
             var relay: RelayVO = RelayVO(
                 r_title = title,
                 r_content = content,
@@ -83,7 +86,7 @@ class InsertServiceImpl : InsertService{
                 r_image = "",
             )
             rs = RelayServiceImplV1()
-            rs.insert(relay , select_text)
+            rs.insert(relay, select_text)
         }
     }
 

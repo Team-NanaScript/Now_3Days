@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_insert"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".ui.insert.InsertFragment"
-    >
+    tools:context=".ui.insert.InsertFragment">
 
-<!--        <EditText-->
-<!--            android:id="@+id/author"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="작성자"-->
-<!--            android:maxLength="10"-->
-<!--            android:scrollHorizontally="true"-->
-<!--            android:singleLine="true" />-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/author"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="작성자"-->
+    <!--            android:maxLength="10"-->
+    <!--            android:scrollHorizontally="true"-->
+    <!--            android:singleLine="true" />-->
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/insert_spinner"
@@ -27,82 +25,74 @@
 
         />
 
-        <EditText
-            android:id="@+id/title"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="제목"
-            android:maxLength="20"
-            android:singleLine="true"
-            android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            />
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:hint="제목"
+        android:maxLength="20"
+        android:padding="10dp"
+        android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/sDate"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="시작일"
-            android:inputType="date"
-            android:maxLength="13"
-            android:singleLine="true"
-            android:focusable="false"
-            android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            />
+    <EditText
+        android:id="@+id/sDate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:focusable="false"
+        android:hint="시작일"
+        android:inputType="date"
+        android:maxLength="13"
+        android:padding="10dp"
+        android:singleLine="true" />
 
     <LinearLayout
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="5dp"
-        >
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/eDate"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:hint="종료일"
             android:inputType="date"
             android:maxLength="13"
-            android:singleLine="true"
             android:padding="10dp"
-            android:focusable="false"
-            />
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/btn_eDate"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:text="선택"
-            />
+            android:text="선택" />
 
     </LinearLayout>
 
-        <EditText
-            android:id="@+id/content"
-            android:layout_width="350dp"
-            android:layout_height="252dp"
-            android:gravity="top|left"
-            android:hint="내용을 입력하세요"
-            android:inputType="textMultiLine"
-            android:maxLines="20"
-            android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            />
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="350dp"
+        android:layout_height="252dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="top|left"
+        android:hint="내용을 입력하세요"
+        android:inputType="textMultiLine"
+        android:maxLines="20"
+        android:padding="10dp" />
 
-        <Button
-            android:id="@+id/btn_send"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="전송"
-            android:layout_gravity="center"
-            />
-
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="전송" />
 
 
 </LinearLayout>

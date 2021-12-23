@@ -13,7 +13,7 @@ import com.now.three_days.ui.AuthFragmentParent
 
 class MainFragment : AuthFragmentParent() {
 
-    lateinit var listAdapter : ListAdapter
+    lateinit var listAdapter: ListAdapter
     val data = mutableListOf<List_Data>()
 
     companion object {
@@ -21,7 +21,7 @@ class MainFragment : AuthFragmentParent() {
     }
 
     private lateinit var viewModel: MainViewModel
-    private var _binding : MainFragmentBinding? = null
+    private var _binding: MainFragmentBinding? = null
 
     private val binding get() = _binding!!
 
@@ -34,7 +34,7 @@ class MainFragment : AuthFragmentParent() {
 
         val mainAct = activity as MainActivity
         mainAct?.setBottomNav(true)
-        
+
 //        return inflater.inflate(R.layout.main_fragment, container, false)
         return binding.root
     }
@@ -45,11 +45,11 @@ class MainFragment : AuthFragmentParent() {
         listAdapter = ListAdapter(this)
 
         data.apply {
-            add(List_Data("","1L 마시기", "1L 마시기"))
-            add(List_Data("","1km 달리기", "1km 달리기"))
-            add(List_Data("","1시간 취미생활 즐기기", "1시간 취미생활 즐기기"))
-            add(List_Data("","은결이 칭찬하기", "은결이 칭찬하기"))
-            add(List_Data("","영진이 괴롭히기", "영진이 괴롭히기"))
+            add(List_Data("", "1L 마시기", "1L 마시기"))
+            add(List_Data("", "1km 달리기", "1km 달리기"))
+            add(List_Data("", "1시간 취미생활 즐기기", "1시간 취미생활 즐기기"))
+            add(List_Data("", "은결이 칭찬하기", "은결이 칭찬하기"))
+            add(List_Data("", "영진이 괴롭히기", "영진이 괴롭히기"))
 
             // 만들어둔 Adapter에 data 연결하기
             listAdapter.data = data

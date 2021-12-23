@@ -1,21 +1,19 @@
 package com.now.three_days.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.now.three_days.adapter.ViewPagerAdapter
 import com.now.three_days.databinding.MainListFragmentBinding
 
 class MainListFragment : Fragment() {
 
-
     private var _binding: MainListFragmentBinding? = null
     private val binding get() = _binding!!
-
 
     companion object {
         fun newInstance() = MainListFragment()
@@ -35,7 +33,7 @@ class MainListFragment : Fragment() {
 
         viewPager.adapter = ViewPagerAdapter(this)
         val tabTitle = arrayListOf<String>("Challenge", "Relay")
-        TabLayoutMediator(tabLayout,viewPager){tab, position ->
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()
 
@@ -50,8 +48,6 @@ class MainListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     override fun onDestroyView() {

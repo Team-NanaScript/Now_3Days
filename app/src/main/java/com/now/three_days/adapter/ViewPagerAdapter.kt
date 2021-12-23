@@ -1,20 +1,18 @@
 package com.now.three_days.adapter
 
+
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.now.three_days.ui.main.CListFragment
 import com.now.three_days.ui.main.RListFragment
 
-
-import java.lang.IndexOutOfBoundsException
-
 const val CLIST_INDEX = 0;
 const val RLIST_INDEX = 1;
 
 
-class ViewPagerAdapter(fragment : Fragment) : FragmentStateAdapter(fragment) {
+class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    private val pageTabList : Map<Int, ()->Fragment> =
+    private val pageTabList: Map<Int, () -> Fragment> =
         mapOf(
             RLIST_INDEX to { RListFragment() },
             CLIST_INDEX to { CListFragment() }
@@ -26,8 +24,7 @@ class ViewPagerAdapter(fragment : Fragment) : FragmentStateAdapter(fragment) {
     }
 
     override fun createFragment(position: Int): Fragment {
-        return pageTabList[position]?.invoke() ?:
-        throw IndexOutOfBoundsException()
+        return pageTabList[position]?.invoke() ?: throw IndexOutOfBoundsException()
     }
 
 

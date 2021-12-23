@@ -42,15 +42,16 @@ class LoginDataSource() {
             val findUser = findUserId?.filter { it.password == password }
             val user = findUser?.get(0)
             val loggedInUser =
-                LoggedInUser(user?.userId,
+                LoggedInUser(
+                    user?.userId,
                     user?.nikname, user?.password,
                     user?.role,
-                    user?.email, true)
+                    user?.email, true
+                )
             return Result.Success(loggedInUser)
-        }catch (e: Throwable) {
+        } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
         }
-
 //        return Result.Error(IOException("Error logging in"))
     }
 
@@ -90,7 +91,7 @@ class LoginDataSource() {
         }
     }
 
-    fun join(username: String, password: String) :Result<LoggedInUser> {
+    fun join(username: String, password: String): Result<LoggedInUser> {
         val email = String.format("%s@naver.com", username)
         val user = User(username, username, password, "0", email)
 //        userService.insert(user,"user")

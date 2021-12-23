@@ -31,7 +31,7 @@ class LoginFragment : Fragment() {
     }
     private var _binding: FragmentLoginBinding? = null
 
-    private var mainAct : MainActivity? = null
+    private var mainAct: MainActivity? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -123,8 +123,8 @@ class LoginFragment : Fragment() {
                 usernameEditText.text.toString(),
                 passwordEditText.text.toString()
             )
-            if (result){
-                userFile?.writeFile("memo","test",usernameEditText.text.toString())
+            if (result) {
+                userFile?.writeFile("memo", "test", usernameEditText.text.toString())
             }
         }
     }

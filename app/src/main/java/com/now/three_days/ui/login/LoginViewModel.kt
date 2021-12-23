@@ -1,14 +1,12 @@
 package com.now.three_days.ui.login
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
+import com.now.three_days.R
 import com.now.three_days.data.LoginRepository
 import com.now.three_days.data.Result
-
-import com.now.three_days.R
-import com.now.three_days.data.model.User
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

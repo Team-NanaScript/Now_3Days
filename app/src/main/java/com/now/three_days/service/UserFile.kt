@@ -2,25 +2,24 @@ package com.now.three_days.service
 
 import android.util.Log
 import java.io.*
-import java.lang.StringBuilder
 
-class UserFile(path:String) {
+class UserFile(path: String) {
 
-    private var dirPath:String = ""
+    private var dirPath: String = ""
 
-    var userId:String? = null
+    var userId: String? = null
 
     init {
-        dirPath= path
+        dirPath = path
         userId = ""
     }
 
-    fun userLog():Boolean {
+    fun userLog(): Boolean {
         var checkUser = true
 
         userId = readFile("memo/test")
 
-        if(userId == null || userId == "") {
+        if (userId == null || userId == "") {
             checkUser = false
             Log.d("user file log", "No log")
         }
@@ -60,13 +59,13 @@ class UserFile(path:String) {
         writer.close()
     }
 
-    fun pathReturn():String {
+    fun pathReturn(): String {
         return dirPath
     }
 
-    fun remove(path:String) {
-        var file = File(dirPath+"/"+path)
-        Log.d("file path",file.path)
+    fun remove(path: String) {
+        var file = File(dirPath + "/" + path)
+        Log.d("file path", file.path)
         file.delete()
     }
 
