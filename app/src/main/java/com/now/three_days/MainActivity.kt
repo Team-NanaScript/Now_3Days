@@ -3,14 +3,11 @@ package com.now.three_days
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
 
@@ -64,7 +61,8 @@ class MainActivity : AppCompatActivity() {
             controller?.hide(WindowInsets.Type.ime())
 
             // Sticky Immersive is now ...
-            controller?.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            controller?.systemBarsBehavior =
+                WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
             // When we want to hide the system bars
             controller?.hide(WindowInsets.Type.systemBars())
@@ -98,8 +96,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val setting_item:Int = item.itemId
-        if(setting_item == R.id.loginFragment) {
+        val setting_item: Int = item.itemId
+        if (setting_item == R.id.loginFragment) {
 //            userFile.remove("memo/test")
             return true
         }
@@ -107,11 +105,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setBottomNav(status: Boolean) {
-        binding.navView.visibility = if(status) View.VISIBLE else View.GONE
-        binding.toolbar.visibility = if(status) View.VISIBLE else View.GONE
+        binding.navView.visibility = if (status) View.VISIBLE else View.GONE
+        binding.toolbar.visibility = if (status) View.VISIBLE else View.GONE
     }
 
-    fun getFile():UserFile {
+    fun getFile(): UserFile {
         return userFile
     }
 

@@ -1,15 +1,13 @@
 package com.now.three_days.service.impl
 
-import android.util.Log
 import com.now.three_days.data.model.User
-import com.now.three_days.service.FireService
 
-class UserServiceImplV1  {
+class UserServiceImplV1 {
 
-    //    private lateinit var loginViewModel:LoginViewModel
+//    private lateinit var loginViewModel: LoginViewModel
 //    private lateinit var fireServiceStore: FireServiceStore
 
-     fun select() {
+    fun select() {
         var userList: ArrayList<User> = arrayListOf()
         this.selectAll()
 //        return userList
@@ -27,8 +25,8 @@ class UserServiceImplV1  {
 //                Log.d("user list", list.toString())
 //            }
 //            fireServiceStore.setList(list)
-        }
-
     }
+
+}
 
 //}

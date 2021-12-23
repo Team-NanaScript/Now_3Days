@@ -9,5 +9,4 @@
         android:id="@+id/loginFragment"
         android:title="로그아웃" />
 
-
 </menu>

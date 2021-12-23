@@ -7,6 +7,13 @@ import com.now.three_days.databinding.InsertFragmentBinding
 interface InsertService {
 
     fun onClick(binding: InsertFragmentBinding, mainActivity: MainActivity, context: Context)
-    fun insert(select_text:String, title:String, content:String, sDate:String, eDate:String, userId:String)
+    fun insert(
+        select_text: String,
+        title: String,
+        content: String,
+        sDate: String,
+        eDate: String,
+        userId: String
+    )
 
 }

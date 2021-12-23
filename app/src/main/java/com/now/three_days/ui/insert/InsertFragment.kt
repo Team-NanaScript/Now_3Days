@@ -3,33 +3,21 @@ package com.now.three_days.ui.insert
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.icu.util.GregorianCalendar
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.appcompat.widget.AppCompatSpinner
-import androidx.lifecycle.MutableLiveData
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.DatePicker
+import android.widget.Spinner
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.MainActivity
-import com.now.three_days.data.model.ChallengeDTO
-import com.now.three_days.data.model.ChallengeVO
-import com.now.three_days.data.model.RelayVO
 import com.now.three_days.databinding.InsertFragmentBinding
-import com.now.three_days.service.FireService
 import com.now.three_days.service.InsertService
-import com.now.three_days.service.impl.ChallengeServiceImplV1
 import com.now.three_days.service.impl.InsertServiceImpl
-import com.now.three_days.service.impl.RelayServiceImplV1
-import com.now.three_days.ui.main.MainFragment
 import java.time.LocalDate
-import java.time.Month
-import java.time.Year
 
 class InsertFragment() : Fragment() {
 
@@ -40,9 +28,9 @@ class InsertFragment() : Fragment() {
     private lateinit var insertService: InsertService
 
     private lateinit var viewModel: InsertViewModel
-    private var _binding:InsertFragmentBinding ? = null
+    private var _binding: InsertFragmentBinding? = null
     private val binding get() = _binding!!
-    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,7 +53,7 @@ class InsertFragment() : Fragment() {
 //        val date = LocalDate.now().dayOfMonth
 
         // 종료일을 클릭했을 때
-        binding.btnEDate.setOnClickListener{
+        binding.btnEDate.setOnClickListener {
 
             // 캘린더 날짜
             val gregorianCalendar = GregorianCalendar()
@@ -74,19 +62,25 @@ class InsertFragment() : Fragment() {
             val cDay = gregorianCalendar.get(Calendar.DAY_OF_MONTH)
 
             // 종료일 날짜를 선택하기 위한 코드
-            val calendar = DatePickerDialog(requireContext(), object : DatePickerDialog.OnDateSetListener {
-                override fun onDateSet(view : DatePicker?, year: Int, month: Int, dayofMonth: Int) {
-                    var selectDay = LocalDate.of(year ,month+1 ,dayofMonth)
-                    binding.eDate.setText(selectDay.toString())
-                }
-            }, cYear, cMonth , cDay)
+            val calendar =
+                DatePickerDialog(requireContext(), object : DatePickerDialog.OnDateSetListener {
+                    override fun onDateSet(
+                        view: DatePicker?,
+                        year: Int,
+                        month: Int,
+                        dayofMonth: Int
+                    ) {
+                        var selectDay = LocalDate.of(year, month + 1, dayofMonth)
+                        binding.eDate.setText(selectDay.toString())
+                    }
+                }, cYear, cMonth, cDay)
 
             calendar.show()
         }
 
         // select_box(spinner) 바인딩 후 어댑터 연결
-        var spinner:Spinner = binding.insertSpinner
-        var button: Button =  binding.btnSend
+        var spinner: Spinner = binding.insertSpinner
+        var button: Button = binding.btnSend
 
         val array = resources.getStringArray(com.now.three_days.R.array.array_category)
 
@@ -103,7 +97,6 @@ class InsertFragment() : Fragment() {
             insertService.onClick(binding, mainActivity, requireContext())
         })
     }
-
 
 
 }

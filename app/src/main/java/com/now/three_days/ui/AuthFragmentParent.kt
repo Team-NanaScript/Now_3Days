@@ -12,7 +12,6 @@ import com.now.three_days.R
 import com.now.three_days.data.LoginDataSource
 import com.now.three_days.data.LoginRepository
 import com.now.three_days.ui.login.LoginViewModel
-import com.now.three_days.ui.login.LoginViewModelFactory
 
 open class AuthFragmentParent : Fragment() {
 
