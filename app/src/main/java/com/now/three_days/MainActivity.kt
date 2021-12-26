@@ -5,23 +5,56 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
+import com.now.three_days.ui.main.DetailFragment
+import com.now.three_days.ui.main.RListFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private val rListFragment = RListFragment()
+    private val detailFragment = DetailFragment()
+
+//    private lateinit var rListAdapter: RListAdapter
+
 
     private lateinit var binding: MainActivityBinding
 
     private lateinit var userFile: UserFile
+
+//    fun changeFragment(positon : Int) {
+//        when(positon) {
+//            1 -> {
+//                supportFragmentManager
+//                    .beginTransaction()
+//                    .add(R.id.rList, rListFragment)
+//                    .commit()
+//            }
+//
+//            2 -> {
+//                supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.rList, detailFragment)
+//                    .commit()
+//            }
+//
+//        }
+//    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         /*
         if (savedInstanceState == null) {
@@ -30,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
         */
+
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -47,6 +81,21 @@ class MainActivity : AppCompatActivity() {
 
         // this.hideSystemUI()
     }
+//
+//    fun setFragment(fragment: RListFragment) {
+//        val transaction = supportFragmentManager.beginTransaction()
+//            .replace(R.id.rList,fragment)
+//        transaction.commit()
+//
+//    }
+//
+//    fun setDataFragment(fragment: RListFragment, title:String) {
+//        val bundle = Bundle()
+//        bundle.putString("title", title)
+//
+//        fragment.arguments = bundle
+//        setFragment(fragment)
+//    }
 
     private fun hideSystemUI() {
 
@@ -117,4 +166,7 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         userFile.remove("memo/test")
     }
+
+
 }
+

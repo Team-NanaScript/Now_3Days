@@ -16,6 +16,8 @@ import com.now.three_days.ui.main.DetailFragment
 class RListAdapter(private val aList: List<RelayDTO>) :
     RecyclerView.Adapter<RListAdapter.ALViewHolder>() {
 
+
+
     class ALViewHolder(private val binding: ItemRListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: RelayDTO) {
@@ -30,8 +32,6 @@ class RListAdapter(private val aList: List<RelayDTO>) :
         }
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ALViewHolder {
         val binding = ItemRListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -41,7 +41,9 @@ class RListAdapter(private val aList: List<RelayDTO>) :
     override fun onBindViewHolder(holder: ALViewHolder, position: Int) {
         holder.bind(aList[position])
 
-//        holder.itemView.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it,position)
+        }
 ////            val intent = Intent(holder.itemView?.context, DetailFragment::class.java)
 ////            ContextCompat.startActivity(holder.itemView.context, intent, null)
 ////            val result = "title"
@@ -54,5 +56,16 @@ class RListAdapter(private val aList: List<RelayDTO>) :
     override fun getItemCount(): Int {
         return aList.size
     }
+    // Listener interface 생성
+    interface OnItemClcikListener {
+        fun onClick(view : View, position: Int)
+    }
+    // 외부에서 클릭시 이벤트 설정
+    fun setItemClickListener(onItemClcikListener: OnItemClcikListener) {
+        this.itemClickListener = onItemClcikListener
+    }
+
+    private lateinit var itemClickListener : OnItemClcikListener
+
 
 }
