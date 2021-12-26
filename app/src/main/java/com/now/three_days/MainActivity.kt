@@ -167,6 +167,8 @@ class MainActivity : AppCompatActivity() {
         userFile.remove("memo/test")
     }
 
-
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp() || super.onSupportNavigateUp()
+    }
 }
 
