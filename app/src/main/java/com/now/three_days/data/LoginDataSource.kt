@@ -40,6 +40,7 @@ class LoginDataSource() {
         val findUserId = list?.filter { it.userId == username }
         try {
             val findUser = findUserId?.filter { it.password == password }
+            if(findUser == null) return Result.Error(IOException("Error loggin in"))
             val user = findUser?.get(0)
             val loggedInUser =
                 LoggedInUser(
