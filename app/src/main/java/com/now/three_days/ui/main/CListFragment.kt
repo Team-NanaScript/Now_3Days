@@ -57,14 +57,7 @@ class CListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         cListAdapter2 = CListAdapter(cList1)
-//        cListAdapter2 = CListAdapter(cList2)
 
-//        val dataObserver: Observer<ArrayList<ChallengeDTO>> = Observer {
-//
-//        }
-
-//        cList1.apply {
-//        }
 
         cList1.apply {
             add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
@@ -72,19 +65,7 @@ class CListFragment : Fragment() {
 
         }
 
-//        cList2.apply {
-//            add(ChallengeDTO("은결이한테 질척거리기", "2021-11-06~2021-11-09"))
-//            add(ChallengeDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//            add(ChallengeDTO("은빈언니한테 물어보기", "2021-11-06~2021-11-09"))
-//            add(ChallengeDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//            add(ChallengeDTO("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
-//            add(ChallengeDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//            add(ChallengeDTO("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
-//            add(ChallengeDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//        }
-
         binding.bestList.adapter = cListAdapter2
-//        binding.allList.adapter = cListAdapter2
         binding.bestList.layoutManager = GridLayoutManager(context, 2)
         binding.allList.layoutManager = GridLayoutManager(context, 2)
 

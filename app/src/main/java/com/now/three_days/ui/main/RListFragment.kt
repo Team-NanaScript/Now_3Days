@@ -21,16 +21,12 @@ class RListFragment : Fragment() {
     lateinit var rListAdapter1: RListAdapter
     lateinit var rListAdapter2: RListAdapter
 
-    private lateinit var detailFragment: DetailFragment
-
     var mainActivity : MainActivity? = null
 
     private val rList1 = ArrayList<RelayDTO>()
-//    private val rList2 = ArrayList<RelayDTO>()
 
     private var _binding: RListFragmentBinding? = null
 
-    //    private var _binding1: ItemRListBinding? = null
     val binding get() = _binding!!
 
     companion object {
@@ -56,65 +52,27 @@ class RListFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
 
-//        viewModel.list()
-//        viewModel.list().observe(viewLifecycleOwner, Observer {
-
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
-//            고쳐주세요
-//            binding.allList.adapter = RListAdapter(it)
 
-            // cListAdapter1 에 it 을 담아주고
             rListAdapter1 = RListAdapter(it)
-            // cListAdapter1 을 allList를 보여주는 adapter로 설정
             binding.allList.adapter = rListAdapter1
 
-//            if(it.get(0) ) {
-//                binding.bestList.adapter = RListAdapter(it)
-//            }
-
-            // bestList에 조건을 담아서 item 개수 조정하기
 
             rListAdapter1.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
-                    Log.d("어디?", position.toString())
+                    Log.d("position", position.toString())
 
-                    // Relay 에 있는 list
                     Log.d("데이터", "$it")
 
-                    //클릭한 item 의 데이터
                     var id = it[id]
                     Log.d("id", "$id")
 
-                    var seq = viewModel.rList.value
-                    Log.d("seq", "$seq")
-
                     findNavController().navigate(R.id.detail_page)
-
-
-
-//                    parentFragmentManager.beginTransaction().replace(R.id.detail,detailFragment)
-//                    mainActivity!!.changeFragment(position)
-
-//                    activity.supportFragmentManager.beginTransaction()
-//                        .replace(R.id.card_view, )
-
-//
-//                    val fragmentManager : FragmentManager = supportFragmentManager
-//                    val fragmentTransaction = fragmentManager.beginTransaction()
-//                    fragmentTransaction.replace(R.id.container , fragmentOne)
-//                    fragmentTransaction.commit()
-
-
-
-
                 }
             })
         })
     }
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -126,19 +84,7 @@ class RListFragment : Fragment() {
             add(RelayDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
             add(RelayDTO("2", "ㅇㅇ", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
         }
-//
-//        rList2.apply {
-//            add(RelayDTO("은결이한테 질척거리기", "2021-11-06~2021-11-09"))
-//            add(RelayDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//            add(RelayDTO("은빈언니한테 물어보기", "2021-11-06~2021-11-09"))
-//            add(RelayDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//            add(RelayDTO("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
-//            add(RelayDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//            add(RelayDTO("소연이랑 짜허하기", "2021-11-06~2021-11-09"))
-//            add(RelayDTO("영진이 놀리기", "2021-11-06~2021-11-30"))
-//        }
 
-//        binding.allList.adapter = rListAdapter2
         binding.bestList.adapter = rListAdapter2
         binding.allList.layoutManager = GridLayoutManager(context, 2)
         binding.bestList.layoutManager = GridLayoutManager(context, 2)

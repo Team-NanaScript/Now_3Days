@@ -24,11 +24,6 @@ class RListAdapter(private val aList: List<RelayDTO>) :
             binding.rTitle.text = item.r_title
             binding.rDate.text = item.r_sDate
 
-//            itemView.setOnClickListener {
-//                val intent = Intent(itemView.context, DetailFragment::class.java)
-//                    intent.putExtra("data",binding.rTitle.text.toString())
-//                ContextCompat.startActivity()
-//            }
         }
     }
 
@@ -44,13 +39,7 @@ class RListAdapter(private val aList: List<RelayDTO>) :
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it,position)
         }
-////            val intent = Intent(holder.itemView?.context, DetailFragment::class.java)
-////            ContextCompat.startActivity(holder.itemView.context, intent, null)
-////            val result = "title"
-////            // 어떤 item을 클릭했는지 로그 찍어보기기
-//            Log.d("Relay 클릭? {}", position.toString())
-////            Log.d("Intent 어디로?", intent.toString())
-//        })
+
     }
 
     override fun getItemCount(): Int {
@@ -64,6 +53,7 @@ class RListAdapter(private val aList: List<RelayDTO>) :
     fun setItemClickListener(onItemClcikListener: OnItemClcikListener) {
         this.itemClickListener = onItemClcikListener
     }
+
 
     private lateinit var itemClickListener : OnItemClcikListener
 
