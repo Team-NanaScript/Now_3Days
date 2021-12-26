@@ -18,6 +18,12 @@
         tools:layout="@layout/main_list_fragment" />
 
     <fragment
+        android:id="@+id/detail_page"
+        android:name="com.now.three_days.ui.main.DetailFragment"
+        android:label="detail"
+        tools:layout="@layout/detail_fragment"/>
+
+    <fragment
         android:id="@+id/navigation_mypage"
         android:name="com.now.three_days.ui.main.MainListFragment"
         android:label="mypage"

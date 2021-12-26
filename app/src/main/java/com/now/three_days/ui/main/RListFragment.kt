@@ -1,6 +1,5 @@
 package com.now.three_days.ui.main
 
-import android.content.ClipData
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.now.three_days.MainActivity
+import com.now.three_days.R
 import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.databinding.RListFragmentBinding
@@ -19,8 +21,12 @@ class RListFragment : Fragment() {
     lateinit var rListAdapter1: RListAdapter
     lateinit var rListAdapter2: RListAdapter
 
+    private lateinit var detailFragment: DetailFragment
+
+    var mainActivity : MainActivity? = null
+
     private val rList1 = ArrayList<RelayDTO>()
-    private val rList2 = ArrayList<RelayDTO>()
+//    private val rList2 = ArrayList<RelayDTO>()
 
     private var _binding: RListFragmentBinding? = null
 
@@ -50,13 +56,9 @@ class RListFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
 
-        fun onItemClick(item : ClipData.Item) {
-            Log.d("item", "$item")
-        }
-
-
 //        viewModel.list()
 //        viewModel.list().observe(viewLifecycleOwner, Observer {
+
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 //            고쳐주세요
@@ -72,8 +74,47 @@ class RListFragment : Fragment() {
 //            }
 
             // bestList에 조건을 담아서 item 개수 조정하기
+
+            rListAdapter1.setItemClickListener(object : RListAdapter.OnItemClcikListener {
+                override fun onClick(view: View, position: Int) {
+                    Log.d("어디?", position.toString())
+
+                    // Relay 에 있는 list
+                    Log.d("데이터", "$it")
+
+                    //클릭한 item 의 데이터
+                    var id = it[id]
+                    Log.d("id", "$id")
+
+                    var seq = viewModel.rList.value
+                    Log.d("seq", "$seq")
+
+                    findNavController().navigate(R.id.detail_page)
+
+
+
+//                    parentFragmentManager.beginTransaction().replace(R.id.detail,detailFragment)
+//                    mainActivity!!.changeFragment(position)
+
+//                    activity.supportFragmentManager.beginTransaction()
+//                        .replace(R.id.card_view, )
+
+//
+//                    val fragmentManager : FragmentManager = supportFragmentManager
+//                    val fragmentTransaction = fragmentManager.beginTransaction()
+//                    fragmentTransaction.replace(R.id.container , fragmentOne)
+//                    fragmentTransaction.commit()
+
+
+
+
+                }
+            })
         })
     }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,6 +142,8 @@ class RListFragment : Fragment() {
         binding.bestList.adapter = rListAdapter2
         binding.allList.layoutManager = GridLayoutManager(context, 2)
         binding.bestList.layoutManager = GridLayoutManager(context, 2)
+
+
 
     }
 
