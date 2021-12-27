@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -68,7 +69,14 @@ class RListFragment : Fragment() {
                     var id = it[id]
                     Log.d("id", "$id")
 
-                    findNavController().navigate(R.id.detail_page)
+                    var seq = it[position].r_seq
+                    Log.d("seq", "$seq")
+
+                    val bundle = bundleOf("amount" to position)
+                    findNavController().navigate(R.id.detail_page, bundle)
+
+//                    findNavController().navigate(R.id.detail_page)
+
                 }
             })
         })
@@ -80,18 +88,23 @@ class RListFragment : Fragment() {
         rListAdapter2 = RListAdapter(rList1)
 //        rListAdapter1 = RListAdapter(rList1)
 
-        rList1.apply {
-            add(RelayDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
-            add(RelayDTO("2", "ㅇㅇ", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
-        }
+//        rList1.apply {
+//            add(RelayDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
+//            add(RelayDTO("2", "ㅇㅇ", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
+//        }
 
-        binding.bestList.adapter = rListAdapter2
+//        binding.bestList.adapter = rListAdapter2
         binding.allList.layoutManager = GridLayoutManager(context, 2)
-        binding.bestList.layoutManager = GridLayoutManager(context, 2)
-
+//        binding.bestList.layoutManager = GridLayoutManager(context, 2)
 
 
     }
+
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//
+//    }
 
 
 }
