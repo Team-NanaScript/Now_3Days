@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.R
+import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.databinding.DetailFragmentBinding
 
 class DetailFragment : Fragment() {
@@ -35,18 +36,20 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireParentFragment()).get(RListViewModel::class.java)
+        // 이전 Fragment 에서 전송한 bundle 데이터 받기
+        val bundle: Bundle? = arguments
+        val seq = bundle?.get("seq")
+        viewModel = ViewModelProvider(requireParentFragment())[RListViewModel::class.java]
 
         viewModel.list().observe(viewLifecycleOwner, Observer {
-
-            Log.d("title", "$it")
-
-            val tText:TextView = binding.dTitle
-//            tText.setText(it.get().r_title)
-
-
-
-
+            val iSize = it.size-1
+            for(i in 0..iSize){
+                val r_seq = it[i].r_seq
+                if(r_seq == seq){
+                    binding.dTitle.text = it[i].r_title
+                    binding.dContent.text = it[i].r_content
+                }
+            }
         })
     }
 }
