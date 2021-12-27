@@ -83,6 +83,7 @@ class MainCFragment : AuthFragmentParent() {
         // ====== 캘린더 ======
         var week_day: Array<String> = resources.getStringArray(R.array.calendar_day)
 
+        cList.removeAll(cList)
         calendarAdapter = CalendarAdapter(cList)
         cList.apply {
             val dateFormat =
