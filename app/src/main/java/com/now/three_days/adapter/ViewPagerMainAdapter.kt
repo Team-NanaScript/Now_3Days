@@ -8,8 +8,8 @@ import com.now.three_days.ui.main.MainCFragment
 import com.now.three_days.ui.main.MainRFragment
 import com.now.three_days.ui.main.RListFragment
 
-const val MCLIST_INDEX = 3;
-const val MRLIST_INDEX = 4;
+const val MCLIST_INDEX = 0;
+const val MRLIST_INDEX = 1;
 
 
 class ViewPagerMainAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {

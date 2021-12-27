@@ -5,6 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+<<<<<<< HEAD
+import com.google.android.material.tabs.TabLayoutMediator
+import com.now.three_days.R
+import com.now.three_days.adapter.ViewPagerMainAdapter
+import com.now.three_days.databinding.ListFragmentBinding
+=======
 import androidx.recyclerview.widget.GridLayoutManager
 import com.now.three_days.MainActivity
 import com.now.three_days.R
@@ -20,6 +26,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 import java.util.*
 import kotlin.collections.ArrayList
+>>>>>>> 648243bd06b899a4bf18ac855aa52635fd30b228
 
 class MainFragment : AuthFragmentParent() {
 
@@ -51,7 +58,20 @@ class MainFragment : AuthFragmentParent() {
         val mainAct = activity as MainActivity
         mainAct?.setBottomNav(true)
 
+<<<<<<< HEAD
+        val tabLayout = binding.tabLayout
+        val viewPager = binding.viewPager
+
+        binding.viewPager.setBackgroundResource(R.color.main)
+
+        viewPager.adapter = ViewPagerMainAdapter(this)
+        val tabTitle = arrayListOf<String>("Challenge", "Relay")
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabTitle[position]
+        }.attach()
+=======
         clistView = ViewModelProvider(this).get(CListViewModel::class.java)
+>>>>>>> 648243bd06b899a4bf18ac855aa52635fd30b228
 
         return binding.root
     }

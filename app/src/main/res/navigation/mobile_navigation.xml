@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.now.three_days.ui.main.MainCFragment"
+        android:name="com.now.three_days.ui.main.MainFragment"
         android:label="home"
-        tools:layout="@layout/main_r_fragment" />
+        tools:layout="@layout/list_fragment" />
 
     <fragment
         android:id="@+id/navigation_list"

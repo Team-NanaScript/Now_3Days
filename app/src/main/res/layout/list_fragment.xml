@@ -19,7 +19,8 @@
         app:tabIndicatorColor="#FFFFFF"
         app:tabMode="fixed"
         app:tabSelectedTextColor="#FFEB3B"
-        app:tabTextColor="?attr/colorPrimaryDark" />
+        app:tabTextColor="?attr/colorPrimaryDark"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
