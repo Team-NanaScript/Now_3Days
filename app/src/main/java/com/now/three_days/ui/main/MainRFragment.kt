@@ -104,12 +104,9 @@ class MainRFragment : AuthFragmentParent() {
             )
 
             for (i in 0..6) {
-                Log.d("오늘은 몇요일..?", week_day[i])
-
                 cList.apply {
                     add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
                 }
-                Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
             }
         }
 
