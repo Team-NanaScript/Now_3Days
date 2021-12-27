@@ -8,15 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.now.three_days.adapter.ViewPagerAdapter
-import com.now.three_days.databinding.MainListFragmentBinding
+import com.now.three_days.databinding.ListFragmentBinding
 
-class MainListFragment : Fragment() {
+class ListFragment : Fragment() {
 
-    private var _binding: MainListFragmentBinding? = null
+    private var _binding: ListFragmentBinding? = null
     private val binding get() = _binding!!
 
     companion object {
-        fun newInstance() = MainListFragment()
+        fun newInstance() = ListFragment()
     }
 
     private lateinit var viewModel: MainListViewModel
@@ -26,7 +26,7 @@ class MainListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = MainListFragmentBinding.inflate(inflater, container, false)
+        _binding = ListFragmentBinding.inflate(inflater, container, false)
 
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager

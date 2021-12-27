@@ -1,12 +1,16 @@
 package com.now.three_days.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+<<<<<<< HEAD
+import com.google.android.material.tabs.TabLayoutMediator
+import com.now.three_days.R
+import com.now.three_days.adapter.ViewPagerMainAdapter
+import com.now.three_days.databinding.ListFragmentBinding
+=======
 import androidx.recyclerview.widget.GridLayoutManager
 import com.now.three_days.MainActivity
 import com.now.three_days.R
@@ -14,7 +18,6 @@ import com.now.three_days.adapter.CalendarAdapter
 import com.now.three_days.adapter.ListAdapter
 import com.now.three_days.data.model.CalendarVO
 import com.now.three_days.data.model.List_Data
-import com.now.three_days.databinding.FragmentCalendarBinding
 import com.now.three_days.databinding.MainFragmentBinding
 import com.now.three_days.ui.AuthFragmentParent
 import java.time.DayOfWeek
@@ -23,6 +26,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 import java.util.*
 import kotlin.collections.ArrayList
+>>>>>>> 648243bd06b899a4bf18ac855aa52635fd30b228
 
 class MainFragment : AuthFragmentParent() {
 
@@ -44,7 +48,6 @@ class MainFragment : AuthFragmentParent() {
     private var cList = ArrayList<CalendarVO>()
 //    private var cList = MutableLiveData<CalendarVO>() yo ga code da
 
-
     // mainFragment에서 만들어둔 view를 보여주도록 연결하기
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +58,20 @@ class MainFragment : AuthFragmentParent() {
         val mainAct = activity as MainActivity
         mainAct?.setBottomNav(true)
 
+<<<<<<< HEAD
+        val tabLayout = binding.tabLayout
+        val viewPager = binding.viewPager
+
+        binding.viewPager.setBackgroundResource(R.color.main)
+
+        viewPager.adapter = ViewPagerMainAdapter(this)
+        val tabTitle = arrayListOf<String>("Challenge", "Relay")
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabTitle[position]
+        }.attach()
+=======
         clistView = ViewModelProvider(this).get(CListViewModel::class.java)
+>>>>>>> 648243bd06b899a4bf18ac855aa52635fd30b228
 
         return binding.root
     }
@@ -100,20 +116,17 @@ class MainFragment : AuthFragmentParent() {
         )
 
         for (i in 0..6) {
-            Log.d("오늘은 몇요일..?", week_day[i])
-
+//            Log.d("오늘은 몇요일..?", week_day[i])
             cList.apply {
                 add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
             }
-            Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
+//            Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
         }
-
 
         binding.calendarRecyclerview.adapter = calendarAdapter
         binding.calendarRecyclerview.layoutManager = GridLayoutManager(context, 7)
 
     }
-
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
