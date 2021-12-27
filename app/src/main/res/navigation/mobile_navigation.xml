@@ -39,7 +39,7 @@
         android:id="@+id/loginFragment"
         android:name="com.now.three_days.ui.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login"></fragment>
+        tools:layout="@layout/fragment_login"/>
 
     <fragment
         android:id="@+id/settingsFragment"

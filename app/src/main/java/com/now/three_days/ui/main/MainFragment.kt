@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.now.three_days.MainActivity
@@ -41,6 +42,7 @@ class MainFragment : AuthFragmentParent() {
     private lateinit var clistView: CListViewModel
     lateinit var calendarAdapter: CalendarAdapter
     private var cList = ArrayList<CalendarVO>()
+//    private var cList = MutableLiveData<CalendarVO>() yo ga code da
 
 
     // mainFragment에서 만들어둔 view를 보여주도록 연결하기
@@ -82,33 +84,33 @@ class MainFragment : AuthFragmentParent() {
         var week_day: Array<String> = resources.getStringArray(R.array.calendar_day)
 
         calendarAdapter = CalendarAdapter(cList)
-        cList.apply {
-            val dateFormat =
-                DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko"))
-            val monthFormat =
-                DateTimeFormatter.ofPattern("yyyy년 MM월").withLocale(Locale.forLanguageTag("ko"))
 
-            val localDate = LocalDateTime.now().format(monthFormat)
-            binding.dayTextView.text = localDate
+        val dateFormat =
+            DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko"))
+        val monthFormat =
+            DateTimeFormatter.ofPattern("yyyy년 MM월").withLocale(Locale.forLanguageTag("ko"))
 
-            var preSunday: LocalDateTime = LocalDateTime.now().with(
-                TemporalAdjusters.previous(
-                    DayOfWeek.SUNDAY
-                )
+        val localDate = LocalDateTime.now().format(monthFormat)
+        binding.dayTextView.text = localDate
+
+        var preSunday: LocalDateTime = LocalDateTime.now().with(
+            TemporalAdjusters.previous(
+                DayOfWeek.SUNDAY
             )
+        )
 
-            for (i in 0..6) {
-                Log.d("오늘은 몇요일..?", week_day[i])
+        for (i in 0..6) {
+            Log.d("오늘은 몇요일..?", week_day[i])
 
-                cList.apply {
-                    add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
-                }
-                Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
+            cList.apply {
+                add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
             }
+            Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
         }
 
+
         binding.calendarRecyclerview.adapter = calendarAdapter
-        binding.calendarRecyclerview.layoutManager  = GridLayoutManager(context,7)
+        binding.calendarRecyclerview.layoutManager = GridLayoutManager(context, 7)
 
     }
 
