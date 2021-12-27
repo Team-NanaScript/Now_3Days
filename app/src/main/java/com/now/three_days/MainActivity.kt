@@ -3,10 +3,12 @@ package com.now.three_days
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,8 +25,9 @@ class MainActivity : AppCompatActivity() {
 
 //    private lateinit var rListAdapter: RListAdapter
 
-
     private lateinit var binding: MainActivityBinding
+
+    private lateinit var navController: NavController
 
     private lateinit var userFile: UserFile
 
@@ -66,13 +69,18 @@ class MainActivity : AppCompatActivity() {
 
 
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+//        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
 
 //        val toolbar:Toolbar = binding.toolbar
 
 //        if(actionBar != null) {
 //            actionBar?.setDisplayShowHomeEnabled(true)
 //        }
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         navView.setupWithNavController(navController)
 //        toolbar.setupWithNavController(navController)
@@ -145,12 +153,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val setting_item: Int = item.itemId
-        if (setting_item == R.id.loginFragment) {
-//            userFile.remove("memo/test")
-            return true
+        when(item?.itemId){
+            R.id.settingsFragment -> {
+                navController.navigate(R.id.settingsFragment)
+            }
+            R.id.logout -> {
+                Toast.makeText(applicationContext, "로그아웃", Toast.LENGTH_SHORT).show()
+            }
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 
     fun setBottomNav(status: Boolean) {
