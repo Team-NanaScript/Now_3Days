@@ -43,6 +43,8 @@ class InsertServiceImpl : InsertService {
         if (eDate == "" || eDate == null) {
             Toast.makeText(context, "날짜를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
+        } else {
+            Toast.makeText(context, "$select_text 작성완료 !", Toast.LENGTH_SHORT).show()
         }
 
         this.insert(select_text, title, content, sDate, eDate, userId)
@@ -50,6 +52,8 @@ class InsertServiceImpl : InsertService {
         binding.title.setText("")
         binding.eDate.setText("")
         binding.content.setText("")
+
+
     }
 
     override fun insert(
@@ -65,7 +69,7 @@ class InsertServiceImpl : InsertService {
         rs = RelayServiceImplV1()
 
         if (select_text == "챌린지") {
-            var challenge: ChallengeVO = ChallengeVO(
+            var challenge = ChallengeVO(
                 c_title = title,
                 c_content = content,
                 c_sDate = sDate,
@@ -74,10 +78,9 @@ class InsertServiceImpl : InsertService {
                 c_progress = false,
                 c_image = "",
             )
-            cs = ChallengeServiceImplV1()
             cs.insert(challenge, select_text)
         } else if (select_text == "릴레이") {
-            var relay: RelayVO = RelayVO(
+            var relay = RelayVO(
                 r_title = title,
                 r_content = content,
                 r_sDate = sDate,
@@ -85,7 +88,6 @@ class InsertServiceImpl : InsertService {
                 r_eDate = eDate,
                 r_image = "",
             )
-            rs = RelayServiceImplV1()
             rs.insert(relay, select_text)
         }
     }

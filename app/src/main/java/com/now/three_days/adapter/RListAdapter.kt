@@ -23,7 +23,7 @@ class RListAdapter(private val aList: List<RelayDTO>) :
         fun bind(item: RelayDTO) {
             binding.rTitle.text = item.r_title
             binding.rDate.text = item.r_sDate
-
+//            binding.rSeq.text = item.r_seq
         }
     }
 
