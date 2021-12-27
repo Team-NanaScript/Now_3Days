@@ -22,7 +22,6 @@
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="face" />
 
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
