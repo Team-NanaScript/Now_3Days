@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
+import com.now.three_days.R
 import com.now.three_days.adapter.ViewPagerMainAdapter
 import com.now.three_days.databinding.ListFragmentBinding
 
@@ -31,6 +32,8 @@ class MainFragment : Fragment() {
 
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager
+
+        binding.viewPager.setBackgroundResource(R.color.main)
 
         viewPager.adapter = ViewPagerMainAdapter(this)
         val tabTitle = arrayListOf<String>("Challenge", "Relay")
