@@ -7,6 +7,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.service.impl.ChallengeServiceImplV1
+import kotlinx.coroutines.*
 
 class CListViewModel : ViewModel() {
 
@@ -39,10 +40,38 @@ class CListViewModel : ViewModel() {
                 list.add(obj)
             }
             cList.value = list
-
         })
 
         return cList
     }
+
+    fun seq(it:List<ChallengeDTO>): ArrayList<String> {
+        var seqList:ArrayList<String> = arrayListOf()
+        var size = it.size-1
+        for(i in 0..size){
+            var seq = it[i].c_seq
+            seqList.add(seq)
+        }
+        return seqList
+    }
+
+    fun date(it:List<ChallengeDTO>): ArrayList<CDate> {
+        var dateList:ArrayList<CDate> = arrayListOf()
+        val size = it.size-1
+        for(i in 0..size){
+            val cDate:CDate = CDate()
+            val sDate = it[i].c_sDate
+            val eDate = it[i].c_eDate
+            cDate.c_sDate = sDate
+            cDate.c_eDate = eDate
+            dateList.add(cDate)
+        }
+        return dateList
+    }
+
+    data class CDate(
+        var c_sDate:String = "",
+        var c_eDate:String = ""
+            )
 
 }
