@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -59,24 +61,20 @@ class RListFragment : Fragment() {
             rListAdapter1 = RListAdapter(it)
             binding.allList.adapter = rListAdapter1
 
-
             rListAdapter1.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
                     Log.d("position", position.toString())
 
-                    Log.d("데이터", "$it")
-
-                    var id = it[id]
-                    Log.d("id", "$id")
+//                    val seqView:TextView = view.findViewById(R.id.r_seq)
+//                    val rSeq = seqView.text.toString()
+//
+//                    Log.d("View ? ", rSeq)
 
                     var seq = it[position].r_seq
                     Log.d("seq", "$seq")
 
-                    val bundle = bundleOf("amount" to position)
+                    val bundle = bundleOf("seq" to seq)
                     findNavController().navigate(R.id.detail_page, bundle)
-
-//                    findNavController().navigate(R.id.detail_page)
-
                 }
             })
         })
