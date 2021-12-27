@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.List_Data
+import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.databinding.ItemMainListBinding
-import com.now.three_days.ui.main.MainFragment
 
-class ListAdapter(mainFragment: MainFragment) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+class ListAdapter(private val mainList: ArrayList<RelayDTO>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     var data = mutableListOf<List_Data>()
 

@@ -1,14 +1,12 @@
 package com.now.three_days.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.databinding.ItemCListBinding
 
-class CListAdapter(private val cList: List<ChallengeDTO>) :
+class CListAdapter(private val cList: ArrayList<ChallengeDTO>) :
     RecyclerView.Adapter<CListAdapter.BLViewHolder>() {
 
     class BLViewHolder(private val binding: ItemCListBinding) :
@@ -27,9 +25,9 @@ class CListAdapter(private val cList: List<ChallengeDTO>) :
     override fun onBindViewHolder(holder: BLViewHolder, position: Int) {
         holder.bind(cList[position])
 
-        holder.itemView.setOnClickListener(View.OnClickListener {
-            Log.d("Challenge 클릭 {}", position.toString())
-        })
+//        holder.itemView.setOnClickListener(View.OnClickListener {
+//            Log.d("Challenge 클릭 {}", position.toString())
+//        })
     }
 
     override fun getItemCount(): Int {

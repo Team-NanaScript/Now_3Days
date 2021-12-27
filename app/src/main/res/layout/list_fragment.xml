@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     app:layout_anchorGravity="top"
-    tools:context=".ui.main.MainListFragment">
+    tools:context=".ui.main.ListFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

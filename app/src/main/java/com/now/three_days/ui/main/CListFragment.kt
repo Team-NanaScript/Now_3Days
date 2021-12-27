@@ -48,7 +48,7 @@ class CListFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
-            cListAdapter1 = CListAdapter(it)
+            cListAdapter1 = CListAdapter(it as ArrayList<ChallengeDTO>)
             binding.allList.adapter = cListAdapter1
 
         })
