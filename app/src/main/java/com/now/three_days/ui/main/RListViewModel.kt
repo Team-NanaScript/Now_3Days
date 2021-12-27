@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
+import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.service.impl.RelayServiceImplV1
 
@@ -43,5 +44,34 @@ class RListViewModel : ViewModel() {
 
         return rList
     }
+
+    fun seq(it:List<RelayDTO>): ArrayList<String> {
+        var seqList:ArrayList<String> = arrayListOf()
+        var size = it.size-1
+        for(i in 0..size){
+            var seq = it[i].r_seq
+            seqList.add(seq)
+        }
+        return seqList
+    }
+
+    fun date(it:List<RelayDTO>): ArrayList<RDate> {
+        var dateList:ArrayList<RDate> = arrayListOf()
+        val size = it.size-1
+        for(i in 0..size){
+            val rDate:RDate = RDate()
+            val sDate = it[i].r_sDate
+            val eDate = it[i].r_eDate
+            rDate.r_sDate = sDate
+            rDate.r_eDate = eDate
+            dateList.add(rDate)
+        }
+        return dateList
+    }
+
+    data class RDate(
+        var r_sDate:String = "",
+        var r_eDate:String = ""
+    )
 
 }

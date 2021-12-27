@@ -44,6 +44,7 @@ class CListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CListViewModel::class.java)
 
+
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
