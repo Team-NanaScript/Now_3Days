@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.main.MainFragment">
+    android:layout_height="match_parent"
+    tools:context=".ui.main.CalendarFragment">
 
     <LinearLayout
         android:id="@+id/recycler_box"
@@ -19,7 +18,6 @@
             android:id="@+id/day_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:text="2021 - 12"
             android:textAlignment="center"
             android:textSize="20dp" />
@@ -31,13 +29,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/day_textView"
             tools:layout_editor_absoluteX="0dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
