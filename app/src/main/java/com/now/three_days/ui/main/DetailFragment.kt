@@ -5,9 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.now.three_days.R
 import com.now.three_days.databinding.DetailFragmentBinding
 
 class DetailFragment : Fragment() {
@@ -37,6 +40,12 @@ class DetailFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
 
             Log.d("title", "$it")
+
+            val tText:TextView = binding.dTitle
+//            tText.setText(it.get().r_title)
+
+
+
 
         })
     }
