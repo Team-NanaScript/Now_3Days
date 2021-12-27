@@ -8,6 +8,8 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.service.impl.RelayServiceImplV1
+import java.time.Duration
+import java.time.LocalDate
 
 class RListViewModel : ViewModel() {
 
@@ -74,4 +76,70 @@ class RListViewModel : ViewModel() {
         var r_eDate:String = ""
     )
 
+    // 주 단위 날짜 계산
+    fun weekResult(it: List<RelayDTO>) {
+        val testDate1 = "2021-12-01"
+        val testDate2 = "2021-12-31"
+        val splitDate1 = testDate1.split("-")
+        val start =
+            LocalDate.of(splitDate1[0].toInt(), splitDate1[1].toInt(), splitDate1[2].toInt())
+                .atStartOfDay()
+        val splitDate2 = testDate2.split("-")
+        val end = LocalDate.of(splitDate2[0].toInt(), splitDate2[1].toInt(), splitDate2[2].toInt())
+            .atStartOfDay()
+
+        val size = it.size - 1
+        for (i in 0..size) {
+            val r_sDate = it[i].r_sDate
+            val r_eDate = it[i].r_eDate
+
+            val sDateSplit = r_sDate.split("-")
+            val sDate =
+                LocalDate.of(sDateSplit[0].toInt(), sDateSplit[1].toInt(), sDateSplit[2].toInt())
+                    .atStartOfDay()
+            val eDateSplit = r_eDate.split("-")
+            val eDate =
+                LocalDate.of(eDateSplit[0].toInt(), eDateSplit[1].toInt(), eDateSplit[2].toInt())
+                    .atStartOfDay()
+
+            var sDateDuration = Duration.between(sDate, start).toDays()
+            var eDateDuration = Duration.between(eDate, end).toDays()
+
+            Log.d("시작날짜 계산", sDateDuration.toString())
+            Log.d("종료날짜 계산", eDateDuration.toString())
+
+//            if (sDateDuration >= 0) {
+//                if(eDateDuration >= 0){
+//                    Log.d("날짜 계산 ? ", it[i].toString())
+//                }
+//            }
+        }
+    }
+
+    // 오늘 날짜 기준 계산
+        fun todayResult(it: List<RelayDTO>){
+            val today = LocalDate.now().atStartOfDay()
+
+            val size = it.size-1
+            for(i in 0..size){
+                val r_sDate = it[i].r_sDate
+                val r_eDate = it[i].r_eDate
+
+                val sDateSplit = r_sDate.split("-")
+                val sDate = LocalDate.of(sDateSplit[0].toInt(), sDateSplit[1].toInt(), sDateSplit[2].toInt()).atStartOfDay()
+                val eDateSplit = r_eDate.split("-")
+                val eDate = LocalDate.of(eDateSplit[0].toInt(), eDateSplit[1].toInt(), eDateSplit[2].toInt()).atStartOfDay()
+
+                var sDateDuration = Duration.between(sDate, today).toDays()
+                var eDateDuration = Duration.between(eDate, today).toDays()
+
+                Log.d("시작날짜 계산", sDateDuration.toString())
+                Log.d("종료날짜 계산", eDateDuration.toString())
+
+                if(sDateDuration >= 0 && eDateDuration <= 0){
+                    Log.d("날짜 계산 ? ", it[i].toString())
+                }
+            }
+
+        }
 }
