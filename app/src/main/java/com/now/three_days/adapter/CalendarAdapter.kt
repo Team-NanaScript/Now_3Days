@@ -1,6 +1,5 @@
 package com.now.three_days.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,12 +24,9 @@ class CalendarAdapter(private val cList: List<CalendarVO>) :
             val now = LocalDate.now()
                 .format(DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko")))
 
-            Log.d("today", "$today")
-
             if (today == now) {
                 binding.weekCardview.setBackgroundResource(R.drawable.bg_custom_box)
             }
-//            binding.date.setBackgroundResource()
         }
     }
 
