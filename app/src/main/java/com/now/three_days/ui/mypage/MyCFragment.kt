@@ -1,4 +1,4 @@
-package com.now.three_days.ui.main
+package com.now.three_days.ui.mypage
 
 import android.os.Bundle
 import android.util.Log
@@ -18,20 +18,17 @@ import com.now.three_days.ui.AuthFragmentParent
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MainCFragment : AuthFragmentParent() {
+class MyCFragment : AuthFragmentParent() {
 
     //    lateinit var listAdapter: ListAdapter
     private lateinit var cListAdapter: CListAdapter
-    private lateinit var mainActivity: MainActivity
-
 
     companion object {
-        fun newInstance() = MainCFragment()
+        fun newInstance() = MyCFragment()
     }
 
     // ====== list ======
     private lateinit var viewModel: CListViewModel
-    private val mainCList = ArrayList<ChallengeDTO>()
     private var _binding: MainCFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -43,18 +40,11 @@ class MainCFragment : AuthFragmentParent() {
     ): View {
         _binding = MainCFragmentBinding.inflate(inflater, container, false)
 
-        val mainAct = activity as MainActivity
-        mainAct?.setBottomNav(true)
-
-//        rlistView = ViewModelProvider(this).get(CListViewModel::class.java)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -65,7 +55,8 @@ class MainCFragment : AuthFragmentParent() {
         val userId = mainActivity.getFile().userId.toString()
         Log.d("현재 userId", "$userId")
 
-        viewModel.list().observe(viewLifecycleOwner, Observer {
+//        viewModel.list().observe(viewLifecycleOwner, Observer {
+        viewModel.listByUserId(userId).observe(viewLifecycleOwner, Observer {
 
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
 
@@ -85,7 +76,7 @@ class MainCFragment : AuthFragmentParent() {
         // TODO: Use the ViewModel
     }
 
-    fun <T> List<T>.random() : T {
+    fun <T> List<T>.random(): T {
         val random = Random().nextInt((size))
         return get(random)
     }
