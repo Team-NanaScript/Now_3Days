@@ -61,6 +61,7 @@ class CListFragment : Fragment() {
 //
 //            }
 
+            // 여기 수정필요
             cListAdapter1 = CListAdapter(it.shuffled() as ArrayList<ChallengeDTO>)
             binding.allList.adapter = cListAdapter1
 

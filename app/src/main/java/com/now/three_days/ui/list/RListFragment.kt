@@ -60,16 +60,17 @@ class RListFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
-            var item = it
+            // 여기 수정필요
+//            var item = it
 
             binding.cSwipeLayout.setOnRefreshListener {
                 // isRefreshing 새로고침 후 아이콘 없애기
                 binding.cSwipeLayout.isRefreshing = false
-                item = it.shuffled()
+//                item = it.shuffled()
                 Log.d("shuffled", "$it")
 
             }
-//            rListAdapter1 = RListAdapter(item)
+            rListAdapter1 = RListAdapter(it)
             binding.allList.adapter = rListAdapter1
 
 
