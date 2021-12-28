@@ -11,10 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.MainActivity
 import com.now.three_days.R
-import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.data.viewmodel.RListViewModel
