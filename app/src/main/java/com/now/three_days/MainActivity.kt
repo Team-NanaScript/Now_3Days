@@ -198,7 +198,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        userFile.remove("memo/test")
     }
 
     override fun onSupportNavigateUp(): Boolean {

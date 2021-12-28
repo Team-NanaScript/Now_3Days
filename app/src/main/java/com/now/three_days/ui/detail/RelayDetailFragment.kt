@@ -43,8 +43,8 @@ class RelayDetailFragment : Fragment() {
             for(i in 0..iSize){
                 val r_seq = it[i].r_seq
                 if(r_seq == seq){
-                    binding.dTitle.text = it[i].r_title
-                    binding.dContent.text = it[i].r_content
+                    binding.relayDetailTitle.text= it[i].r_title
+                    binding.relayDetailContent.text = it[i].r_content
                 }
             }
         })

@@ -1,35 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.RelayDetailFragment">
+    tools:context=".ui.detail.RelayDetailFragment"
+    android:orientation="vertical"
+    >
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/detail">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/layout_relay_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ddaadd"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        >
 
         <TextView
-            android:id="@+id/d_title"
+            android:id="@+id/relay_detail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="text"
+            android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="릴레이제목"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/d_content"
+            android:id="@+id/relay_const_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:text="릴레이"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_relay_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ddd"
+        android:padding="8dp"
+        >
+        <TextView
+            android:id="@+id/relay_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hey~"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_relay_reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:padding="8dp"
+            />
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="text"
-            android:textSize="30dp" />
-        </LinearLayout>
-        </FrameLayout>
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="저장"
+            />
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
