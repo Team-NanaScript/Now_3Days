@@ -1,4 +1,4 @@
-package com.now.three_days.ui.main
+package com.now.three_days.ui.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,8 +18,6 @@ class ListFragment : Fragment() {
     companion object {
         fun newInstance() = ListFragment()
     }
-
-    private lateinit var viewModel: MainListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +40,7 @@ class ListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainListViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(CListViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

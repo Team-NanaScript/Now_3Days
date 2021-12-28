@@ -1,11 +1,10 @@
-package com.now.three_days.ui.main
+package com.now.three_days.data.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
-import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.service.impl.RelayServiceImplV1
 import java.time.Duration
@@ -61,7 +60,7 @@ class RListViewModel : ViewModel() {
         var dateList:ArrayList<RDate> = arrayListOf()
         val size = it.size-1
         for(i in 0..size){
-            val rDate:RDate = RDate()
+            val rDate: RDate = RDate()
             val sDate = it[i].r_sDate
             val eDate = it[i].r_eDate
             rDate.r_sDate = sDate

@@ -3,10 +3,8 @@ package com.now.three_days.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.now.three_days.ui.main.CListFragment
 import com.now.three_days.ui.main.MainCFragment
 import com.now.three_days.ui.main.MainRFragment
-import com.now.three_days.ui.main.RListFragment
 
 const val MCLIST_INDEX = 0;
 const val MRLIST_INDEX = 1;

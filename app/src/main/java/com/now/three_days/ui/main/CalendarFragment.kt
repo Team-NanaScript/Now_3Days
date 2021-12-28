@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.tabs.TabLayoutMediator
+import com.now.three_days.MainActivity
 import com.now.three_days.R
 import com.now.three_days.adapter.CalendarAdapter
+import com.now.three_days.adapter.ViewPagerMainAdapter
 import com.now.three_days.data.model.CalendarVO
 import com.now.three_days.databinding.FragmentCalendarBinding
+import com.now.three_days.data.viewmodel.CListViewModel
 import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -43,9 +47,23 @@ class CalendarFragment : Fragment() {
             ViewModelProvider(this).get(CListViewModel::class.java)
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+//        val root: View = binding.root
 
-        return root
+        val tabLayout = binding.tabLayout
+        val viewPager = binding.viewPager
+
+        binding.viewPager.setBackgroundResource(R.color.white)
+
+        viewPager.adapter = ViewPagerMainAdapter(this)
+        val tabTitle = arrayListOf<String>("Challenge", "Relay")
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabTitle[position]
+        }.attach()
+
+        val mainAct = activity as MainActivity
+        mainAct?.setBottomNav(true)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

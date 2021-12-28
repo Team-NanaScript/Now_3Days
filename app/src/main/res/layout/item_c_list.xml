@@ -10,7 +10,7 @@
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:background="@drawable/img"
@@ -29,9 +29,7 @@
                 android:id="@+id/c_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
                 android:ellipsize="end"
-                android:gravity="start"
                 android:includeFontPadding="false"
                 android:paddingStart="10dp"
                 android:text="1L 마시기"
@@ -41,10 +39,8 @@
             <TextView
                 android:id="@+id/c_date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_height="match_parent"
                 android:ellipsize="end"
-                android:gravity="start"
                 android:includeFontPadding="false"
                 android:paddingStart="5dp"
                 android:text="그럼요 당연하죠 네네치킨"
