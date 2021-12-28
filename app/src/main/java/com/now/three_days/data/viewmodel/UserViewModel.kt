@@ -1,4 +1,4 @@
-package com.now.three_days.service
+package com.now.three_days.data.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
