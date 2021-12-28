@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.now.three_days.MainActivity
+import com.now.three_days.R
 import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.databinding.MainCFragmentBinding
@@ -60,6 +62,13 @@ class MainCFragment : AuthFragmentParent() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
             binding.cList.adapter = cListAdapter
+
+            cListAdapter.setItemClickListener(object :CListAdapter.OnItemClcikListener{
+                override fun onClick(view: View, position: Int) {
+                    findNavController().navigate(R.id.c_detail_page)
+                }
+
+            })
 
 
         })
