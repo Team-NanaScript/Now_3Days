@@ -1,4 +1,4 @@
-package com.now.three_days.ui.main
+package com.now.three_days.data.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -59,7 +59,7 @@ class CListViewModel : ViewModel() {
         var dateList:ArrayList<CDate> = arrayListOf()
         val size = it.size-1
         for(i in 0..size){
-            val cDate:CDate = CDate()
+            val cDate: CDate = CDate()
             val sDate = it[i].c_sDate
             val eDate = it[i].c_eDate
             cDate.c_sDate = sDate

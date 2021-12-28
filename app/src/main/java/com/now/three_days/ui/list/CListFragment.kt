@@ -1,4 +1,4 @@
-package com.now.three_days.ui.main
+package com.now.three_days.ui.list
 
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.now.three_days.R
 import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.data.model.ChallengeDTO
+import com.now.three_days.data.viewmodel.CListViewModel
 import com.now.three_days.databinding.CListFragmentBinding
 
 class CListFragment : Fragment() {

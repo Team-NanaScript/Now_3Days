@@ -1,12 +1,10 @@
-package com.now.three_days.ui.main
+package com.now.three_days.ui.list
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,6 +15,7 @@ import com.now.three_days.MainActivity
 import com.now.three_days.R
 import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.data.model.RelayDTO
+import com.now.three_days.data.viewmodel.RListViewModel
 import com.now.three_days.databinding.RListFragmentBinding
 
 class RListFragment : Fragment() {

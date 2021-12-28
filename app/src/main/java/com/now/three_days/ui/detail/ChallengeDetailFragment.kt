@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.databinding.ChallengeDetailFragmentBinding
-import com.now.three_days.databinding.RelayDetailFragmentBinding
-import com.now.three_days.ui.main.CListViewModel
-import com.now.three_days.ui.main.RListFragment
-import com.now.three_days.ui.main.RListViewModel
+import com.now.three_days.data.viewmodel.CListViewModel
 
 class ChallengeDetailFragment : Fragment() {
 

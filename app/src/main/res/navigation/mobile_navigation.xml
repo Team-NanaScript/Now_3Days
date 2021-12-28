@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.now.three_days.ui.main.MainFragment"
+        android:name="com.now.three_days.ui.main.CalendarFragment"
         android:label="home"
-        tools:layout="@layout/list_fragment" />
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/navigation_list"
-        android:name="com.now.three_days.ui.main.ListFragment"
+        android:name="com.now.three_days.ui.list.ListFragment"
         android:label="list"
         tools:layout="@layout/list_fragment" />
 
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_mypage"
-        android:name="com.now.three_days.ui.main.ListFragment"
+        android:name="com.now.three_days.ui.list.ListFragment"
         android:label="mypage"
         tools:layout="@layout/list_fragment" />
 
