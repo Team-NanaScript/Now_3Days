@@ -1,6 +1,7 @@
 package com.now.three_days.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.ChallengeDTO
@@ -25,6 +26,11 @@ class CListAdapter(private val cList: ArrayList<ChallengeDTO>) :
     override fun onBindViewHolder(holder: BLViewHolder, position: Int) {
         holder.bind(cList[position])
 
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it,position)
+        }
+
 //        holder.itemView.setOnClickListener(View.OnClickListener {
 //            Log.d("Challenge 클릭 {}", position.toString())
 //        })
@@ -34,4 +40,15 @@ class CListAdapter(private val cList: ArrayList<ChallengeDTO>) :
         return cList.size
 //        if(cList.size >= 2) 2 else 0
     }
+
+    interface OnItemClcikListener {
+        fun onClick(view : View, position: Int)
+    }
+
+    fun setItemClickListener(onItemClcikListener: OnItemClcikListener) {
+        this.itemClickListener = onItemClcikListener
+    }
+
+
+    private lateinit var itemClickListener : OnItemClcikListener
 }
