@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.now.three_days.R
 import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.databinding.CListFragmentBinding
@@ -51,6 +54,19 @@ class CListFragment : Fragment() {
             cListAdapter1 = CListAdapter(it as ArrayList<ChallengeDTO>)
             binding.allList.adapter = cListAdapter1
 
+            cListAdapter1.setItemClickListener(object : CListAdapter.OnItemClcikListener{
+                override fun onClick(view: View, position: Int) {
+
+                    var seq = it[position].c_seq
+                    Log.d("seq", "$seq")
+
+                    val bundle = bundleOf("seq" to seq)
+                    findNavController().navigate(R.id.c_detail_page, bundle)
+
+                }
+
+            })
+
         })
     }
 
@@ -60,11 +76,11 @@ class CListFragment : Fragment() {
         cListAdapter2 = CListAdapter(cList1)
 
 
-        cList1.apply {
-            add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
-            add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
-
-        }
+//        cList1.apply {
+//            add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
+//            add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
+//
+//        }
 
         binding.bestList.adapter = cListAdapter2
         binding.bestList.layoutManager = GridLayoutManager(context, 2)

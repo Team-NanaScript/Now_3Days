@@ -74,7 +74,7 @@ class RListFragment : Fragment() {
                     Log.d("seq", "$seq")
 
                     val bundle = bundleOf("seq" to seq)
-                    findNavController().navigate(R.id.detail_page, bundle)
+                    findNavController().navigate(R.id.r_detail_page, bundle)
                 }
             })
         })

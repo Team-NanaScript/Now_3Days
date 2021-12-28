@@ -18,10 +18,16 @@
         tools:layout="@layout/list_fragment" />
 
     <fragment
-        android:id="@+id/detail_page"
+        android:id="@+id/r_detail_page"
         android:name="com.now.three_days.ui.detail.RelayDetailFragment"
         android:label="detail"
         tools:layout="@layout/relay_detail_fragment"/>
+
+    <fragment
+        android:id="@+id/c_detail_page"
+        android:name="com.now.three_days.ui.detail.ChallengeDetailFragment"
+        android:label="detail"
+        tools:layout="@layout/challenge_detail_fragment"/>
 
     <fragment
         android:id="@+id/navigation_mypage"
