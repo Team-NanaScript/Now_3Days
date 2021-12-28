@@ -1,6 +1,7 @@
 package com.now.three_days.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,10 @@ import kotlin.collections.ArrayList
 
 class MainCFragment : AuthFragmentParent() {
 
-//    lateinit var listAdapter: ListAdapter
+    //    lateinit var listAdapter: ListAdapter
     private lateinit var cListAdapter: CListAdapter
+    private lateinit var mainActivity: MainActivity
+
 
     companion object {
         fun newInstance() = MainCFragment()
@@ -30,8 +33,6 @@ class MainCFragment : AuthFragmentParent() {
     private val mainCList = ArrayList<ChallengeDTO>()
     private var _binding: MainCFragmentBinding? = null
     private val binding get() = _binding!!
-
-
 
 
     // mainFragment에서 만들어둔 view를 보여주도록 연결하기
@@ -59,12 +60,22 @@ class MainCFragment : AuthFragmentParent() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(CListViewModel::class.java)
 
+        val mainActivity = activity as MainActivity
+        val userId = mainActivity.getFile().userId.toString()
+        Log.d("현재 userId", "$userId")
+
         viewModel.list().observe(viewLifecycleOwner, Observer {
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
             binding.cList.adapter = cListAdapter
 
-            cListAdapter.setItemClickListener(object :CListAdapter.OnItemClcikListener{
+//            if(it[id].c_userId == userId) {
+//                binding.cList.adapter = cListAdapter
+//            }
+
+            cListAdapter.setItemClickListener(object : CListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
+
+
                     findNavController().navigate(R.id.c_detail_page)
                 }
 
