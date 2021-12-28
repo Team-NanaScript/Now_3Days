@@ -1,17 +1,11 @@
 package com.now.three_days.adapter
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import androidx.appcompat.view.menu.MenuView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.databinding.ItemRListBinding
-import com.now.three_days.ui.main.DetailFragment
 
 class RListAdapter(private val aList: List<RelayDTO>) :
     RecyclerView.Adapter<RListAdapter.ALViewHolder>() {

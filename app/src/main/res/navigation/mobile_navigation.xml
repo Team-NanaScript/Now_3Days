@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/detail_page"
-        android:name="com.now.three_days.ui.main.DetailFragment"
+        android:name="com.now.three_days.ui.main.RelayDetailFragment"
         android:label="detail"
         tools:layout="@layout/detail_fragment"/>
 

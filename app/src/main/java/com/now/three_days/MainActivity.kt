@@ -7,25 +7,21 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
-import com.now.three_days.ui.main.DetailFragment
+import com.now.three_days.ui.main.RelayDetailFragment
 import com.now.three_days.ui.main.RListFragment
 
 class MainActivity : AppCompatActivity() {
 
     private val rListFragment = RListFragment()
-    private val detailFragment = DetailFragment()
+    private val detailFragment = RelayDetailFragment()
 
 //    private lateinit var rListAdapter: RListAdapter
 
