@@ -15,7 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.now.three_days.databinding.MainActivityBinding
 import com.now.three_days.service.UserFile
-import com.now.three_days.ui.main.RelayDetailFragment
+import com.now.three_days.ui.detail.RelayDetailFragment
 import com.now.three_days.ui.main.RListFragment
 
 class MainActivity : AppCompatActivity() {

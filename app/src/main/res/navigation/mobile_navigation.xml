@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/detail_page"
-        android:name="com.now.three_days.ui.main.RelayDetailFragment"
+        android:name="com.now.three_days.ui.detail.RelayDetailFragment"
         android:label="detail"
-        tools:layout="@layout/detail_fragment"/>
+        tools:layout="@layout/relay_detail_fragment"/>
 
     <fragment
         android:id="@+id/navigation_mypage"

@@ -4,7 +4,7 @@
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.RelayDetailFragment">
+    tools:context=".ui.detail.RelayDetailFragment">
 
         <FrameLayout
             android:layout_width="match_parent"
