@@ -11,8 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.MainActivity
 import com.now.three_days.R
+import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.adapter.RListAdapter
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.data.viewmodel.RListViewModel
@@ -47,6 +49,7 @@ class RListFragment : Fragment() {
 //        _binding = ItemRListBinding.inflate(inflater,container,false)
 
         return binding.root
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -57,8 +60,18 @@ class RListFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
-            rListAdapter1 = RListAdapter(it)
+            var item = it
+
+            binding.cSwipeLayout.setOnRefreshListener {
+                // isRefreshing 새로고침 후 아이콘 없애기
+                binding.cSwipeLayout.isRefreshing = false
+                item = it.shuffled()
+                Log.d("shuffled", "$it")
+
+            }
+//            rListAdapter1 = RListAdapter(item)
             binding.allList.adapter = rListAdapter1
+
 
             rListAdapter1.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
@@ -82,7 +95,7 @@ class RListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rListAdapter2 = RListAdapter(rList1)
+//        rListAdapter2 = RListAdapter(rList1)
 //        rListAdapter1 = RListAdapter(rList1)
 
 //        rList1.apply {
@@ -97,11 +110,15 @@ class RListFragment : Fragment() {
 
     }
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//
-//    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+
+    }
+
+    fun updateEarthquakes() {
+
+    }
 
 
 }
