@@ -15,6 +15,7 @@ import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.databinding.MainCFragmentBinding
 import com.now.three_days.ui.AuthFragmentParent
 import com.now.three_days.data.viewmodel.CListViewModel
+import java.util.*
 import kotlin.collections.ArrayList
 
 class MainCFragment : AuthFragmentParent() {
@@ -65,12 +66,11 @@ class MainCFragment : AuthFragmentParent() {
         Log.d("현재 userId", "$userId")
 
         viewModel.list().observe(viewLifecycleOwner, Observer {
+
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
+
             binding.cList.adapter = cListAdapter
 
-//            if(it[id].c_userId == userId) {
-//                binding.cList.adapter = cListAdapter
-//            }
 
             cListAdapter.setItemClickListener(object : CListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
@@ -81,9 +81,12 @@ class MainCFragment : AuthFragmentParent() {
 
             })
 
-
         })
         // TODO: Use the ViewModel
     }
 
+    fun <T> List<T>.random() : T {
+        val random = Random().nextInt((size))
+        return get(random)
+    }
 }
