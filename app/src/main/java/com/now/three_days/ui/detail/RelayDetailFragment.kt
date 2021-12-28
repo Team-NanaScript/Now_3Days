@@ -1,25 +1,22 @@
-package com.now.three_days.ui.main
+package com.now.three_days.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.now.three_days.R
-import com.now.three_days.data.model.RelayDTO
-import com.now.three_days.databinding.DetailFragmentBinding
+import com.now.three_days.databinding.RelayDetailFragmentBinding
+import com.now.three_days.ui.main.RListFragment
+import com.now.three_days.ui.main.RListViewModel
 
 class RelayDetailFragment : Fragment() {
 
     private lateinit var viewModel: RListViewModel
     private lateinit var rListFragment: RListFragment
 
-    private var _binding: DetailFragmentBinding? = null
+    private var _binding:RelayDetailFragmentBinding? = null
 
     val binding get() = _binding!!
 
@@ -29,7 +26,7 @@ class RelayDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = DetailFragmentBinding.inflate(inflater,container,false)
+        _binding = RelayDetailFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
