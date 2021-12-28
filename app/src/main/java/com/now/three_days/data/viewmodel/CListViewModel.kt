@@ -45,6 +45,7 @@ class CListViewModel : ViewModel() {
         return cList
     }
 
+
     fun seq(it:List<ChallengeDTO>): ArrayList<String> {
         var seqList:ArrayList<String> = arrayListOf()
         var size = it.size-1
@@ -75,3 +76,4 @@ class CListViewModel : ViewModel() {
             )
 
 }
+
