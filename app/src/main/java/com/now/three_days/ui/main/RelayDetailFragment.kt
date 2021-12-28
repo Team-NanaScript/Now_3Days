@@ -14,7 +14,7 @@ import com.now.three_days.R
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.databinding.DetailFragmentBinding
 
-class DetailFragment : Fragment() {
+class RelayDetailFragment : Fragment() {
 
     private lateinit var viewModel: RListViewModel
     private lateinit var rListFragment: RListFragment
