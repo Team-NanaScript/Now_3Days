@@ -1,7 +1,11 @@
 package com.now.three_days
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
+import android.os.Process
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -56,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
 
         /*
@@ -153,20 +156,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item?.itemId){
+        when (item?.itemId) {
             R.id.settingsFragment -> {
                 navController.navigate(R.id.settingsFragment)
             }
             R.id.logout -> {
-                Toast.makeText(applicationContext, "로그아웃", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "로그아웃", Toast.LENGTH_SHORT).show()
+                alertdialog(this)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    fun alertdialog(context: Context) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
+        alertDialogBuilder.setTitle("프로그램 종료")
+        alertDialogBuilder.setMessage("로그아웃을 하시겠습니까?")
+            .setCancelable(false)
+            .setPositiveButton("로그아웃",
+                DialogInterface.OnClickListener { dialog, id ->
+                    userFile.remove("memo/test")
+                    val pid = Process.myPid()
+                    Process.killProcess(pid)
+                    finish()
+                })
+            .setNegativeButton("취소",
+                DialogInterface.OnClickListener { dialog, id ->
+                    dialog.cancel()
+                })
+
+        val alertDialog = alertDialogBuilder.create()
+
+        alertDialog.show()
+    }
+
     fun setBottomNav(status: Boolean) {
         binding.navView.visibility = if (status) View.VISIBLE else View.GONE
-        binding.toolbar.visibility = if (status) View.VISIBLE else View.GONE
+//        binding.toolbar.visibility = if (status) View.VISIBLE else View.GONE
+        binding.appBarLayout.visibility = if (status) View.VISIBLE else View.GONE
     }
 
     fun getFile(): UserFile {
