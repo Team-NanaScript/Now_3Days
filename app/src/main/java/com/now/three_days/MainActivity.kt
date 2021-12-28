@@ -31,25 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var userFile: UserFile
 
-//    fun changeFragment(positon : Int) {
-//        when(positon) {
-//            1 -> {
-//                supportFragmentManager
-//                    .beginTransaction()
-//                    .add(R.id.rList, rListFragment)
-//                    .commit()
-//            }
-//
-//            2 -> {
-//                supportFragmentManager
-//                    .beginTransaction()
-//                    .replace(R.id.rList, detailFragment)
-//                    .commit()
-//            }
-//
-//        }
-//    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,21 +69,6 @@ class MainActivity : AppCompatActivity() {
 
         // this.hideSystemUI()
     }
-//
-//    fun setFragment(fragment: RListFragment) {
-//        val transaction = supportFragmentManager.beginTransaction()
-//            .replace(R.id.rList,fragment)
-//        transaction.commit()
-//
-//    }
-//
-//    fun setDataFragment(fragment: RListFragment, title:String) {
-//        val bundle = Bundle()
-//        bundle.putString("title", title)
-//
-//        fragment.arguments = bundle
-//        setFragment(fragment)
-//    }
 
     private fun hideSystemUI() {
 

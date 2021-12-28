@@ -16,6 +16,9 @@ import com.now.three_days.adapter.CListAdapter
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.data.viewmodel.CListViewModel
 import com.now.three_days.databinding.CListFragmentBinding
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class CListFragment : Fragment() {
 
@@ -52,10 +55,17 @@ class CListFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
+//            val random = Random()
+//
+//            for(i in 0..it.size) {
+//
+//            }
+
             cListAdapter1 = CListAdapter(it as ArrayList<ChallengeDTO>)
             binding.allList.adapter = cListAdapter1
 
-            cListAdapter1.setItemClickListener(object : CListAdapter.OnItemClcikListener{
+
+            cListAdapter1.setItemClickListener(object : CListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
 
                     var seq = it[position].c_seq
@@ -83,8 +93,8 @@ class CListFragment : Fragment() {
 //
 //        }
 
-        binding.bestList.adapter = cListAdapter2
-        binding.bestList.layoutManager = GridLayoutManager(context, 2)
+//        binding.bestList.adapter = cListAdapter2
+//        binding.bestList.layoutManager = GridLayoutManager(context, 2)
         binding.allList.layoutManager = GridLayoutManager(context, 2)
 
     }

@@ -71,32 +71,32 @@ class CalendarFragment : Fragment() {
 
         var week_day: Array<String> = resources.getStringArray(R.array.calendar_day)
 
+        cList.removeAll(cList)
         calendarAdapter = CalendarAdapter(cList)
-        cList.apply {
-            val dateFormat =
-                DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko"))
-            val monthFormat =
-                DateTimeFormatter.ofPattern("yyyy년 MM월").withLocale(Locale.forLanguageTag("ko"))
+        val dateFormat =
+            DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko"))
+        val monthFormat =
+            DateTimeFormatter.ofPattern("yyyy년 MM월").withLocale(Locale.forLanguageTag("ko"))
 
-            val localDate = LocalDateTime.now().format(monthFormat)
-            binding.dayTextView.text = localDate
+        val localDate = LocalDateTime.now().format(monthFormat)
+        binding.dayTextView.text = localDate
 
-            val nowDate = LocalDateTime.now().format(dateFormat)
+        val nowDate = LocalDateTime.now().format(dateFormat)
 
-            var preSunday: LocalDateTime = LocalDateTime.now().with(
-                TemporalAdjusters.previous(
-                    DayOfWeek.SUNDAY
-                )
+        var preSunday: LocalDateTime = LocalDateTime.now().with(
+            TemporalAdjusters.previous(
+                DayOfWeek.SUNDAY
             )
+        )
 
-            for (i in 0..6) {
-                Log.d("오늘은 몇요일..?", week_day[i])
+        for (i in 0..6) {
+            Log.d("오늘은 몇요일..?", week_day[i])
 
-                cList.apply {
-                    add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
-                }
-                Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
+            cList.apply {
+                add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
             }
+            Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
+
         }
         binding.calendarRecyclerview.adapter = calendarAdapter
         binding.calendarRecyclerview.layoutManager = GridLayoutManager(context, 7)
