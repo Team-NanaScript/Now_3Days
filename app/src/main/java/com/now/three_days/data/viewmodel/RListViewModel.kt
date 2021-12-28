@@ -1,6 +1,7 @@
 package com.now.three_days.data.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.EventListener
@@ -141,4 +142,30 @@ class RListViewModel : ViewModel() {
             }
 
         }
+
+    fun listByUserId(userId: String): LiveData<List<RelayDTO>> {
+        rs = RelayServiceImplV1()
+        // service에는 vo 받아오는데에는 dto라서 안나오나?
+        rs.select("릴레이")
+            .whereEqualTo("r_userId", userId)
+            .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
+            val data: MutableLiveData<List<RelayDTO>> = MutableLiveData()
+            var list: MutableList<RelayDTO> = mutableListOf()
+            if (exception != null) {
+                // w 로 해야지 exception 받아짐
+                Log.w("파이어 베이스 ㅋ", exception)
+                data.value = null
+                return@EventListener
+            }
+            for (doc in snapshot!!) {
+                var seq = doc.id
+                var obj = doc.toObject(RelayDTO::class.java)
+                obj.r_seq = seq
+                list.add(obj)
+            }
+            rList.value = list
+        })
+
+        return rList
+    }
 }

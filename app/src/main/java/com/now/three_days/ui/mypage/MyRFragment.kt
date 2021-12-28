@@ -1,4 +1,4 @@
-package com.now.three_days.ui.main
+package com.now.three_days.ui.mypage
 
 import android.os.Bundle
 import android.util.Log
@@ -17,17 +17,16 @@ import com.now.three_days.data.viewmodel.RListViewModel
 import com.now.three_days.databinding.MainRFragmentBinding
 import com.now.three_days.ui.AuthFragmentParent
 
-class MainRFragment : AuthFragmentParent() {
+class MyRFragment : AuthFragmentParent() {
 
     private lateinit var rListAdapter: RListAdapter
 
     companion object {
-        fun newInstance() = MainRFragment()
+        fun newInstance() = MyRFragment()
     }
 
     // ====== list ======
     private lateinit var viewModel: RListViewModel
-    private val mainRList = ArrayList<RelayDTO>()
     private var _binding: MainRFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -52,15 +51,18 @@ class MainRFragment : AuthFragmentParent() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
 
-        viewModel.list().observe(viewLifecycleOwner, Observer {
+        val mainActivity = activity as MainActivity
+        val userId = mainActivity.getFile().userId.toString()
+        Log.d("현재 userId", "$userId")
+
+        viewModel.listByUserId(userId).observe(viewLifecycleOwner, Observer {
             rListAdapter = RListAdapter(it as ArrayList<RelayDTO>)
             binding.rList.adapter = rListAdapter
-            Log.d("mainRList", "$it")
+//            Log.d("mainRList", "$it")
 
             rListAdapter.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
                     Log.d("position", position.toString())
-
 
                     var seq = it[position].r_seq
                     Log.d("seq", "$seq")

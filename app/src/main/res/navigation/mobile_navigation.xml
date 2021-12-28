@@ -30,12 +30,6 @@
         tools:layout="@layout/challenge_detail_fragment"/>
 
     <fragment
-        android:id="@+id/navigation_mypage"
-        android:name="com.now.three_days.ui.list.ListFragment"
-        android:label="mypage"
-        tools:layout="@layout/list_fragment" />
-
-    <fragment
         android:id="@+id/insertFragment"
         android:name="com.now.three_days.ui.insert.InsertFragment"
         android:label="insert_fragment"
@@ -63,5 +57,10 @@
             app:popUpTo="@id/navigation_intro"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.now.three_days.ui.mypage.MypageFragment"
+        android:label="fragment_mypage"
+        tools:layout="@layout/fragment_mypage" />
 
 </navigation>
