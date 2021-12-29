@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -70,13 +71,18 @@ class MainCFragment : AuthFragmentParent() {
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
 
             binding.cList.adapter = cListAdapter
+            Log.d("mainRList", "$it")
 
 
             cListAdapter.setItemClickListener(object : CListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
+                    Log.d("position", position.toString())
 
+                    var seq = it[position].c_seq
+                    Log.d("seq", "$seq")
 
-                    findNavController().navigate(R.id.c_detail_page)
+                    val bundle = bundleOf("seq" to seq)
+                    findNavController().navigate(R.id.c_detail_page, bundle)
                 }
 
             })
@@ -85,8 +91,4 @@ class MainCFragment : AuthFragmentParent() {
         // TODO: Use the ViewModel
     }
 
-    fun <T> List<T>.random() : T {
-        val random = Random().nextInt((size))
-        return get(random)
-    }
 }
