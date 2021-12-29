@@ -22,7 +22,7 @@ class CListViewModel : ViewModel() {
 //        _data.value = listOf()
 //    }
 
-    fun list(): MutableLiveData<List<ChallengeDTO>> {
+    fun list(): LiveData<List<ChallengeDTO>> {
 
         cs = ChallengeServiceImplV1()
         cs.select("챌린지").addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
@@ -46,7 +46,7 @@ class CListViewModel : ViewModel() {
         return cList
     }
 
-    fun listByUserId(userId: String): MutableLiveData<List<ChallengeDTO>> {
+    fun listByUserId(userId: String): LiveData<List<ChallengeDTO>> {
         cs = ChallengeServiceImplV1()
         cs.select("챌린지").whereEqualTo("c_userId", userId)
             .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
@@ -64,6 +64,32 @@ class CListViewModel : ViewModel() {
                     var obj = doc.toObject(ChallengeDTO::class.java)
                     obj.c_seq = seq
                     list.add(obj)
+                }
+                cList.value = list
+            })
+        return cList
+    }
+
+    fun listByUserIdAndDate(userId: String, today: String): LiveData<List<ChallengeDTO>> {
+        cs = ChallengeServiceImplV1()
+        cs.select("챌린지").whereEqualTo("c_userId", userId)
+            .whereGreaterThanOrEqualTo("c_sDate", today)
+            .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
+                var data: MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
+                var list: MutableList<ChallengeDTO> = mutableListOf()
+
+                if (exception != null) {
+                    // w 로 해야지 exception 받아짐
+                    Log.w("파이어 베이스 ㅋ", exception)
+                    data.value = null
+                    return@EventListener
+                }
+                for (doc in snapshot!!) {
+                    var seq = doc.id
+                    var obj = doc.toObject(ChallengeDTO::class.java)
+                    obj.c_seq = seq
+                    if (today <= obj.c_eDate)
+                        list.add(obj)
                 }
                 cList.value = list
             })
@@ -100,7 +126,7 @@ class CListViewModel : ViewModel() {
         var c_eDate: String = ""
     )
 
-    fun shuffle(): MutableLiveData<List<ChallengeDTO>> {
+    fun shuffle(): LiveData<List<ChallengeDTO>> {
 
         cs = ChallengeServiceImplV1()
         cs.select("챌린지").addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->

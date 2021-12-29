@@ -79,12 +79,6 @@
             android:text="도전 하기" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chall_resolve_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
     <LinearLayout
         android:id="@+id/layout_chall_reply"
         android:layout_width="match_parent"
