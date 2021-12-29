@@ -170,4 +170,37 @@ class RListViewModel : ViewModel() {
 
         return rList
     }
+
+    fun listByUserIdAndDate(userId: String, today:String): LiveData<List<RelayDTO>> {
+        rs = RelayServiceImplV1()
+        rs.select("릴레이")
+//            .whereEqualTo("r_userId", userId)
+            .whereLessThanOrEqualTo("r_eDate", today)
+            .whereGreaterThanOrEqualTo("r_sDate", today)
+//            .whereGreaterThan("r_eDate", today)
+            .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
+                val data: MutableLiveData<List<RelayDTO>> = MutableLiveData()
+                var list: MutableList<RelayDTO> = mutableListOf()
+                if (exception != null) {
+                    // w 로 해야지 exception 받아짐
+                    Log.w("파이어 베이스 ㅋ", exception)
+                    data.value = null
+                    return@EventListener
+                }
+                for (doc in snapshot!!) {
+                    var seq = doc.id
+                    var obj = doc.toObject(RelayDTO::class.java)
+                    obj.r_seq = seq
+                    list.add(obj)
+                }
+                rList.value = list
+            })
+
+        return rList
+    }
+
+//    fun listTest(userId: String, today:String):LiveData<List<RelayDTO>> {
+//        listByUserIdAndDate(userId,today)
+//    }
+
 }
