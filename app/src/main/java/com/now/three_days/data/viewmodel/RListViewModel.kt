@@ -174,10 +174,9 @@ class RListViewModel : ViewModel() {
     fun listByUserIdAndDate(userId: String, today:String): LiveData<List<RelayDTO>> {
         rs = RelayServiceImplV1()
         rs.select("릴레이")
-//            .whereEqualTo("r_userId", userId)
-            .whereLessThanOrEqualTo("r_eDate", today)
+            .whereEqualTo("r_userId", userId)
+//            .whereLessThanOrEqualTo("r_eDate", today)
             .whereGreaterThanOrEqualTo("r_sDate", today)
-//            .whereGreaterThan("r_eDate", today)
             .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
                 val data: MutableLiveData<List<RelayDTO>> = MutableLiveData()
                 var list: MutableList<RelayDTO> = mutableListOf()
@@ -191,7 +190,8 @@ class RListViewModel : ViewModel() {
                     var seq = doc.id
                     var obj = doc.toObject(RelayDTO::class.java)
                     obj.r_seq = seq
-                    list.add(obj)
+                    if(today <= obj.r_eDate)
+                        list.add(obj)
                 }
                 rList.value = list
             })
