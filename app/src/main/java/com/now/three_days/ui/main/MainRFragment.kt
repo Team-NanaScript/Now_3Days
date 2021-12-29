@@ -52,7 +52,7 @@ class MainRFragment : AuthFragmentParent() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
 
-        viewModel.list().observe(viewLifecycleOwner, Observer {
+        viewModel.listByUserId("nanask").observe(viewLifecycleOwner, Observer {
             rListAdapter = RListAdapter(it as ArrayList<RelayDTO>)
             binding.rList.adapter = rListAdapter
             Log.d("mainRList", "$it")
