@@ -41,7 +41,6 @@ class RListViewModel : ViewModel() {
                 obj.r_seq = seq
                 list.add(obj)
             }
-            list.shuffle()
             rList.value = list
         })
 // viewmodel 에서 데이터를 변경하고 라이브데이터가 데이터를 갱신하고, 옵저버가 받아서 화면을 갱신
@@ -199,8 +198,28 @@ class RListViewModel : ViewModel() {
         return rList
     }
 
-//    fun listTest(userId: String, today:String):LiveData<List<RelayDTO>> {
-//        listByUserIdAndDate(userId,today)
-//    }
+    fun shuffle(): LiveData<List<RelayDTO>> {
+        rs = RelayServiceImplV1()
+        rs.select("릴레이").addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
+            val data: MutableLiveData<List<RelayDTO>> = MutableLiveData()
+            var list: MutableList<RelayDTO> = mutableListOf()
+            if (exception != null) {
+                // w 로 해야지 exception 받아짐
+                Log.w("파이어 베이스 ㅋ", exception)
+                data.value = null
+                return@EventListener
+            }
+            for (doc in snapshot!!) {
+                var seq = doc.id
+                var obj = doc.toObject(RelayDTO::class.java)
+                obj.r_seq = seq
+                list.add(obj)
+            }
+            list.shuffle()
+            rList.value = list
+        })
+// viewmodel 에서 데이터를 변경하고 라이브데이터가 데이터를 갱신하고, 옵저버가 받아서 화면을 갱신
+        return rList
+    }
 
 }
