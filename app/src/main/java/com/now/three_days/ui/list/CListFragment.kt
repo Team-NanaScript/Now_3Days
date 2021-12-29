@@ -51,18 +51,16 @@ class CListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CListViewModel::class.java)
 
+        binding.rSwipeLayout.setOnRefreshListener {
+            binding.rSwipeLayout.isRefreshing = false
+            viewModel.list()
+        }
+
 
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
-
-//            val random = Random()
-//
-//            for(i in 0..it.size) {
-//
-//            }
-
-            // 여기 수정필요
-            cListAdapter1 = CListAdapter(it.shuffled() as ArrayList<ChallengeDTO>)
+            
+            cListAdapter1 = CListAdapter(it as ArrayList<ChallengeDTO>)
             binding.allList.adapter = cListAdapter1
 
 

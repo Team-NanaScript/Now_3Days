@@ -41,9 +41,10 @@ class RListViewModel : ViewModel() {
                 obj.r_seq = seq
                 list.add(obj)
             }
+            list.shuffle()
             rList.value = list
         })
-
+// viewmodel 에서 데이터를 변경하고 라이브데이터가 데이터를 갱신하고, 옵저버가 받아서 화면을 갱신
         return rList
     }
 
