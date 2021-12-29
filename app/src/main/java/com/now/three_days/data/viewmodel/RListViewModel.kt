@@ -199,8 +199,8 @@ class RListViewModel : ViewModel() {
         return rList
     }
 
-    fun listTest(userId: String, today:String):LiveData<List<RelayDTO>> {
-        listByUserIdAndDate(userId,today)
-    }
+//    fun listTest(userId: String, today:String):LiveData<List<RelayDTO>> {
+//        listByUserIdAndDate(userId,today)
+//    }
 
 }
