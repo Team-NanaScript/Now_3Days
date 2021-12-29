@@ -16,8 +16,8 @@ class ViewPagerMyPageAdapter(fragment: Fragment) : FragmentStateAdapter(fragment
 
     private val pageTabList: Map<Int, () -> Fragment> =
         mapOf(
-            MY_RLIST_INDEX to { MyCFragment() },
-            MY_CLIST_INDEX to { MyRFragment() }
+            MY_CLIST_INDEX to { MyCFragment() },
+            MY_RLIST_INDEX to { MyRFragment() }
         )
 
     override fun getItemCount(): Int {

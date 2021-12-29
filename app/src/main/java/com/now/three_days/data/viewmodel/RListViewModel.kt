@@ -145,6 +145,7 @@ class RListViewModel : ViewModel() {
 
     fun listByUserId(userId: String): LiveData<List<RelayDTO>> {
         rs = RelayServiceImplV1()
+        Log.d("relay viewModel userId", userId)
         // service에는 vo 받아오는데에는 dto라서 안나오나?
         rs.select("릴레이")
             .whereEqualTo("r_userId", userId)
