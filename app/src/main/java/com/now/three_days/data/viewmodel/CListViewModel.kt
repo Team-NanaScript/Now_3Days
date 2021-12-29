@@ -40,6 +40,7 @@ class CListViewModel : ViewModel() {
                 obj.c_seq = seq
                 list.add(obj)
             }
+            list.shuffle()
             cList.value = list
         })
 

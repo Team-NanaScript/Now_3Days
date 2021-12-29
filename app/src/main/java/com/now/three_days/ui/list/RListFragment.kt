@@ -55,22 +55,29 @@ class RListFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
 
+        /**
+         * 새고고침
+         * 다시 데이터를 fetch 하기
+         */
+        binding.cSwipeLayout.setOnRefreshListener {
+            // isRefreshing 새로고침 후 아이콘 없애기
+            binding.cSwipeLayout.isRefreshing = false
+            viewModel.list()
+
+//            val item = it.shuffled()
+//            Log.d("shuffled", "$item")
+//
+//            rListAdapter1 = RListAdapter(item)
+//            binding.allList.adapter = rListAdapter1
+        }
+        
+        
         viewModel.list().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
             // 여기 수정필요
-//            var item = it
-
-            binding.cSwipeLayout.setOnRefreshListener {
-                // isRefreshing 새로고침 후 아이콘 없애기
-                binding.cSwipeLayout.isRefreshing = false
-//                item = it.shuffled()
-                Log.d("shuffled", "$it")
-
-            }
             rListAdapter1 = RListAdapter(it)
             binding.allList.adapter = rListAdapter1
-
 
             rListAdapter1.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
