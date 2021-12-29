@@ -16,6 +16,10 @@ import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.data.viewmodel.RListViewModel
 import com.now.three_days.databinding.MainRFragmentBinding
 import com.now.three_days.ui.AuthFragmentParent
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainRFragment : AuthFragmentParent() {
 
@@ -39,9 +43,6 @@ class MainRFragment : AuthFragmentParent() {
     ): View {
         _binding = MainRFragmentBinding.inflate(inflater, container, false)
 
-        val mainAct = activity as MainActivity
-        mainAct?.setBottomNav(true)
-
 //        clistView = ViewModelProvider(this).get(CListViewModel::class.java)
 
         return binding.root
@@ -52,7 +53,21 @@ class MainRFragment : AuthFragmentParent() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(RListViewModel::class.java)
 
-        viewModel.listByUserId("nanask").observe(viewLifecycleOwner, Observer {
+        val mainActivity = activity as MainActivity
+        val userId = mainActivity.getFile().userId.toString()
+        /*
+        val dateFormat =
+            DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko"))
+        val monthFormat =
+            DateTimeFormatter.ofPattern("yyyy년 MM월").withLocale(Locale.forLanguageTag("ko"))
+        val localDate = LocalDateTime.now().format(monthFormat)
+         */
+        val localDate = LocalDateTime.now()
+        val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.KOREA)
+        val date = localDate.format(dateFormat)
+        Log.d("relay local date", date + ", "+ userId)
+//        viewModel.listByUserId("nanask").observe(viewLifecycleOwner, Observer {
+        viewModel.listByUserIdAndDate(userId,date).observe(viewLifecycleOwner, Observer {
             rListAdapter = RListAdapter(it as ArrayList<RelayDTO>)
             binding.rList.adapter = rListAdapter
             Log.d("mainRList", "$it")
