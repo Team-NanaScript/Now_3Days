@@ -63,7 +63,6 @@ class RListFragment : Fragment() {
             // isRefreshing 새로고침 후 아이콘 없애기
             binding.cSwipeLayout.isRefreshing = false
             viewModel.list()
-
 //            val item = it.shuffled()
 //            Log.d("shuffled", "$item")
 //
@@ -72,12 +71,14 @@ class RListFragment : Fragment() {
         }
         
         
-        viewModel.list().observe(viewLifecycleOwner, Observer {
+        viewModel.shuffle().observe(viewLifecycleOwner, Observer {
             Log.d("ViewModel {}", "$it")
 
             // 여기 수정필요
+
             rListAdapter1 = RListAdapter(it)
             binding.allList.adapter = rListAdapter1
+
 
             rListAdapter1.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
