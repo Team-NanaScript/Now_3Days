@@ -9,89 +9,83 @@
     tools:context=".ui.detail.ChallengeDetailFragment">
 
     <LinearLayout
+        android:id="@+id/layout_chall_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:layout_marginBottom="8dp"
+        android:background="#ddd"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-        <LinearLayout
-            android:id="@+id/layout_chall_top"
+        <TextView
+            android:id="@+id/chall_const_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginBottom="8dp"
-            android:background="#ddd"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_marginTop="8dp"
+            android:gravity="end"
+            android:text="챌린지"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/chall_const_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="end"
-                android:text="챌린지"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/chall_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="챌린지제목"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/chall_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="챌린지제목"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+    </LinearLayout>
 
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_chall_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <LinearLayout
-            android:id="@+id/layout_chall_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <TextView
-                    android:id="@+id/chall_userid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="userId"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/chall_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0000.00.00 ~ 0000.00.00"
-                    android:textSize="20dp" />
-            </LinearLayout>
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <TextView
-                android:id="@+id/chall_content"
+                android:id="@+id/chall_userid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="hey~"
-                android:textSize="25dp" />
+                android:layout_weight="2"
+                android:text="userId"
+                android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/chall_insert"
+            <TextView
+                android:id="@+id/chall_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="도전하기" />
+                android:layout_weight="1"
+                android:text="0000.00.00 ~ 0000.00.00"
+                android:textSize="20dp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/chall_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="hey~"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/chall_insert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="도전하기" />
     </LinearLayout>
 
     <LinearLayout
