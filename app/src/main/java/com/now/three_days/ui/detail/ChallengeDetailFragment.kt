@@ -93,6 +93,8 @@ class ChallengeDetailFragment : Fragment() {
             insertService = InsertServiceImpl()
             insertService.insert("챌린지", title, content, sDate.toString(), eDate.toString(), userId)
 
+            Toast.makeText(context, "챌린지 도전 !", Toast.LENGTH_SHORT).show()
+
         }
 
         binding.cheerSave.setOnClickListener {

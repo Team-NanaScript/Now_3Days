@@ -17,7 +17,6 @@ class RListViewModel : ViewModel() {
 //    val data:LiveData<List<RelayVO>> get() = _data
 
     private lateinit var rs: RelayServiceImplV1
-
     var rList: MutableLiveData<List<RelayDTO>> = MutableLiveData()
 
 //    init {
