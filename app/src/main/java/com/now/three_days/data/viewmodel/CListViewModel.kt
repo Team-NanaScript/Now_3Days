@@ -101,5 +101,30 @@ class CListViewModel : ViewModel() {
         var c_eDate: String = ""
     )
 
+    fun shuffle(): MutableLiveData<List<ChallengeDTO>> {
+
+        cs = ChallengeServiceImplV1()
+        cs.select("챌린지").addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
+            var data: MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
+            var list: MutableList<ChallengeDTO> = mutableListOf()
+            if (exception != null) {
+                // w 로 해야지 exception 받아짐
+                Log.w("파이어 베이스 ㅋ", exception)
+                data.value = null
+                return@EventListener
+            }
+            for (doc in snapshot!!) {
+                var seq = doc.id
+                var obj = doc.toObject(ChallengeDTO::class.java)
+                obj.c_seq = seq
+                list.add(obj)
+            }
+            list.shuffle()
+            cList.value = list
+        })
+
+        return cList
+    }
+
 }
 

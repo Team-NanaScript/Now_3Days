@@ -54,8 +54,8 @@ class ChallengeDetailFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             val iSize = it.size - 1
             for (i in 0..iSize) {
-                val r_seq = it[i].c_seq
-                if (r_seq == seq) {
+                val c_seq = it[i].c_seq
+                if (c_seq == seq) {
                     binding.challTitle.text = it[i].c_title
                     binding.challDate.text = String.format("%s ~ %s", it[i].c_sDate, it[i].c_eDate)
                     binding.challUserid.text = it[i].c_userId
