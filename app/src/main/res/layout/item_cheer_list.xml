@@ -18,7 +18,7 @@
             android:id="@+id/ch_userId"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:textAlignment="center"
             android:text="챌린지 댓글 유저"
             />
 
