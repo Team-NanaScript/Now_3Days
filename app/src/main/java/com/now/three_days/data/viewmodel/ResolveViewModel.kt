@@ -65,7 +65,7 @@ class ResolveViewModel : ViewModel() {
 
     fun listByRelaySeq(rs_r_seq: String): LiveData<List<ResolveVO>> {
         resServie = ResolveServiceImplV1()
-        resServie.selectByRelaySeq(rs_r_seq)
+        resServie.selectComment("릴레이", rs_r_seq, "댓글")
             .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
                 var data: MutableLiveData<List<ResolveVO>> = MutableLiveData()
                 var list: MutableList<ResolveVO> = mutableListOf()

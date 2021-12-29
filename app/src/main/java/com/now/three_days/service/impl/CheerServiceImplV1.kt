@@ -8,8 +8,4 @@ import com.now.three_days.service.FireService
 
 class CheerServiceImplV1 : FireService<CheerVO, String>() {
 
-    fun selectByChallSeq(ch_c_seq: String): Query {
-        return select("cheer").whereEqualTo("ch_c_seq", ch_c_seq)
-    }
-
 }

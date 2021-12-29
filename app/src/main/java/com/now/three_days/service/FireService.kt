@@ -21,4 +21,15 @@ abstract class FireService<VO, PK> {
         return db.collection(category)
     }
 
+    fun insertComment(category: String, seq:String, comment:String, vo:VO){
+
+        db.collection(category).document(seq).collection(comment).add(vo!!)
+
+    }
+
+    fun selectComment(category: String, seq:String, comment:String): CollectionReference {
+
+        return db.collection(category).document(seq).collection(comment)
+    }
+
 }

@@ -24,7 +24,7 @@ class RListViewModel : ViewModel() {
 //        _data.value = listOf()
 //    }
 
-    fun list(): MutableLiveData<List<RelayDTO>> {
+    fun list(): LiveData<List<RelayDTO>> {
         rs = RelayServiceImplV1()
         rs.select("릴레이").addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
             val data: MutableLiveData<List<RelayDTO>> = MutableLiveData()

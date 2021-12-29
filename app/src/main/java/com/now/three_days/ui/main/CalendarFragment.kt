@@ -1,7 +1,6 @@
 package com.now.three_days.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +13,8 @@ import com.now.three_days.R
 import com.now.three_days.adapter.CalendarAdapter
 import com.now.three_days.adapter.ViewPagerMainAdapter
 import com.now.three_days.data.model.CalendarVO
-import com.now.three_days.databinding.FragmentCalendarBinding
 import com.now.three_days.data.viewmodel.CListViewModel
+import com.now.three_days.databinding.FragmentCalendarBinding
 import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -90,13 +89,9 @@ class CalendarFragment : Fragment() {
         )
 
         for (i in 0..6) {
-            Log.d("오늘은 몇요일..?", week_day[i])
-
             cList.apply {
                 add(CalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
             }
-            Log.d("날짜 기준", preSunday.plusDays(i.toLong()).format(dateFormat))
-
         }
         binding.calendarRecyclerview.adapter = calendarAdapter
         binding.calendarRecyclerview.layoutManager = GridLayoutManager(context, 7)

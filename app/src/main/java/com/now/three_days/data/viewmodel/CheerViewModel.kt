@@ -43,7 +43,7 @@ class CheerViewModel : ViewModel() {
 
     fun listByChallSeq(ch_c_seq: String): LiveData<List<CheerVO>> {
         cheerServie = CheerServiceImplV1()
-        cheerServie.selectByChallSeq(ch_c_seq)
+        cheerServie.selectComment("챌린지", ch_c_seq, "댓글")
             .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
                 var data: MutableLiveData<List<CheerVO>> = MutableLiveData()
                 var list: MutableList<CheerVO> = mutableListOf()

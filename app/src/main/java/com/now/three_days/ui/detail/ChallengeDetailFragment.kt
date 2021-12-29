@@ -54,8 +54,8 @@ class ChallengeDetailFragment : Fragment() {
         viewModel.list().observe(viewLifecycleOwner, Observer {
             val iSize = it.size - 1
             for (i in 0..iSize) {
-                val r_seq = it[i].c_seq
-                if (r_seq == seq) {
+                val c_seq = it[i].c_seq
+                if (c_seq == seq) {
                     binding.challTitle.text = it[i].c_title
                     binding.challDate.text = String.format("%s ~ %s", it[i].c_sDate, it[i].c_eDate)
                     binding.challUserid.text = it[i].c_userId
@@ -85,12 +85,11 @@ class ChallengeDetailFragment : Fragment() {
 
             cheerService = CheerServiceImplV1()
             val cheerVO = CheerVO(
-                cheerViewModel.cheerList.value!!.size + 1,
-                seq.toString(),
                 userId,
                 ch_content
             )
-            cheerService.insert(cheerVO, "cheer")
+//            cheerService.insert(cheerVO, "cheer")
+            cheerService.insertComment("챌린지", seq.toString(), "댓글", cheerVO)
             binding.cheerContent.setText("")
         }
 
