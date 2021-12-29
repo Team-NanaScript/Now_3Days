@@ -1,22 +1,28 @@
 package com.now.three_days.ui.detail
 
+import android.app.DatePickerDialog
+import android.icu.util.Calendar
+import android.icu.util.GregorianCalendar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.now.three_days.MainActivity
 import com.now.three_days.adapter.CheerAdapter
+import com.now.three_days.data.model.ChallengeVO
 import com.now.three_days.data.model.CheerVO
 import com.now.three_days.data.viewmodel.CListViewModel
 import com.now.three_days.data.viewmodel.CheerViewModel
 import com.now.three_days.databinding.ChallengeDetailFragmentBinding
 import com.now.three_days.service.impl.CheerServiceImplV1
 import com.now.three_days.service.impl.InsertServiceImpl
+import java.time.LocalDate
 
 class ChallengeDetailFragment : Fragment() {
 
@@ -44,6 +50,9 @@ class ChallengeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val mainActivity = activity as MainActivity
+        val userId = mainActivity.getFile().userId.toString()
 
         // 이전 Fragment 에서 전송한 bundle 데이터 받기
         val bundle: Bundle? = arguments
@@ -73,6 +82,19 @@ class ChallengeDetailFragment : Fragment() {
             binding.challCheerList.adapter = cheerAdapter
         })
 
+        binding.challInsert.setOnClickListener{
+
+            var sDate = LocalDate.now()
+            var eDate:LocalDate = sDate.plusDays(3)
+
+            var title = binding.challTitle.text.toString()
+            var content = binding.challContent.text.toString()
+
+            insertService = InsertServiceImpl()
+            insertService.insert("챌린지", title, content, sDate.toString(), eDate.toString(), userId)
+
+        }
+
         binding.cheerSave.setOnClickListener {
             val ch_content = binding.cheerContent.text.toString()
             if (ch_content == null || ch_content == "") {
@@ -91,12 +113,6 @@ class ChallengeDetailFragment : Fragment() {
 //            cheerService.insert(cheerVO, "cheer")
             cheerService.insertComment("챌린지", seq.toString(), "댓글", cheerVO)
             binding.cheerContent.setText("")
-        }
-
-        binding.challInsert.setOnClickListener {
-//            Log.d("challengeVO", challengeVO.toString())
-//            insertService = InsertServiceImpl()
-//            insertService.insert(bundle?.get(""))
         }
     }
 }

@@ -8,6 +8,7 @@ import com.now.three_days.data.model.ChallengeVO
 import com.now.three_days.data.model.RelayVO
 import com.now.three_days.databinding.InsertFragmentBinding
 import com.now.three_days.service.InsertService
+import java.time.LocalDate
 
 class InsertServiceImpl : InsertService {
 
@@ -19,7 +20,6 @@ class InsertServiceImpl : InsertService {
         mainActivity: MainActivity,
         context: Context
     ) {
-
         // 작성자 아이디
         val userId = mainActivity.getFile().userId.toString()
 
@@ -43,9 +43,14 @@ class InsertServiceImpl : InsertService {
         if (eDate == "" || eDate == null) {
             Toast.makeText(context, "날짜를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
-        } else {
-            Toast.makeText(context, "$select_text 작성완료 !", Toast.LENGTH_SHORT).show()
         }
+        val isDate = this.date(sDate, eDate)
+        if(!isDate){
+            Toast.makeText(context, "종료일은 시작일보다 작을 수 없습니다 !", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        Toast.makeText(context, "$select_text 작성완료 !", Toast.LENGTH_SHORT).show()
 
         this.insert(select_text, title, content, sDate, eDate, userId)
 
@@ -54,6 +59,19 @@ class InsertServiceImpl : InsertService {
         binding.content.setText("")
 
 
+    }
+
+    fun date(sDate: String, eDate: String): Boolean {
+        val sDateSplit = sDate.split("-")
+        val sDate = LocalDate.of(sDateSplit[0].toInt(), sDateSplit[1].toInt(), sDateSplit[2].toInt()).atStartOfDay()
+        val eDateSplit = eDate.split("-")
+        val eDate = LocalDate.of(eDateSplit[0].toInt(), eDateSplit[1].toInt(), eDateSplit[2].toInt()).atStartOfDay()
+
+        if(eDate < sDate){
+            return false
+        }
+
+        return true
     }
 
     override fun insert(
