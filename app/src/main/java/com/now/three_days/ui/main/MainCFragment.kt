@@ -16,15 +16,14 @@ import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.data.viewmodel.CListViewModel
 import com.now.three_days.databinding.MainCFragmentBinding
 import com.now.three_days.ui.AuthFragmentParent
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 class MainCFragment : AuthFragmentParent() {
 
     //    lateinit var listAdapter: ListAdapter
     private lateinit var cListAdapter: CListAdapter
-    private lateinit var mainActivity: MainActivity
-
 
     companion object {
         fun newInstance() = MainCFragment()
@@ -32,10 +31,8 @@ class MainCFragment : AuthFragmentParent() {
 
     // ====== list ======
     private lateinit var viewModel: CListViewModel
-    private val mainCList = ArrayList<ChallengeDTO>()
     private var _binding: MainCFragmentBinding? = null
     private val binding get() = _binding!!
-
 
     // mainFragment에서 만들어둔 view를 보여주도록 연결하기
     override fun onCreateView(
@@ -44,18 +41,11 @@ class MainCFragment : AuthFragmentParent() {
     ): View {
         _binding = MainCFragmentBinding.inflate(inflater, container, false)
 
-        val mainAct = activity as MainActivity
-        mainAct?.setBottomNav(true)
-
-//        rlistView = ViewModelProvider(this).get(CListViewModel::class.java)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -64,22 +54,23 @@ class MainCFragment : AuthFragmentParent() {
 
         val mainActivity = activity as MainActivity
         val userId = mainActivity.getFile().userId.toString()
-        Log.d("현재 userId", "$userId")
+//        Log.d("현재 userId", "$userId")
 
-        viewModel.list().observe(viewLifecycleOwner, Observer {
+        val localDate = LocalDateTime.now()
+        val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.KOREA)
+        val date = localDate.format(dateFormat)
+
+        viewModel.listByUserIdAndDate(userId,date).observe(viewLifecycleOwner, Observer {
 
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
 
             binding.cList.adapter = cListAdapter
-            Log.d("mainRList", "$it")
-
+            Log.d("mainCList", "$it")
 
             cListAdapter.setItemClickListener(object : CListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {
-                    Log.d("position", position.toString())
 
                     var seq = it[position].c_seq
-                    Log.d("seq", "$seq")
 
                     val bundle = bundleOf("seq" to seq)
                     findNavController().navigate(R.id.c_detail_page, bundle)
@@ -88,7 +79,7 @@ class MainCFragment : AuthFragmentParent() {
             })
 
         })
-        // TODO: Use the ViewModel
+
     }
 
 }

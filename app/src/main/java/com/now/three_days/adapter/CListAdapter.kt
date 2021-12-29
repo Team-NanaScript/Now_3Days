@@ -30,15 +30,10 @@ class CListAdapter(private val cList: ArrayList<ChallengeDTO>) :
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it,position)
         }
-
-//        holder.itemView.setOnClickListener(View.OnClickListener {
-//            Log.d("Challenge 클릭 {}", position.toString())
-//        })
     }
 
     override fun getItemCount(): Int {
         return cList.size
-//        if(cList.size >= 2) 2 else 0
     }
 
     interface OnItemClcikListener {

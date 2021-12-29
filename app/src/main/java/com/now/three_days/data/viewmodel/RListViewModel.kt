@@ -57,24 +57,24 @@ class RListViewModel : ViewModel() {
         return seqList
     }
 
-    fun date(it:List<RelayDTO>): ArrayList<RDate> {
-        var dateList:ArrayList<RDate> = arrayListOf()
-        val size = it.size-1
-        for(i in 0..size){
-            val rDate: RDate = RDate()
-            val sDate = it[i].r_sDate
-            val eDate = it[i].r_eDate
-            rDate.r_sDate = sDate
-            rDate.r_eDate = eDate
-            dateList.add(rDate)
-        }
-        return dateList
-    }
+//    fun date(it:List<RelayDTO>): ArrayList<RDate> {
+//        var dateList:ArrayList<RDate> = arrayListOf()
+//        val size = it.size-1
+//        for(i in 0..size){
+//            val rDate: RDate = RDate()
+//            val sDate = it[i].r_sDate
+//            val eDate = it[i].r_eDate
+//            rDate.r_sDate = sDate
+//            rDate.r_eDate = eDate
+//            dateList.add(rDate)
+//        }
+//        return dateList
+//    }
 
-    data class RDate(
-        var r_sDate:String = "",
-        var r_eDate:String = ""
-    )
+//    data class RDate(
+//        var r_sDate:String = "",
+//        var r_eDate:String = ""
+//    )
 
     // 주 단위 날짜 계산
     fun weekResult(it: List<RelayDTO>) {
@@ -174,8 +174,7 @@ class RListViewModel : ViewModel() {
         rs = RelayServiceImplV1()
         rs.select("릴레이")
             .whereEqualTo("r_userId", userId)
-//            .whereLessThanOrEqualTo("r_eDate", today)
-            .whereGreaterThanOrEqualTo("r_sDate", today)
+            .whereLessThanOrEqualTo("r_sDate", today)
             .addSnapshotListener(EventListener<QuerySnapshot> { snapshot, exception ->
                 val data: MutableLiveData<List<RelayDTO>> = MutableLiveData()
                 var list: MutableList<RelayDTO> = mutableListOf()
