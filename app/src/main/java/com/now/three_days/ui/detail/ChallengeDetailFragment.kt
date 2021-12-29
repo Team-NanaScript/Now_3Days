@@ -85,12 +85,11 @@ class ChallengeDetailFragment : Fragment() {
 
             cheerService = CheerServiceImplV1()
             val cheerVO = CheerVO(
-                cheerViewModel.cheerList.value!!.size + 1,
-                seq.toString(),
                 userId,
                 ch_content
             )
-            cheerService.insert(cheerVO, "cheer")
+//            cheerService.insert(cheerVO, "cheer")
+            cheerService.insertComment("챌린지", seq.toString(), "댓글", cheerVO)
             binding.cheerContent.setText("")
         }
 

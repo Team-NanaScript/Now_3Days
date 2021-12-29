@@ -86,12 +86,10 @@ class RelayDetailFragment : Fragment() {
 //            val resSeq = String.format("%s%s",LocalTime.now(),userId)
             resService = ResolveServiceImplV1()
             val resVO = ResolveVO(
-                resolveViewModel.resolveList.value!!.size + 1,
-                seq.toString(),
                 userId,
                 rs_content
             )
-            resService.insert(resVO, "resolve")
+            resService.insertComment("릴레이",seq.toString(), "댓글", resVO)
             binding.resolveContent.setText("")
         }
     }
