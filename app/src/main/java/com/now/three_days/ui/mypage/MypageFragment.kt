@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.now.three_days.adapter.ViewPagerMainAdapter
+import com.now.three_days.adapter.ViewPagerMyPageAdapter
 import com.now.three_days.data.viewmodel.CListViewModel
 import com.now.three_days.databinding.FragmentMypageBinding
 
@@ -29,7 +30,7 @@ class MypageFragment : Fragment() {
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager
 
-        viewPager.adapter = ViewPagerMainAdapter(this)
+        viewPager.adapter = ViewPagerMyPageAdapter(this)
         val tabTitle = arrayListOf<String>("Challenge","Relay")
         TabLayoutMediator(tabLayout, viewPager) {
             tab, position ->

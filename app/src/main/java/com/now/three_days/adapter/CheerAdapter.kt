@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.now.three_days.data.model.CheerVO
-import com.now.three_days.data.model.ResolveVO
 import com.now.three_days.databinding.ItemCheerListBinding
 
 class CheerAdapter(private val cheerList: ArrayList<CheerVO>) :
