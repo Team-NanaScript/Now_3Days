@@ -26,7 +26,6 @@ class CListFragment : Fragment() {
     lateinit var cListAdapter2: CListAdapter
 
     private val cList1 = ArrayList<ChallengeDTO>()
-    private val cList2 = ArrayList<ChallengeDTO>()
 
     private var _binding: CListFragmentBinding? = null
     private val binding get() = _binding!!
@@ -85,15 +84,6 @@ class CListFragment : Fragment() {
 
         cListAdapter2 = CListAdapter(cList1)
 
-
-//        cList1.apply {
-//            add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
-//            add(ChallengeDTO("1", "나나", "1L 마시기", "2021-11-06", "2021-11-09", "1L 마시기"))
-//
-//        }
-
-//        binding.bestList.adapter = cListAdapter2
-//        binding.bestList.layoutManager = GridLayoutManager(context, 2)
         binding.allList.layoutManager = GridLayoutManager(context, 2)
 
     }

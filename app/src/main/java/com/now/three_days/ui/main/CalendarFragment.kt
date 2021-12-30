@@ -46,7 +46,6 @@ class CalendarFragment : Fragment() {
             ViewModelProvider(this).get(CListViewModel::class.java)
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
-//        val root: View = binding.root
 
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager

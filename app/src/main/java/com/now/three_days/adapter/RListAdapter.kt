@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.now.three_days.R
 import com.now.three_days.data.model.RelayDTO
 import com.now.three_days.databinding.ItemRListBinding
 
@@ -17,6 +18,7 @@ class RListAdapter(private val aList: List<RelayDTO>) :
         fun bind(item: RelayDTO) {
             binding.rTitle.text = item.r_title
             binding.rDate.text = item.r_sDate
+            binding.cardView.setBackgroundResource(R.drawable.bg_custom_box)
 //            binding.rSeq.text = item.r_seq
         }
     }

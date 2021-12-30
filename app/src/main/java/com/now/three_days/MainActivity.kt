@@ -38,26 +38,9 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        /*
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
-        */
-
-
         val navView: BottomNavigationView = binding.navView
-//        val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         navController = findNavController(R.id.nav_host_fragment_activity_main)
-
-//        val toolbar:Toolbar = binding.toolbar
-
-//        if(actionBar != null) {
-//            actionBar?.setDisplayShowHomeEnabled(true)
-//        }
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -67,7 +50,6 @@ class MainActivity : AppCompatActivity() {
 
         userFile = UserFile(filesDir.path)
 
-        // this.hideSystemUI()
     }
 
     private fun hideSystemUI() {

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.now.three_days.R
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.databinding.ItemCListBinding
 
@@ -15,6 +16,7 @@ class CListAdapter(private val cList: ArrayList<ChallengeDTO>) :
         fun bind(item: ChallengeDTO) {
             binding.cTitle.text = item.c_title
             binding.cDate.text = item.c_sDate
+            binding.cardView.setBackgroundResource(R.drawable.bg_custom_box)
         }
     }
 
