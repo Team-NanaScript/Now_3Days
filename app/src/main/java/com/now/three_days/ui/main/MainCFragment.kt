@@ -22,19 +22,16 @@ import java.util.*
 
 class MainCFragment : AuthFragmentParent() {
 
-    //    lateinit var listAdapter: ListAdapter
     private lateinit var cListAdapter: CListAdapter
 
     companion object {
         fun newInstance() = MainCFragment()
     }
 
-    // ====== list ======
     private lateinit var viewModel: CListViewModel
     private var _binding: MainCFragmentBinding? = null
     private val binding get() = _binding!!
 
-    // mainFragment에서 만들어둔 view를 보여주도록 연결하기
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,7 +51,6 @@ class MainCFragment : AuthFragmentParent() {
 
         val mainActivity = activity as MainActivity
         val userId = mainActivity.getFile().userId.toString()
-//        Log.d("현재 userId", "$userId")
 
         val localDate = LocalDateTime.now()
         val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.KOREA)

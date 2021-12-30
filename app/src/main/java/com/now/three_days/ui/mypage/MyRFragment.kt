@@ -58,7 +58,6 @@ class MyRFragment : AuthFragmentParent() {
         viewModel.listByUserId(userId).observe(viewLifecycleOwner, Observer {
             rListAdapter = RListAdapter(it as ArrayList<RelayDTO>)
             binding.rList.adapter = rListAdapter
-//            Log.d("mainRList", "$it")
 
             rListAdapter.setItemClickListener(object : RListAdapter.OnItemClcikListener {
                 override fun onClick(view: View, position: Int) {

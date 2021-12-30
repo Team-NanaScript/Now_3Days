@@ -28,13 +28,11 @@ class MyCFragment : AuthFragmentParent() {
         fun newInstance() = MyCFragment()
     }
 
-    // ====== list ======
     private lateinit var viewModel: CListViewModel
     private var _binding: MainCFragmentBinding? = null
     private val binding get() = _binding!!
 
 
-    // mainFragment에서 만들어둔 view를 보여주도록 연결하기
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +54,6 @@ class MyCFragment : AuthFragmentParent() {
         val userId = mainActivity.getFile().userId.toString()
         Log.d("현재 userId", "$userId")
 
-//        viewModel.list().observe(viewLifecycleOwner, Observer {
         viewModel.listByUserId(userId).observe(viewLifecycleOwner, Observer {
 
             cListAdapter = CListAdapter(it as ArrayList<ChallengeDTO>)
