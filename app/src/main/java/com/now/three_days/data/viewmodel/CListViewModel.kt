@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.toObject
 import com.now.three_days.data.model.ChallengeDTO
 import com.now.three_days.service.impl.ChallengeServiceImplV1
 import kotlinx.coroutines.*
@@ -21,6 +22,21 @@ class CListViewModel : ViewModel() {
 //    init {
 //        _data.value = listOf()
 //    }
+
+    fun detail(seq:String):LiveData<ChallengeDTO>{
+
+        var detail: MutableLiveData<ChallengeDTO> = MutableLiveData()
+        cs = ChallengeServiceImplV1()
+        cs.select("챌린지").document(seq).addSnapshotListener{snapshot, e ->
+            if(e != null){
+                Log.w("디테일 오류", "DB 오류")
+            }
+            val snapshot = snapshot?.toObject(ChallengeDTO::class.java)
+            detail.value = snapshot
+        }
+
+        return detail
+    }
 
     fun list(): LiveData<List<ChallengeDTO>> {
 

@@ -10,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import androidx.transition.Visibility
 import com.now.three_days.MainActivity
 import com.now.three_days.adapter.CheerAdapter
 import com.now.three_days.data.model.ChallengeVO
@@ -33,6 +35,15 @@ class ChallengeDetailFragment : Fragment() {
 
     private lateinit var cheerService: CheerServiceImplV1
     private lateinit var insertService: InsertServiceImpl
+
+    // visible 라이브데이터 세팅
+    var _isVisible:MutableLiveData<Boolean> = MutableLiveData()
+    val isVisible:LiveData<Boolean>
+                    get() = _isVisible
+
+    init {
+        _isVisible.value = true
+    }
 
     private var _binding: ChallengeDetailFragmentBinding? = null
 
@@ -57,20 +68,16 @@ class ChallengeDetailFragment : Fragment() {
         // 이전 Fragment 에서 전송한 bundle 데이터 받기
         val bundle: Bundle? = arguments
 
-        val seq = bundle?.get("seq")
+        val seq = bundle?.get("seq").toString()
         viewModel = ViewModelProvider(requireParentFragment())[CListViewModel::class.java]
 
-        viewModel.list().observe(viewLifecycleOwner, Observer {
-            val iSize = it.size - 1
-            for (i in 0..iSize) {
-                val c_seq = it[i].c_seq
-                if (c_seq == seq) {
-                    binding.challTitle.text = it[i].c_title
-                    binding.challDate.text = String.format("%s ~ %s", it[i].c_sDate, it[i].c_eDate)
-                    binding.challUserid.text = it[i].c_userId
-                    binding.challContent.text = it[i].c_content
-                }
-            }
+        viewModel.detail(seq).observe(viewLifecycleOwner, Observer {
+                    binding.challTitle.text = it.c_title
+                    binding.challDate.text = String.format("%s ~ %s", it.c_sDate, it.c_eDate)
+                    binding.challUserid.text = it.c_userId
+                    binding.challContent.text = it.c_content
+
+                    if(userId == it.c_userId) _isVisible.value = false else _isVisible.value = true
         })
 
         cheerViewModel = ViewModelProvider(requireParentFragment())[CheerViewModel::class.java]
@@ -92,6 +99,8 @@ class ChallengeDetailFragment : Fragment() {
 
             insertService = InsertServiceImpl()
             insertService.insert("챌린지", title, content, sDate.toString(), eDate.toString(), userId)
+
+            Toast.makeText(context, "챌린지 도전 !", Toast.LENGTH_SHORT).show()
 
         }
 
