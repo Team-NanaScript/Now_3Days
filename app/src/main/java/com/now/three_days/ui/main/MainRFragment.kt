@@ -29,21 +29,17 @@ class MainRFragment : AuthFragmentParent() {
         fun newInstance() = MainRFragment()
     }
 
-    // ====== list ======
     private lateinit var viewModel: RListViewModel
     private val mainRList = ArrayList<RelayDTO>()
     private var _binding: MainRFragmentBinding? = null
     private val binding get() = _binding!!
 
 
-    // mainFragment에서 만들어둔 view를 보여주도록 연결하기
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = MainRFragmentBinding.inflate(inflater, container, false)
-
-//        clistView = ViewModelProvider(this).get(CListViewModel::class.java)
 
         return binding.root
     }

@@ -52,7 +52,7 @@ class CListFragment : Fragment() {
 
         binding.rSwipeLayout.setOnRefreshListener {
             binding.rSwipeLayout.isRefreshing = false
-            viewModel.list()
+            viewModel.shuffle()
         }
 
 
@@ -81,8 +81,6 @@ class CListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        cListAdapter2 = CListAdapter(cList1)
 
         binding.allList.layoutManager = GridLayoutManager(context, 2)
 

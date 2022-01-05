@@ -60,7 +60,7 @@ class RListFragment : Fragment() {
         binding.cSwipeLayout.setOnRefreshListener {
             // isRefreshing 새로고침 후 아이콘 없애기
             binding.cSwipeLayout.isRefreshing = false
-            viewModel.list()
+            viewModel.shuffle()
 //            val item = it.shuffled()
 //            Log.d("shuffled", "$item")
 //
