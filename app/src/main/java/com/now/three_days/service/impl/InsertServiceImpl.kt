@@ -32,15 +32,15 @@ class InsertServiceImpl : InsertService {
         val spinner: Spinner = binding.insertSpinner
         val select_text = spinner.selectedItem.toString()
 
-        if (select_text == "카테고리" || select_text == null) {
+        if (select_text == "카테고리") {
             Toast.makeText(context, "카테고리를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
-        if (title == "" || title == null) {
+        if (title == "") {
             Toast.makeText(context, "제목을 입력하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
-        if (eDate == "" || eDate == null) {
+        if (eDate == "") {
             Toast.makeText(context, "날짜를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
         }

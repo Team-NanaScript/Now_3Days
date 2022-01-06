@@ -16,8 +16,6 @@ abstract class FireService<VO, PK> {
 
     fun select(category: String): CollectionReference {
 
-//        db.collection("릴레이").document(시퀀스).collection("댓글").add()
-
         return db.collection(category)
     }
 

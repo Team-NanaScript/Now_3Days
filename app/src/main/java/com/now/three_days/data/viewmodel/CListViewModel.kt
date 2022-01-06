@@ -13,26 +13,22 @@ import kotlinx.coroutines.*
 
 class CListViewModel : ViewModel() {
 
-//    private var _data = MutableLiveData<List<ChallengeDTO>>()
-//    val data:LiveData<List<ChallengeDTO>> get() = _data
+    var _cList: MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
+    val cList:LiveData<List<ChallengeDTO>> get() = _cList
 
-    var cList: MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
+    var _detail: MutableLiveData<ChallengeDTO> = MutableLiveData()
+    val detail:LiveData<ChallengeDTO> get() = _detail
+
     private lateinit var cs: ChallengeServiceImplV1
 
-//    init {
-//        _data.value = listOf()
-//    }
-
-    fun detail(seq:String):LiveData<ChallengeDTO>{
-
-        var detail: MutableLiveData<ChallengeDTO> = MutableLiveData()
+    fun detail(seq:String): LiveData<ChallengeDTO> {
         cs = ChallengeServiceImplV1()
         cs.select("챌린지").document(seq).addSnapshotListener{snapshot, e ->
             if(e != null){
-                Log.w("디테일 오류", "DB 오류")
+                Log.w("Detail", e)
             }
             val snapshot = snapshot?.toObject(ChallengeDTO::class.java)
-            detail.value = snapshot
+           _detail.value = snapshot!!
         }
 
         return detail
@@ -45,8 +41,7 @@ class CListViewModel : ViewModel() {
             var data: MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
             var list: MutableList<ChallengeDTO> = mutableListOf()
             if (exception != null) {
-                // w 로 해야지 exception 받아짐
-                Log.w("파이어 베이스 ㅋ", exception)
+                Log.w("all list", exception)
                 data.value = null
                 return@EventListener
             }
@@ -56,7 +51,7 @@ class CListViewModel : ViewModel() {
                 obj.c_seq = seq
                 list.add(obj)
             }
-            cList.value = list
+            _cList.value = list
         })
 
         return cList
@@ -70,8 +65,7 @@ class CListViewModel : ViewModel() {
                 var list: MutableList<ChallengeDTO> = mutableListOf()
 
                 if (exception != null) {
-                    // w 로 해야지 exception 받아짐
-                    Log.w("파이어 베이스 ㅋ", exception)
+                    Log.w("listByUserId", exception)
                     data.value = null
                     return@EventListener
                 }
@@ -81,7 +75,7 @@ class CListViewModel : ViewModel() {
                     obj.c_seq = seq
                     list.add(obj)
                 }
-                cList.value = list
+               _cList.value = list
             })
         return cList
     }
@@ -95,8 +89,7 @@ class CListViewModel : ViewModel() {
                 var list: MutableList<ChallengeDTO> = mutableListOf()
 
                 if (exception != null) {
-                    // w 로 해야지 exception 받아짐
-                    Log.w("파이어 베이스 ㅋ", exception)
+                    Log.w("listByUserIdAndDate", exception)
                     data.value = null
                     return@EventListener
                 }
@@ -107,7 +100,7 @@ class CListViewModel : ViewModel() {
                     if (today <= obj.c_eDate)
                         list.add(obj)
                 }
-                cList.value = list
+                _cList.value = list
             })
         return cList
     }
@@ -149,7 +142,6 @@ class CListViewModel : ViewModel() {
             var data: MutableLiveData<List<ChallengeDTO>> = MutableLiveData()
             var list: MutableList<ChallengeDTO> = mutableListOf()
             if (exception != null) {
-                // w 로 해야지 exception 받아짐
                 Log.w("파이어 베이스 ㅋ", exception)
                 data.value = null
                 return@EventListener
@@ -161,7 +153,7 @@ class CListViewModel : ViewModel() {
                 list.add(obj)
             }
             list.shuffle()
-            cList.value = list
+            _cList.value = list
         })
 
         return cList
