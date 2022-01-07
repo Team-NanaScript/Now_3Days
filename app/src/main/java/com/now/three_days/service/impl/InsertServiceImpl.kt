@@ -36,11 +36,11 @@ class InsertServiceImpl : InsertService {
             Toast.makeText(context, "카테고리를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
-        if (title == "") {
+        if (title.isEmpty()) {
             Toast.makeText(context, "제목을 입력하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
-        if (eDate == "") {
+        if (eDate.isEmpty()) {
             Toast.makeText(context, "날짜를 선택하세요 !", Toast.LENGTH_SHORT).show()
             return
         }
@@ -57,7 +57,6 @@ class InsertServiceImpl : InsertService {
         binding.title.setText("")
         binding.eDate.setText("")
         binding.content.setText("")
-
 
     }
 
